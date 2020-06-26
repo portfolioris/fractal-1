@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="{{ htmlClass }}" lang="{{ htmlLang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Preview Layout</title>
+  <meta name="description" content="{{ description }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {{! Generic app tags }}
+  <link rel="manifest" href="../../assets/manifest/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/manifest/icons/icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/manifest/icons/icon-32x32.png">
+  <meta name="theme-color" content="{{themeColor}}">
+
+  {{! Inform CSS that JS is enabled }}
+  <script>
+    document.documentElement.classList.add('has-js');
+  </script>
+
+  <link rel="stylesheet" href="{{ path '/css/style.css' }}" media="all">
+
+
+  {{! List dependencies in the head for faster discovery/preloading. They are deferred by default. }}
+  <script type="module" src="../../js/bundle.es6.js?{{ cacheBuster }}"></script>
+
+  <link rel="stylesheet" href="../../css/pattern-scaffolding.css?{{ cacheBuster }}" media="all" />
+</head>
+<body class="{{ bodyClass }}">
+
+{{{ yield }}}
+
+<!-- Legacy bundle javascript -->
+<script nomodule src="../../js/bundle.es5.js"></script>
+
+</body>
+</html>
