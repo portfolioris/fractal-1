@@ -1,5 +1,5 @@
 module.exports = {
   context: {
-    errorId: 'error--input-id'
-  }
-}
+    errorId: 'error--input-id',
+  },
+};

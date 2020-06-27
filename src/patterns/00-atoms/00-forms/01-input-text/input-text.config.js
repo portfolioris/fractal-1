@@ -1,10 +1,9 @@
 module.exports = {
   context: {
-    modifier: '',
     id: 'input-id',
     name: 'input-id',
     type: 'text',
-    placeholder: '',
+    placeholder: null,
     value: false,
     isRequired: true,
     isReadonly: false,
