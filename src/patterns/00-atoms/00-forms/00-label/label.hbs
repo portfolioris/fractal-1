@@ -1,0 +1,13 @@
+<{{#if isLegend}}legend{{else}}label{{/if}}
+  class="c-label"
+  {{#unless isLegend}}
+  for="{{for}}"
+  {{/unless}}
+>
+  <span class="c-label__label">
+    {{ label }}
+  </span>
+  {{#if hint}}
+    <span class="c-label__hint">{{hint}}</span>
+  {{/if}}
+</{{#if isLegend}}legend{{else}}label{{/if}}>
