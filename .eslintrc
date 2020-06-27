@@ -12,6 +12,12 @@
         "max": 3,
         "maxEOF": 1
       }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
     ]
   }
 }
