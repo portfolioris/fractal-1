@@ -11,4 +11,13 @@ module.exports = {
       hasIcon: false,
     },
   },
+  variants: [{
+    name: 'large',
+    context: {
+      button: {
+        modifier: 'large',
+        label: 'Large button',
+      },
+    },
+  }],
 };
