@@ -8,7 +8,10 @@
         <form method="post" action="" data-module="ui/validate">
           <fieldset>
             <legend class="u-heading  h3">Text inputs</legend>
-            {{ render "@field-input-text" }}
+            {{> "@field-input-text" label='Name' name='name' }}
+
+            {{> "@field-input-text" label='Email' name='email' type='email' }}
+
             {{ render "@field-input-submit" }}
           </fieldset>
         </form>

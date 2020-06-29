@@ -1,6 +1,6 @@
 <div class="c-form-field">
-  {{ render "@atoms-label" }}
-  {{ render "@atoms-input-text" }}
-  <p hidden id="{{errorId}}" class="c-form-field__error" data-module-bind="validate-error">This is
+  {{> "@atoms-label" label=this.label for=this.name }}
+  {{> "@atoms-input-text" name=this.name type=this.type }}
+  <p hidden id="error--{{name}}" class="c-form-field__error" data-module-bind="validate-error">This is
     an error / extra help message.</p>
 </div>
