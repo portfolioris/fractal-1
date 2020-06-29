@@ -1,5 +1,10 @@
 module.exports = {
   context: {
-    errorId: 'error--input-id',
+    label: {
+      label: 'field input label',
+    },
+    input: {
+      data: 'data-module-bind="validate-input"',
+    },
   },
 };
