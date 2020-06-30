@@ -15,9 +15,9 @@ const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const svgSprite = require('gulp-svg-sprite');
-
 const pkgJson = require('./package.json');
-const config = pkgJson.config;
+
+const { config } = pkgJson;
 const webpackConfigDev = require('./config/webpack.dev');
 const webpackConfigES5 = require('./config/webpack.es5');
 const webpackConfigES6 = require('./config/webpack.es6');
@@ -191,6 +191,13 @@ fractal.web.set('static.path', path.join(__dirname, config.paths.public.root)); 
 
 fractal.web.set('server.syncOptions', {
   files: [`${config.paths.public.root}**/*`],
+  middleware: (req, res, next) => {
+    // make post get, so a form submit doesn't result in nothing
+    if (req.method.toUpperCase() === 'POST') {
+      req.method = 'GET';
+    }
+    next();
+  },
 });
 
 // keep a reference to the fractal CLI console utility
@@ -198,13 +205,14 @@ const logger = fractal.cli.console;
 
 const connectTask = () => {
   const server = fractal.web.server({
-    sync: true
+    sync: true,
+
   });
-  server.on('error', err => logger.error(err.message));
+  server.on('error', (err) => logger.error(err.message));
   return server.start().then(() => {
     logger.success(`Fractal server is now running at ${server.url}`);
   });
-}
+};
 // const connectTask = () => {
 //   browserSync.init({
 //     server: config.paths.public.root,

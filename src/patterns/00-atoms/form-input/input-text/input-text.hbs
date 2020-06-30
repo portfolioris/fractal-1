@@ -1,0 +1,27 @@
+<input
+  class="c-input-text"
+  type="{{type}}"
+  id="{{name}}"
+  name="{{name}}"
+  {{#if placeholder}}
+  placeholder="{{placeholder}}"
+  {{/if}}
+  {{#if value}}
+  value="{{value}}"
+  {{/if}}
+  {{#if isRequired}}
+  required
+  {{/if}}
+  {{#if isReadonly}}
+  readonly="readonly"
+  {{/if}}
+  {{#if autocomplete}}
+  autocomplete="{{autocomplete}}"
+  {{/if}}
+  {{#if pattern}}
+  pattern="{{pattern}}"
+  {{/if}}
+  {{#if data}}
+    {{{data}}}
+  {{/if}}
+>
