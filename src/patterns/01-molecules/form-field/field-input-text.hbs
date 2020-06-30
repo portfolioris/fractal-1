@@ -1,0 +1,6 @@
+<div class="c-form-field">
+  {{ render "@atoms-label" label merge=true }}
+  {{ render "@atoms-input-text" input merge=true }}
+  <p hidden id="error--{{ name }}" class="c-form-field__error" data-module-bind="validate-error">
+    Error for {{ name }}</p>
+</div>
