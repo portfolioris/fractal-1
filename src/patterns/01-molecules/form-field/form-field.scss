@@ -13,8 +13,8 @@
 
 .field-validation-error, // umbraco forms class. Can't seem to adjust
 .c-form-field__error {
-  color: $color-brand-secondary-base;
-  @include supple-font-size($milli);
+  //color: $color-brand-secondary-base;
+  //@include supple-font-size($milli);
   margin-top: $supple-space-tiny;
   margin-bottom: 0;
 }
