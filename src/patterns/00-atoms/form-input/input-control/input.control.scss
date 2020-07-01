@@ -9,12 +9,20 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: $supple-space-tiny;
+  position: relative;
 }
 
 
 
 /*  Elements
     ========================================================================= */
+
+.c-input-control__input {
+  position: absolute;
+  width: 1.5em;
+  height: 1.5em;
+  opacity: 0;
+}
 
 .c-input-control__indicator {
   border: 2px solid $color-black;

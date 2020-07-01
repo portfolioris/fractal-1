@@ -32,7 +32,6 @@ export default ($input) => {
 
   // if the input is a radio (part of a set), store the value a little differently
   if ($input.type === 'radio') {
-    console.log($input);
     status.inputValue = null;
     const $checkedRadio = document.querySelector(`input[name="${$input.name}"]:checked`);
     if ($checkedRadio) {
@@ -50,23 +49,23 @@ export default ($input) => {
 
     if ($input.validity.valueMissing) {
       status.errorType = 'valueMissing';
-      status.errorMessage = errorMessages.valueMissing; // 'Dit is een vereist veld.';
+      status.errorMessage = errorMessages.valueMissing;
     }
     if ($input.validity.typeMismatch) {
       status.errorType = 'typeMismatch';
-      status.errorMessage = errorMessages.typeMismatch; // 'Dit is geen geldige invoer.';
+      status.errorMessage = errorMessages.typeMismatch;
     }
     if ($input.validity.patternMismatch) {
       status.errorType = 'patternMismatch';
-      status.errorMessage = errorMessages.patternMismatch; // 'Dit is geen geldige invoer.';
+      status.errorMessage = errorMessages.patternMismatch;
     }
     if ($input.validity.rangeOverflow) {
       status.errorType = 'rangeOverflow';
-      status.errorMessage = errorMessages.rangeOverflow; // 'Deze waarde ligt te hoog.';
+      status.errorMessage = errorMessages.rangeOverflow;
     }
     if ($input.validity.rangeUnderflow) {
       status.errorType = 'rangeUnderflow';
-      status.errorMessage = errorMessages.rangeUnderflow; // 'Deze waarde ligt te laag.';
+      status.errorMessage = errorMessages.rangeUnderflow;
     }
 
     return status;
