@@ -1,0 +1,57 @@
+/*  =========================================================================
+    foundation.elements.toplevel
+    Describes toplevel styles such as HTML, body, etc.
+    ========================================================================= */
+
+/*  Module
+    Core module
+    ========================================================================= */
+
+html {
+  font-family: $font-family-primary;
+  color: $color-black;
+  font-weight: $font-weight-regular;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: $color-black;
+}
+
+button {
+  cursor: pointer;
+}
+
+button svg {
+  pointer-events: none;
+}
+
+fieldset,
+figure {
+  margin: 0;
+}
+
+
+/**
+ * Override from normalize.css
+ */
+b,
+strong {
+  font-weight: $font-weight-bold;
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th,
+caption {
+  text-align: left;
+}

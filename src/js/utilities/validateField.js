@@ -6,16 +6,18 @@
 
 export default ($input) => {
   const errorMessages = {
-    valueMissing: $input.dataset.valueMissing || 'Dit is een vereist veld.',
-    typeMismatch: $input.dataset.typeMismatch || 'Dit is geen geldige invoer.',
-    patternMismatch: $input.dataset.patternMismatch || 'Dit is geen geldige invoer.',
-    rangeOverflow: $input.dataset.rangeOverflow || 'Deze waarde ligt te hoog.',
-    rangeUnderflow: $input.dataset.rangeUnderflow || 'Deze waarde ligt te laag.',
-    invalidDate: $input.dataset.invalidDate || 'Dit is geen geldige datum.',
-    outOfRangeDateHistory: $input.dataset.outOfRangeDateHistory || 'De datum ligt te ver in het verleden.',
-    outOfRangeDateFuture: $input.dataset.outOfRangeDateFuture || 'De datum ligt te ver in de toekomst.',
+    valueMissing: $input.dataset.valueMissing || 'This field is required.',
+    typeMismatch: $input.dataset.typeMismatch || 'The data you entered is not valid.',
+    patternMismatch: $input.dataset.patternMismatch || 'The data you entered is not valid.',
+    rangeOverflow: $input.dataset.rangeOverflow || 'The value is too high.',
+    rangeUnderflow: $input.dataset.rangeUnderflow || 'The value is too low.',
+    // More errortype messages for custom validators
+    // invalidDate: $input.dataset.invalidDate || 'This is not a valid date.',
+    // rangeDateUnderflow: $input.dataset.rangeDateUnderflow || 'This date is too far in the past.',
+    // rangeDateOverflow: $input.dataset.rangeDateOverflow || 'This date is too far in the future.',
   };
 
+  // setup return object
   const status = {
     valid: true,
     errorType: null,
@@ -24,16 +26,13 @@ export default ($input) => {
     inputValue: null,
   };
 
-  if (!$input) {
-    return status;
-  }
-
   // store the value and the name
   status.inputValue = $input.value;
   status.inputName = $input.name;
 
   // if the input is a radio (part of a set), store the value a little differently
   if ($input.type === 'radio') {
+    console.log($input);
     status.inputValue = null;
     const $checkedRadio = document.querySelector(`input[name="${$input.name}"]:checked`);
     if ($checkedRadio) {
@@ -49,26 +48,30 @@ export default ($input) => {
   if (!$input.validity.valid) {
     status.valid = false;
 
-    if ($input.validity.valueMissing) {
-      status.errorType = 'valueMissing';
-      status.errorMessage = errorMessages.valueMissing; // 'Dit is een vereist veld.';
+    switch ($input.validity) {
+      case 'valueMissing':
+        status.errorType = 'valueMissing';
+        status.errorMessage = errorMessages.valueMissing; // 'Dit is een vereist veld.';
+        break;
+      case 'typeMismatch':
+      default:
+        status.errorType = 'typeMismatch';
+        status.errorMessage = errorMessages.typeMismatch; // 'Dit is geen geldige invoer.';
+        break;
+      case 'patternMismatch':
+        status.errorType = 'patternMismatch';
+        status.errorMessage = errorMessages.patternMismatch; // 'Dit is geen geldige invoer.';
+        break;
+      case 'rangeOverflow':
+        status.errorType = 'rangeOverflow';
+        status.errorMessage = errorMessages.rangeOverflow; // 'Deze waarde ligt te hoog.';
+        break;
+      case 'rangeUnderflow':
+        status.errorType = 'rangeUnderflow';
+        status.errorMessage = errorMessages.rangeUnderflow; // 'Deze waarde ligt te laag.';
+        break;
     }
-    if ($input.validity.typeMismatch) {
-      status.errorType = 'typeMismatch';
-      status.errorMessage = errorMessages.typeMismatch; // 'Dit is geen geldige invoer.';
-    }
-    if ($input.validity.patternMismatch) {
-      status.errorType = 'patternMismatch';
-      status.errorMessage = errorMessages.patternMismatch; // 'Dit is geen geldige invoer.';
-    }
-    if ($input.validity.rangeOverflow) {
-      status.errorType = 'rangeOverflow';
-      status.errorMessage = errorMessages.rangeOverflow; // 'Deze waarde ligt te hoog.';
-    }
-    if ($input.validity.rangeUnderflow) {
-      status.errorType = 'rangeUnderflow';
-      status.errorMessage = errorMessages.rangeUnderflow; // 'Deze waarde ligt te laag.';
-    }
+
     return status;
   }
 

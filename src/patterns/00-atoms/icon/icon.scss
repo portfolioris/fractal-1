@@ -1,28 +1,29 @@
 /*  =========================================================================
-    Components.Label
+    atoms.icon
+    Icon system based on svg sprites
     ========================================================================= */
 
 /*  Module
     ========================================================================= */
 
-label,
-legend,
-.c-label {
+.c-icon {
   display: block;
-  margin-bottom: $supple-space-tiny;
+  width: #{$supple-line-height-ratio}em;
+  height: #{$supple-line-height-ratio}em;
+  fill: currentColor;
 }
 
 
 
-/*  Elements
+/*  Modifiers
     ========================================================================= */
 
-.c-label__label,
-.c-label__hint {
-  display: block;
+.c-icon--beta {
+  //width: $beta;
+  //height: $beta;
 }
 
-.c-label__label {
-  font-weight: $font-weight-bold;
+.c-icon--delta {
+  //width: $delta;
+  //height: $delta;
 }
-

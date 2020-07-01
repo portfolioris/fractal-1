@@ -8,12 +8,14 @@
         <form method="post" action="" data-module="ui/validate">
           <fieldset>
             <legend class="u-heading  h3">Text inputs</legend>
-            {{ render "@field-input-text" nameField merge=true }}
 
-            {{ render "@field-input-text" emailField merge=true }}
-
-            {{ render "@field-input-submit" submit merge=true }}
+            {{ render '@molecules-field-input-text' nameField merge=true }}
+            {{ render '@molecules-field-input-text' emailField merge=true }}
+            {{ render '@molecules-field-input-radioset' }}
           </fieldset>
+
+          {{ render '@molecules-field-input-submit' submit merge=true }}
+
         </form>
       </div>
     </div>

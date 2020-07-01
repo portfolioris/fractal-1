@@ -21,8 +21,33 @@ $supple-base-line-height: 24px;
     Place any of your own variables that sit on top of the framework here.
     ========================================================================= */
 
+/*  Fonts
+    ========================================================================= */
+
+$font-family-primary: 'Public Sans', sans-serif !default;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+
+
 /*  Colors
     ========================================================================= */
 
-$black: #000000 !default;
-$white: #ffffff !default;
+$color-black: #000000 !default;
+$color-white: #ffffff !default;
+
+
+
+/*  More
+    ========================================================================= */
+
+$global-interaction-states: '&:hover, &:active, &:focus';
+
+
+
+/*  Animations
+    ========================================================================= */
+
+$base-timing-function: cubic-bezier(0.55, 0, 0.1, 1) !default;
+$base-transition-duration: 300ms !default;
+$base-transition-duration-short: 150ms !default;

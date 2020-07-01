@@ -1,0 +1,12 @@
+<fieldset class="c-form-field">
+  {{ render "@atoms-label" label merge=true }}
+  <ul class="o-layout  o-layout--gutter-base  u-margin-bottom-none">
+    {{#each items }}
+      <li class="o-layout__cell  o-layout__cell--fit">
+        {{ render '@atoms-input-control' item merge=true }}
+      </li>
+    {{/each}}
+  </ul>
+  <p hidden id="error--{{ name }}" class="c-form-field__error" data-module-bind="validate-error">
+    Error for {{ name }}.</p>
+</fieldset>
