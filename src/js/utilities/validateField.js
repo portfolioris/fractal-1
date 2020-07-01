@@ -48,28 +48,25 @@ export default ($input) => {
   if (!$input.validity.valid) {
     status.valid = false;
 
-    switch ($input.validity) {
-      case 'valueMissing':
-        status.errorType = 'valueMissing';
-        status.errorMessage = errorMessages.valueMissing; // 'Dit is een vereist veld.';
-        break;
-      case 'typeMismatch':
-      default:
-        status.errorType = 'typeMismatch';
-        status.errorMessage = errorMessages.typeMismatch; // 'Dit is geen geldige invoer.';
-        break;
-      case 'patternMismatch':
-        status.errorType = 'patternMismatch';
-        status.errorMessage = errorMessages.patternMismatch; // 'Dit is geen geldige invoer.';
-        break;
-      case 'rangeOverflow':
-        status.errorType = 'rangeOverflow';
-        status.errorMessage = errorMessages.rangeOverflow; // 'Deze waarde ligt te hoog.';
-        break;
-      case 'rangeUnderflow':
-        status.errorType = 'rangeUnderflow';
-        status.errorMessage = errorMessages.rangeUnderflow; // 'Deze waarde ligt te laag.';
-        break;
+    if ($input.validity.valueMissing) {
+      status.errorType = 'valueMissing';
+      status.errorMessage = errorMessages.valueMissing; // 'Dit is een vereist veld.';
+    }
+    if ($input.validity.typeMismatch) {
+      status.errorType = 'typeMismatch';
+      status.errorMessage = errorMessages.typeMismatch; // 'Dit is geen geldige invoer.';
+    }
+    if ($input.validity.patternMismatch) {
+      status.errorType = 'patternMismatch';
+      status.errorMessage = errorMessages.patternMismatch; // 'Dit is geen geldige invoer.';
+    }
+    if ($input.validity.rangeOverflow) {
+      status.errorType = 'rangeOverflow';
+      status.errorMessage = errorMessages.rangeOverflow; // 'Deze waarde ligt te hoog.';
+    }
+    if ($input.validity.rangeUnderflow) {
+      status.errorType = 'rangeUnderflow';
+      status.errorMessage = errorMessages.rangeUnderflow; // 'Deze waarde ligt te laag.';
     }
 
     return status;

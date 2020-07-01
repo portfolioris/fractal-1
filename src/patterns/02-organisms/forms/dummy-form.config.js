@@ -8,6 +8,7 @@ module.exports = {
       },
       input: {
         name: 'name',
+        type: 'text',
         isRequired: true,
       },
     },

@@ -17,6 +17,7 @@
     "element-closest": "^3.0.2",
     "focus-visible": "^5.1.0",
     "intersection-observer": "^0.10.0",
+    "scroll-into-view": "^1.14.2",
     "supple": "^4.0.1",
     "svgxuse": "^1.2.6"
   },

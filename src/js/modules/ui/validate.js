@@ -1,3 +1,4 @@
+import scrollIntoView from 'scroll-into-view';
 import validateField from '../../utilities/validateField';
 
 class Validate {
@@ -98,7 +99,9 @@ class Validate {
       // don't submit form
       e.preventDefault();
       // scroll first invalid field into view
-      $firstInvalid.scrollIntoView({ block: 'center' });
+      scrollIntoView($firstInvalid, () => {
+        $firstInvalid.focus();
+      });
       return;
     }
 
