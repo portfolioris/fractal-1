@@ -26,7 +26,7 @@ module.exports = {
     submit: {
       button: {
         button: {
-          label: 'I can override here',
+          label: 'Submit',
         },
       },
     },

@@ -1,5 +1,6 @@
 module.exports = {
   context: {
+    name: 'radio-name',
     label: {
       label: 'field input control',
       isLegend: true,
@@ -11,6 +12,8 @@ module.exports = {
           name: 'radio-name',
           value: '1',
           label: 'input control label 1',
+          isRequired: true,
+          data: 'data-module-bind="validate-input"',
         },
       },
       {
@@ -19,6 +22,8 @@ module.exports = {
           name: 'radio-name',
           value: '2',
           label: 'input control label 2',
+          isRequired: true,
+          data: 'data-module-bind="validate-input"',
         },
       },
     ],
