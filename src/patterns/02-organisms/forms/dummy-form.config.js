@@ -10,6 +10,7 @@ module.exports = {
         name: 'name',
         type: 'text',
         isRequired: true,
+        autocomplete: 'first-name',
       },
     },
     emailField: {
@@ -22,7 +23,37 @@ module.exports = {
         name: 'email',
         type: 'email',
         isRequired: true,
+        autocomplete: 'email',
       },
+    },
+    radioField: {
+      name: 'expand-fieldset',
+      label: {
+        label: 'Expand another fieldset',
+        for: 'expand-fieldset',
+      },
+      items: [
+        {
+          item: {
+            id: 'salutation-1',
+            name: 'expand-fieldset',
+            value: 'no',
+            label: 'No',
+            isRequired: true,
+            data: 'data-module-bind="validate-input"',
+          },
+        },
+        {
+          item: {
+            id: 'radio-id-2',
+            name: 'expand-fieldset',
+            value: 'yes',
+            label: 'Yes',
+            isRequired: true,
+            data: 'data-module-bind="validate-input"',
+          },
+        },
+      ],
     },
     submit: {
       button: {

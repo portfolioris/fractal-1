@@ -58,11 +58,11 @@ class Validate {
     // check which fieldset(s) needs to be activated
     Array.from(this.$conditionalFieldsets).forEach(($el) => {
       // find a matching fieldset
-      if ($el.dataset.moduleName !== fieldStatus.inputName) {
+      if ($el.dataset.fieldName !== fieldStatus.inputName) {
         return;
       }
       // check if fieldset matches input value
-      if ($el.dataset.moduleValue === fieldStatus.inputValue) {
+      if ($el.dataset.fieldValue === fieldStatus.inputValue) {
         $el.hidden = false;
         $el.disabled = false;
       } else {
