@@ -15,6 +15,7 @@ module.exports = {
         title: 'Parent level',
         href: '/second/parent',
         index: 3,
+        isParent: true,
       },
       {
         title: 'Current level',
@@ -23,5 +24,11 @@ module.exports = {
         isLast: true,
       },
     ],
+    chevronRight: {
+      icon: 'icon-chevron-right',
+    },
+    chevronLeft: {
+      icon: 'icon-chevron-left',
+    },
   },
 };

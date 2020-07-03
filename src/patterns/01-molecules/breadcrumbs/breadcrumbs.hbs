@@ -17,12 +17,17 @@
   ]
 </script>
 
-<nav aria-labelledby="breadcrumbs-label">
+<nav aria-labelledby="breadcrumbs-label" class="c-breadcrumbs">
   <div id="breadcrumbs-label" class="u-visually-hidden">Breadcrumbs</div>
   <ol class="o-layout  o-layout--align-middle">
     {{#each items }}
-      <li class="o-layout__cell  o-layout__cell--fit">
+      <li class="o-layout__cell  o-layout__cell--fit  c-breadcrumbs__item  {{#if isParent}}c-breadcrumbs__parent{{/if}}">
         <span class="o-layout  o-layout--align-middle">
+          {{#if isParent }}
+            <span class="o-layout__cell  o-layout__cell--fit  c-breadcrumbs__parent-arrow-left">
+              {{ render '@atoms-icon' ../chevronLeft merge=true }}
+            </span>
+          {{/if}}
           <span class="o-layout__cell  o-layout__cell--fit">
             {{#if isLast }}
               <span>{{ title }}</span>
@@ -31,8 +36,8 @@
             {{/if}}
           </span>
           {{#unless isLast }}
-            <span class="o-layout__cell  o-layout__cell--fit">
-              {{ render '@atoms-icon' icon }}
+            <span class="o-layout__cell  o-layout__cell--fit  {{#if isParent}}c-breadcrumbs__parent-arrow-right{{/if}}">
+              {{ render '@atoms-icon' ../chevronRight merge=true }}
             </span>
           {{/unless}}
         </span>

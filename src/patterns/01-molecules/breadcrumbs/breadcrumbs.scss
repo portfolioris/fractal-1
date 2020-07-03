@@ -1,0 +1,39 @@
+/*  =========================================================================
+    Components.Breadcrumbs
+    ========================================================================= */
+
+/*  Block
+    ========================================================================= */
+
+.c-breadcrumbs {
+  //
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-breadcrumbs__parent-arrow-right,
+.c-breadcrumbs__item {
+  display: none;
+}
+
+.c-breadcrumbs__parent {
+  display: block;
+}
+
+
+/*  Responsive
+    ========================================================================= */
+
+@include supple-mq(lap) {
+  .c-breadcrumbs__parent-arrow-right,
+  .c-breadcrumbs__item {
+    display: block;
+  }
+
+  .c-breadcrumbs__parent-arrow-left {
+    display: none;
+  }
+}
