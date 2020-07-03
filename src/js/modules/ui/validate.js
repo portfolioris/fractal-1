@@ -4,10 +4,10 @@ import validateField from '../../utilities/validateField';
 class Validate {
   constructor($el) {
     this.$form = $el;
-    this.$inputs = this.$form.querySelectorAll('[data-module-bind=validate-input]');
-    this.$errors = this.$form.querySelectorAll('[data-module-bind=validate-error]');
-    this.$submitBtn = this.$form.querySelector('[data-module-bind=validate-submit]');
-    this.$conditionalFieldsets = this.$form.querySelectorAll('[data-module-bind=validate-conditional]');
+    this.$inputs = this.$form.querySelectorAll('[data-module-bind*=validate-input]');
+    this.$errors = this.$form.querySelectorAll('[data-module-bind*=validate-error]');
+    this.$submitBtn = this.$form.querySelector('[data-module-bind*=validate-submit]');
+    this.$conditionalFieldsets = this.$form.querySelectorAll('[data-module-bind*=validate-conditional]');
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

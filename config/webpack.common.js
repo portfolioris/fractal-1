@@ -4,7 +4,7 @@ const config = require('../package.json').config;
 module.exports = {
   mode: 'production',
   entry: {
-    bundle: `./${config.paths.assets.js}entry.js`,
+    bundle: `./${config.paths.source.js}entry.js`,
   },
   devtool: 'source-map',
   output: {

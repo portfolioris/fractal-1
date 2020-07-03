@@ -4,7 +4,7 @@ const config = require('../package.json').config;
 
 module.exports = merge(common, {
   entry: {
-    bundle: `${config.paths.assets.js}entry.legacy.js`,
+    bundle: `${config.paths.source.js}entry.legacy.js`,
   },
   output: {
     filename: '[name].es5.js',

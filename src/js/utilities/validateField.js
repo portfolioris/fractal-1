@@ -55,6 +55,10 @@ export default ($input) => {
       status.errorType = 'typeMismatch';
       status.errorMessage = errorMessages.typeMismatch;
     }
+    if ($input.validity.badInput) {
+      status.errorType = 'badInput';
+      status.errorMessage = errorMessages.typeMismatch;
+    }
     if ($input.validity.patternMismatch) {
       status.errorType = 'patternMismatch';
       status.errorMessage = errorMessages.patternMismatch;

@@ -24,7 +24,10 @@
       max="{{ max }}"
       value="{{ value }}"
       step="{{ step }}"
-      data-module-bind="input-number-input"
+      {{#if isRequired}}
+      required
+      {{/if}}
+      data-module-bind="input-number-input  validate-input"
     >
 
     <button

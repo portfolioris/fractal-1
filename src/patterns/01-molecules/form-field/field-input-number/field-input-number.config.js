@@ -6,6 +6,7 @@ module.exports = {
     max: 9,
     step: 1,
     value: 1,
+    isRequired: true,
     label: {
       label: 'field input label',
       for: 'field-input-number',
