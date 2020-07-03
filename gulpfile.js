@@ -16,6 +16,7 @@ const cssnano = require('cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const svgSprite = require('gulp-svg-sprite');
 const pkgJson = require('./package.json');
+// const hbs = require('@frctl/handlebars');
 
 const { config } = pkgJson;
 const webpackConfigDev = require('./config/webpack.dev');
@@ -51,7 +52,6 @@ const copyBuildTask = () => (
   ], { base: config.paths.public.root }) // this keeps the directory structure
     .pipe(dest(config.paths.build.root))
 );
-
 
 
 /*  Task: styles
@@ -102,7 +102,6 @@ const stylesProdTask = () => (
     ]))
     .pipe(dest(config.paths.public.css))
 );
-
 
 
 /*  Task: javascript
@@ -159,7 +158,6 @@ const javascriptProdTask = parallel(
 );
 
 
-
 /*  Task: svg
 \*----------------------------------------------------------------------------*/
 
@@ -176,7 +174,6 @@ const svgSpriteTask = () => (
 );
 
 
-
 /*  Task: connect
     Fires up a development server using browserSync
 \*----------------------------------------------------------------------------*/
@@ -191,14 +188,28 @@ fractal.web.set('static.path', path.join(__dirname, config.paths.public.root)); 
 
 fractal.web.set('server.syncOptions', {
   files: [`${config.paths.public.root}**/*`],
-  // middleware: (req, res, next) => {
-  //   // make post get, so a form submit doesn't result in nothing
-  //   if (req.method.toUpperCase() === 'POST') {
-  //     req.method = 'GET';
-  //   }
-  //   next();
-  // },
 });
+
+const hbs = require('@frctl/handlebars')({
+  helpers: {
+    eq: (v1, v2) => v1 === v2,
+    ne: (v1, v2) => v1 !== v2,
+    lt: (v1, v2) => v1 < v2,
+    gt: (v1, v2) => v1 > v2,
+    lte: (v1, v2) => v1 <= v2,
+    gte: (v1, v2) => v1 >= v2,
+    and() {
+      return Array.prototype.every.call(arguments, Boolean);
+    },
+    or() {
+      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+    },
+  },
+});
+
+fractal.components.engine(hbs); /* set as the default template engine for components */
+fractal.docs.engine(hbs); /* you can also use the same instance for documentation, if you like! */
+
 
 // keep a reference to the fractal CLI console utility
 const logger = fractal.cli.console;
@@ -212,7 +223,6 @@ const connectTask = () => {
     logger.success(`Fractal server is now running at ${server.url}`);
   });
 };
-
 
 
 /*  Task: watch
