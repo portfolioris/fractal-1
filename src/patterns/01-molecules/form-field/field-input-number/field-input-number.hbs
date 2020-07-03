@@ -1,0 +1,47 @@
+<div class="c-form-field">
+
+  {{ render "@atoms-label" label merge=true }}
+
+  <div class="c-input-number" data-module="ui/input-number">
+
+    <button
+      data-module-bind="input-number-remove"
+      hidden
+      type="button"
+      aria-describedby="label-{{ id }}"
+      class="c-input-number__btn  c-input-number__btn--remove"
+    >
+      <span class="u-visually-hidden">Remove</span>
+      {{ render '@atoms-icon' minus }}
+    </button>
+
+    <input
+      class="c-input-text  c-input-number__input"
+      type="number"
+      id="{{ id }}"
+      name="{{ name }}"
+      min="{{ min }}"
+      max="{{ max }}"
+      value="{{ value }}"
+      step="{{ step }}"
+      data-module-bind="input-number-input"
+    >
+
+    <button
+      data-module-bind="input-number-add"
+      hidden
+      type="button"
+      aria-describedby="label-{{ id }}"
+      class="c-input-number__btn  c-input-number__btn--remove"
+    >
+      <span class="u-visually-hidden">Add</span>
+      {{ render '@atoms-icon' plus }}
+    </button>
+
+    <div class="u-visually-hidden" role="status" aria-live="polite">{{ value }}</div>
+
+  </div>
+
+  <p hidden id="error--{{ name }}" class="c-form-field__error" data-module-bind="validate-error">
+    Error for {{ name }}.</p>
+</div>

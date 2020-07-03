@@ -7,7 +7,7 @@
 
 .c-input-text {
   //border: 2px solid $color-beige;
-  border-radius: 3px;
+  border-radius: 2px;
   //background: $color-white;
   padding: calc(#{$supple-space-tiny * 1.5} - 2px) calc(#{$supple-space-small} - 2px);
   //color: $color-off-black;
@@ -24,9 +24,8 @@
     //border-color: $color-gray;
   }
 
-  &[aria-invalid='true'],
-  &.input-validation-error { // for compatibility with umbraco forms
-    border-color: #ff0000; // $color-brand-secondary;
+  &[aria-invalid='true'] {
+    border-color: #ff0000;
   }
 }
 
