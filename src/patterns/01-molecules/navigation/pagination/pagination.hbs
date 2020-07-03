@@ -1,0 +1,47 @@
+<h2 class="u-visually-hidden" id="pagination-label">Pagination</h2>
+
+<nav aria-labelledby="pagination-label">
+
+  <div class="o-layout  c-paging__layout--no-wrap  o-layout--align-middle  o-layout--align-center">
+
+    {{#if nextIsAvailable }}
+      <div class="c-paging__next  o-layout__cell  o-layout__cell--fit">
+        <a href="#" class="c-paging__item">
+          <span class="u-visually-hidden">Next</span>
+          {{ render '@atoms-icon--chevron-right' }}
+        </a>
+      </div>
+    {{/if}}
+
+    {{#if prevIsAvailable }}
+      <div class="c-paging__prev  o-layout__cell  o-layout__cell--fit">
+        <a href="#" class="c-paging__item">
+          <span class="u-visually-hidden">Vorige</span>
+          {{ render '@atoms-icon--chevron-left' }}
+        </a>
+      </div>
+    {{/if}}
+
+    <div class="c-paging__panes  o-layout__cell  o-layout__cell--fit">
+      <ol class="o-layout  o-layout--align-center  u-margin-bottom-none">
+
+        {{#each pages }}
+          <li class="o-layout__cell  o-layout__cell--fit">
+            <a
+              href="#"
+              class="c-paging__item"
+              {{#if currentPage }}
+              aria-current="true"
+              {{/if}}
+            >
+              {{ this }}
+            </a>
+          </li>
+        {{/each}}
+
+      </ol>
+    </div>
+
+  </div>
+</nav>
+

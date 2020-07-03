@@ -1,0 +1,43 @@
+/*  =========================================================================
+    Components.Pagination
+    ========================================================================= */
+
+/*  Block
+    ========================================================================= */
+
+.c-paging {
+  //
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-paging__layout--no-wrap {
+  flex-wrap: nowrap;
+}
+
+.c-paging__item {
+  display: block;
+  padding: $supple-space-tiny;
+  min-width: $supple-space-tiny*5;
+  text-align: center;
+  text-decoration: none;
+
+  #{$global-interaction-states} {
+    //background-color: $color-off-black;
+  }
+
+  &[aria-current='true'] {
+    //background-color: $color-off-black;
+  }
+}
+
+.c-paging__prev {
+  order: -2;
+}
+
+.c-paging__panes {
+  order: -1;
+}
