@@ -60,6 +60,7 @@
     "paths": {
       "source": {
         "root": "src/",
+        "docs": "src/docs/",
         "patterns": "src/patterns/",
         "js": "src/js/",
         "svg": "src/svg/",

@@ -1,0 +1,43 @@
+<script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {{#each items }}
+          {
+            "@type": "ListItem",
+            "position": {{ index }},
+            "name": "{{ title }}",
+            "item": "{{ href }}"
+          }{{#unless isLast}},{{/unless}}
+        {{/each}}
+      ]
+    }
+  ]
+</script>
+
+<nav aria-labelledby="breadcrumbs-label">
+  <div id="breadcrumbs-label" class="u-visually-hidden">Breadcrumbs</div>
+  <ol class="o-layout  o-layout--align-middle">
+    {{#each items }}
+      <li class="o-layout__cell  o-layout__cell--fit">
+        <span class="o-layout  o-layout--align-middle">
+          <span class="o-layout__cell  o-layout__cell--fit">
+            {{#if isLast }}
+              <span>{{ title }}</span>
+            {{else}}
+              <a href="{{ href }}">{{ title }}</a>
+            {{/if}}
+          </span>
+          {{#unless isLast }}
+            <span class="o-layout__cell  o-layout__cell--fit">
+              {{ render '@atoms-icon' icon }}
+            </span>
+          {{/unless}}
+        </span>
+      </li>
+    {{/each}}
+  </ol>
+</nav>
+

@@ -185,7 +185,7 @@ const fractal = require('@frctl/fractal').create();
 
 fractal.set('project.title', pkgJson.description); // title for the project
 fractal.web.set('builder.dest', config.paths.build.root); // destination for the static export
-fractal.docs.set('path', `${__dirname}/docs`); // location of the documentation directory.
+fractal.docs.set('path', `${__dirname}/${config.paths.source.docs}`); // location of the documentation directory.
 fractal.components.set('path', `${__dirname}/${config.paths.source.patterns}`); // location of the component directory.
 fractal.web.set('static.path', path.join(__dirname, config.paths.public.root)); // static assets location
 
