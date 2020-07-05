@@ -1,0 +1,58 @@
+/*  =========================================================================
+    Components.Autocomplete
+    ========================================================================= */
+
+/*  Block
+    ========================================================================= */
+
+.c-autocomplete {
+  //
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-autocomplete__enhanced {
+  position: relative;
+}
+
+.c-autocomplete__search-icon {
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .c-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.c-autocomplete__list {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: $color-white;
+  max-height: 280px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.c-autocomplete__option {
+  padding: $supple-space-tiny;
+  border: solid $color-black;
+  border-width: 0 1px 1px;
+  color: $color-black;
+
+  &[tabindex] {
+    cursor: pointer;
+
+    #{$global-interaction-states} {
+      background-color: $color-white;
+    }
+  }
+}

@@ -2,15 +2,18 @@
 
   {{ render "@atoms-label" label merge=true }}
 
-  <div class="c-autocomplete" data-module="autocomplete">
+  <div class="c-autocomplete" data-module="ui/autocomplete">
 
-    {{ render '@atoms-input-select' inputSelect merge=true }}
+    <div class="c-autocomplete__select" data-module-bind="autocomplete-wrap-select">
+      {{ render '@atoms-input-select' inputSelect merge=true }}
+    </div>
+
 
     <div class="c-autocomplete__enhanced" hidden data-module-bind="autocomplete-enhanced">
       <div
         class="c-search-field">
         <input
-          class="c-input-text  c-search-field__input"
+          class="c-input-text  c-autocomplete__input"
           data-module-bind="autocomplete-input"
           aria-owns="autocomplete-{{ name }}-options"
           autocapitalize="none"
@@ -29,6 +32,7 @@
 
         {{! empty input button }}
         <button type="button" class="o-button-clean  c-autocomplete__clear-btn" data-module-bind="autocomplete-clear" hidden>
+          <span class="u-visually-hidden">Clear field</span>
           {{ render '@atoms-icon--cross' }}
         </button>
 

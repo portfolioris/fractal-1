@@ -8,9 +8,24 @@ module.exports = {
       data: 'data-module-bind="autocomplete-select"',
       items: [
         {
-          value: '',
-          label: 'Kies...',
-          data: ' data-module-bind="autocomplete-select-option"',
+          value: 'Foo',
+          label: 'Foo',
+        },
+        {
+          value: 'Bar',
+          label: 'Bar',
+        },
+        {
+          value: 'Baz',
+          label: 'Baz',
+        },
+        {
+          value: 'Amsterdam',
+          label: 'Amsterdam',
+        },
+        {
+          value: 'Rotterdam',
+          label: 'Rotterdam',
         },
       ],
     },
