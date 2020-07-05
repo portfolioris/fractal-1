@@ -15,7 +15,6 @@ class Autocomplete {
     this.$list = this.$el.querySelector('[data-module-bind*=autocomplete-list]');
     this.$amount = this.$el.querySelector('[data-module-bind*=autocomplete-amount]');
     this.$optionTemplate = this.$el.querySelector('[data-module-bind*=autocomplete-list-option]');
-    this.$selectOptionTemplate = this.$el.querySelector('[data-module-bind*=autocomplete-select-option]');
   }
 
   init() {
@@ -27,7 +26,7 @@ class Autocomplete {
 
   // set aria roles, visually replace <select> by <input> and <ul>
   setupEnhancement() {
-    this.$wrapSelect.classList.add('u-visually-hidden');
+    // this.$wrapSelect.classList.add('u-visually-hidden');
     this.$wrapSelect.setAttribute('aria-hidden', 'true');
     this.$select.removeAttribute('id');
     this.$select.setAttribute('tabindex', '-1');
@@ -100,6 +99,9 @@ class Autocomplete {
     // don't start matching from less than 3 characters
     if (query.length < 3) {
       this.$select.value = '';
+      // too soon
+      // const event = new Event('externalChange');
+      // this.$selectect.dispatchEvent(event);
       this.state.options = [];
       this.$list.innerHTML = '';
       this.hideMenu();
@@ -199,6 +201,8 @@ class Autocomplete {
       option.value === value
     ));
     this.$select.value = optionObj.value;
+    const event = new Event('externalChange');
+    this.$select.dispatchEvent(event);
     this.$input.value = optionObj.value;
     this.hideMenu();
   }

@@ -5,7 +5,7 @@ module.exports = {
       name: 'autocomplete-example',
       id: 'autocomplete-example',
       isRequired: true,
-      data: 'data-module-bind="autocomplete-select"',
+      data: 'data-module-bind="validate-input  autocomplete-select"',
       items: [
         {
           value: '',

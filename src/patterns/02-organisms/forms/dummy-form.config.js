@@ -26,6 +26,17 @@ module.exports = {
         autocomplete: 'email',
       },
     },
+    autocompleteField: {
+      name: 'city',
+      label: {
+        label: 'City',
+        for: 'city',
+      },
+      inputSelect: {
+        name: 'city',
+        id: 'city',
+      },
+    },
     radioField: {
       name: 'expand-fieldset',
       label: {

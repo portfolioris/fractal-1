@@ -23,6 +23,7 @@ class Validate {
   addInputEventListeners() {
     Array.from(this.$inputs).forEach(($input) => {
       $input.addEventListener('change', this.handleInputChange);
+      $input.addEventListener('externalChange', this.handleInputChange);
     });
   }
 
