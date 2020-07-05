@@ -18,6 +18,8 @@ class Autocomplete {
   }
 
   init() {
+    this.getMatches('');
+    this.buildMenu();
     this.setupEnhancement();
     this.handleInputEvents();
     this.handleOptionsKeystroke();
@@ -83,37 +85,30 @@ class Autocomplete {
     this.$input.addEventListener('focus', () => {
       this.showMenu();
     });
+
+    this.$input.addEventListener('change', () => {
+      if (this.$select.value !== '') {
+        this.setSelectValue('');
+      }
+    });
   }
 
   showNoResult() {
     this.$list.innerHTML = '';
     const $loaderOption = this.$optionTemplate.cloneNode(true);
-    $loaderOption.innerHTML = 'Geen resultaten.';
+    $loaderOption.innerHTML = 'No results.';
     $loaderOption.removeAttribute('tabindex');
     $loaderOption.hidden = false;
     this.$list.appendChild($loaderOption);
+    this.setSelectValue('');
   }
 
   handleTyping() {
-    const query = this.$input.value;
-    // don't start matching from less than 3 characters
-    if (query.length < 3) {
-      this.$select.value = '';
-      // too soon
-      // const event = new Event('externalChange');
-      // this.$selectect.dispatchEvent(event);
-      this.state.options = [];
-      this.$list.innerHTML = '';
-      this.hideMenu();
-      return;
-    }
-
-    this.getMatches(query);
+    this.getMatches(this.$input.value);
     this.handleResult();
   }
 
   handleResult() {
-    // // hide the list if there are no matches
     if (!this.state.options.length) {
       this.showNoResult();
     } else {
@@ -126,6 +121,13 @@ class Autocomplete {
   }
 
   getMatches(query) {
+    if (query === '') {
+      const options = [...this.$select.options];
+      options.shift();
+      this.state.options = options;
+      return;
+    }
+
     this.state.options = fuzzyMatchStringInArray(query, [...this.$select.options]);
   }
 
@@ -200,11 +202,16 @@ class Autocomplete {
     const optionObj = this.state.options.find((option) => (
       option.value === value
     ));
-    this.$select.value = optionObj.value;
-    const event = new Event('externalChange');
-    this.$select.dispatchEvent(event);
+
+    this.setSelectValue(optionObj.value);
     this.$input.value = optionObj.value;
     this.hideMenu();
+  }
+
+  setSelectValue(value) {
+    this.$select.value = value;
+    const event = new Event('externalChange');
+    this.$select.dispatchEvent(event);
   }
 
   showMenu() {
