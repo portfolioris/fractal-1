@@ -1,0 +1,64 @@
+<div class="c-form-field">
+
+  {{ render "@atoms-label" label merge=true }}
+
+  <div class="c-autocomplete" data-module="autocomplete">
+
+    {{ render '@atoms-input-select' inputSelect merge=true }}
+
+    <div class="c-autocomplete__enhanced" hidden data-module-bind="autocomplete-enhanced">
+      <div
+        class="c-search-field">
+        <input
+          class="c-input-text  c-search-field__input"
+          data-module-bind="autocomplete-input"
+          aria-owns="autocomplete-{{ name }}-options"
+          autocapitalize="none"
+          type="search"
+          autocomplete="off"
+          aria-autocomplete="list"
+          role="combobox"
+          id="query"
+          aria-expanded="false"
+        >
+
+        {{! search icon }}
+        <div class="c-autocomplete__search-icon" data-module-bind="autocomplete-search-icon">
+          {{ render '@atoms-icon--search' }}
+        </div>
+
+        {{! empty input button }}
+        <button type="button" class="o-button-clean  c-autocomplete__clear-btn" data-module-bind="autocomplete-clear" hidden>
+          {{ render '@atoms-icon--cross' }}
+        </button>
+
+      </div>
+
+      <ul
+        class="o-list-clean  c-autocomplete__list"
+        data-module-bind="autocomplete-list"
+        id="autocomplete-{{ name }}-options"
+        role="listbox"
+        hidden
+      >
+        <li
+          hidden
+          class="c-autocomplete__option"
+          data-module-bind="autocomplete-list-option"
+          role="option"
+          tabindex="-1"
+          aria-selected="false"
+          data-option-id=""
+        ></li>
+      </ul>
+
+      <div aria-live="polite" role="status" class="u-visually-hidden">
+        <span data-module-bind="autocomplete-amount"></span> results.
+      </div>
+
+    </div>
+  </div>
+
+  <p hidden id="error--{{ name }}" class="c-form-field__error" data-module-bind="validate-error">Error for {{ name }}.</p>
+
+</div>

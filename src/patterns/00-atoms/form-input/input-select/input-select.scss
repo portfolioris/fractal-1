@@ -1,0 +1,53 @@
+/*  =========================================================================
+    Foundation.Atoms.Forms.InputSelect
+    Purely css styled select input field
+    ========================================================================= */
+
+/*  Module
+    ========================================================================= */
+
+.c-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-select__element {
+  appearance: none;
+  padding-right: 2.5rem;
+
+  /**
+   * Remove excess padding and border in Firefox 4+
+   */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  /**
+   * Undo the Firefox inner focus ring
+   */
+  &:focus:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 currentColor;
+  }
+}
+
+.c-select__wrap-icon {
+  position: absolute;
+  top: 50%;
+  @include supple-rem(right, $supple-space-base);
+  z-index: 1;
+  transform: translate(50%, -50%);
+  font-size: 1em;
+  pointer-events: none;
+}

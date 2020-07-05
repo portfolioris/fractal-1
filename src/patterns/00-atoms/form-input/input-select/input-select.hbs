@@ -1,0 +1,19 @@
+  <div class="c-select">
+    <select
+      class="c-input-text  c-select__element"
+      name="{{ name }}"
+      id="{{ id }}"
+      {{#if isRequired}}required{{/if}}
+      {{#if data}}{{{data}}}{{/if}}
+    >
+      {{#each items}}
+        <option
+          value="{{ value }}"
+          {{#if selected}}selected{{/if}}
+        >{{ label }}</option>
+      {{/each}}
+    </select>
+    <div class="c-select__wrap-icon">
+      {{ render '@atoms-icon--chevron-down' }}
+    </div>
+  </div>

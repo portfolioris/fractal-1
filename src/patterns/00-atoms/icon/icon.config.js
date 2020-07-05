@@ -16,5 +16,23 @@ module.exports = {
         icon: 'icon-chevron-left',
       },
     },
+    {
+      name: 'chevron-down',
+      context: {
+        icon: 'icon-chevron-down',
+      },
+    },
+    {
+      name: 'search',
+      context: {
+        icon: 'icon-magnifier',
+      },
+    },
+    {
+      name: 'cross',
+      context: {
+        icon: 'icon-cross',
+      },
+    },
   ],
 };
