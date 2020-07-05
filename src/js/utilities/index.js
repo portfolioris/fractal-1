@@ -33,16 +33,7 @@ exports.simplifyString = simplifyString;
 
 const fuzzyMatchStringInArray = (string, array) => {
   const simpleString = simplifyString(string);
-
   return array.filter(({ value }) => simplifyString(value).search(simpleString) > -1);
-
-  // array.forEach((option) => {
-  //   const fuzzyItem = simplifyString(option.value);
-  //   if (fuzzyItem.indexOf(simpleString) > -1) {
-  //     matches.push(option.value);
-  //   }
-  // });
-  // return matches;
 };
 
 exports.fuzzyMatchStringInArray = fuzzyMatchStringInArray;

@@ -8,6 +8,10 @@ module.exports = {
       data: 'data-module-bind="autocomplete-select"',
       items: [
         {
+          value: '',
+          label: 'Kies...',
+        },
+        {
           value: 'Foo',
           label: 'Foo',
         },
