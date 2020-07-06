@@ -83,13 +83,15 @@ class Autocomplete {
     });
 
     this.$input.addEventListener('focus', () => {
+      this.getMatches('');
+      this.buildMenu();
       this.showMenu();
     });
 
     this.$input.addEventListener('change', () => {
-      if (this.$select.value !== '') {
-        this.setSelectValue('');
-      }
+      // if (this.$select.value !== '') {
+      //   this.setSelectValue('');
+      // }
     });
   }
 
@@ -104,6 +106,7 @@ class Autocomplete {
   }
 
   handleTyping() {
+    this.setSelectValue('');
     this.getMatches(this.$input.value);
     this.handleResult();
   }

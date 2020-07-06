@@ -21,13 +21,10 @@
 .c-autocomplete__search-icon {
   pointer-events: none;
   position: absolute;
-  right: 0;
-  top: 0;
-
-  .c-icon {
-    width: 48px;
-    height: 48px;
-  }
+  top: 50%;
+  right: $supple-space-base;
+  z-index: 1;
+  transform: translate(50%, -50%);
 }
 
 .c-autocomplete__list {
