@@ -28,7 +28,7 @@ class Autocomplete {
 
   // set aria roles, visually replace <select> by <input> and <ul>
   setupEnhancement() {
-    // this.$wrapSelect.classList.add('u-visually-hidden');
+    this.$wrapSelect.classList.add('u-visually-hidden');
     this.$wrapSelect.setAttribute('aria-hidden', 'true');
     this.$select.removeAttribute('id');
     this.$select.setAttribute('tabindex', '-1');
