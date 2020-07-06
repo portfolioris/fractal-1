@@ -215,6 +215,14 @@ class Autocomplete {
     this.$select.value = value;
     const event = new Event('externalChange');
     this.$select.dispatchEvent(event);
+
+    if (value === '') {
+      this.$input.setAttribute('aria-invalid', 'true');
+      this.$input.setAttribute('aria-describedby', `error--${this.$input.id}`);
+    } else {
+      this.$input.removeAttribute('aria-invalid');
+      this.$input.removeAttribute('aria-describedby');
+    }
   }
 
   showMenu() {

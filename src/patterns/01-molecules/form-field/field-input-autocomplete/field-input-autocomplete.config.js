@@ -9,7 +9,7 @@ module.exports = {
       items: [
         {
           value: '',
-          label: 'Kies...',
+          label: 'Choose...',
         },
         {
           value: 'Foo',
