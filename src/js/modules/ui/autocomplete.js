@@ -19,7 +19,8 @@ class Autocomplete {
     this.$input = this.$el.querySelector('[data-module-bind*=autocomplete-input]');
     this.$list = this.$el.querySelector('[data-module-bind*=autocomplete-list]');
     this.$amount = this.$el.querySelector('[data-module-bind*=autocomplete-amount]');
-    this.listItemSelector = '[data-module-bind*=autocomplete-list-option]'; // I need this later
+    // I need this later in the click handler
+    this.listItemSelector = '[data-module-bind*=autocomplete-list-option]';
     this.$optionTemplate = this.$el.querySelector(this.listItemSelector);
   }
 
@@ -165,6 +166,7 @@ class Autocomplete {
 
   async getRemoteMatches(query) {
     if (query.length < 5) {
+      // TODO: show minlength message
       return;
     }
 
