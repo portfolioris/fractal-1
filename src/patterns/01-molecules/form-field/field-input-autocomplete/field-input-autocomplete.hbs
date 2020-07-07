@@ -2,14 +2,23 @@
 
   {{ render "@atoms-label" label merge=true }}
 
-  <div class="c-autocomplete" data-module="ui/autocomplete">
+  <div
+    class="c-autocomplete"
+    data-module="ui/autocomplete"
+    {{#if isAsync}}data-api-url="https://api.github.com/search/repositories"{{/if}}
+  >
 
-    <div class="c-autocomplete__select" data-module-bind="autocomplete-wrap-select">
-      {{ render '@atoms-input-select' inputSelect merge=true }}
-    </div>
+    {{#unless isAsync}}
+      <div class="c-autocomplete__select" data-module-bind="autocomplete-wrap-select">
+        {{ render '@atoms-input-select' inputSelect merge=true }}
+      </div>
+    {{/unless}}
 
-
-    <div class="c-autocomplete__enhanced" hidden data-module-bind="autocomplete-enhanced">
+    <div
+      class="c-autocomplete__enhanced"
+      {{#unless isAsync}}hidden{{/unless}}
+      data-module-bind="autocomplete-enhanced"
+    >
       <div
         class="c-search-field">
         <input
@@ -25,13 +34,24 @@
           aria-expanded="false"
         >
 
-        {{! search icon }}
-        <div class="c-autocomplete__search-icon" data-module-bind="autocomplete-search-icon">
-          {{ render '@atoms-icon--chevron-down' }}
-        </div>
+        {{#unless isAsync}}
+          {{! dropdown icon }}
+          <div class="c-autocomplete__search-icon" data-module-bind="autocomplete-search-icon">
+            {{ render '@atoms-icon--chevron-down' }}
+          </div>
+        {{/unless}}
+
+        {{#if isAsync}}
+          {{! search icon }}
+          <div class="c-autocomplete__search-icon" data-module-bind="autocomplete-search-icon">
+            {{ render '@atoms-icon--magnifier' }}
+          </div>
+        {{/if}}
+
 
         {{! empty input button }}
-        <button type="button" class="o-button-clean  c-autocomplete__clear-btn" data-module-bind="autocomplete-clear" hidden>
+        <button type="button" class="o-button-clean  c-autocomplete__clear-btn"
+                data-module-bind="autocomplete-clear" hidden>
           <span class="u-visually-hidden">Clear field</span>
           {{ render '@atoms-icon--cross' }}
         </button>
@@ -63,6 +83,7 @@
     </div>
   </div>
 
-  <p hidden id="error--{{ name }}" class="c-form-field__error" data-module-bind="validate-error">Error for {{ name }}.</p>
+  <p hidden id="error--{{ name }}" class="c-form-field__error" data-module-bind="validate-error">
+    Error for {{ name }}.</p>
 
 </div>

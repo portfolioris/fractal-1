@@ -34,4 +34,12 @@ module.exports = {
       ],
     },
   },
+  variants: [
+    {
+      name: 'autocomplete-async',
+      context: {
+        isAsync: true,
+      },
+    },
+  ],
 };

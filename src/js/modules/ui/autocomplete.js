@@ -8,9 +8,16 @@ class Autocomplete {
     };
 
     this.$el = $el;
+    this.apiUrl = this.$el.dataset.apiUrl;
+
+    if (this.apiUrl) {
+      //
+    } else {
+      this.$wrapSelect = this.$el.querySelector('[data-module-bind*=autocomplete-wrap-select]');
+      this.$select = this.$wrapSelect.querySelector('[data-module-bind*=autocomplete-select]');
+    }
+
     this.$enhanced = this.$el.querySelector(' [data-module-bind*=autocomplete-enhanced]');
-    this.$wrapSelect = this.$el.querySelector('[data-module-bind*=autocomplete-wrap-select]');
-    this.$select = this.$wrapSelect.querySelector('[data-module-bind*=autocomplete-select]');
     this.$input = this.$el.querySelector('[data-module-bind*=autocomplete-input]');
     this.$list = this.$el.querySelector('[data-module-bind*=autocomplete-list]');
     this.$amount = this.$el.querySelector('[data-module-bind*=autocomplete-amount]');
@@ -18,9 +25,14 @@ class Autocomplete {
   }
 
   init() {
-    this.getMatches('');
-    this.buildMenu();
-    this.setupEnhancement();
+    if (!this.apiUrl) {
+      this.getMatches('')
+        .then(() => {
+          this.buildMenu();
+          this.setupEnhancement();
+        });
+    }
+
     this.handleInputEvents();
     this.handleOptionsKeystroke();
     this.hideFoldoutOnBlur();
@@ -83,15 +95,15 @@ class Autocomplete {
     });
 
     this.$input.addEventListener('focus', () => {
-      this.getMatches('');
-      this.buildMenu();
-      this.showMenu();
-    });
-
-    this.$input.addEventListener('change', () => {
-      // if (this.$select.value !== '') {
-      //   this.setSelectValue('');
-      // }
+      let query = '';
+      if (this.apiUrl) {
+        query = this.$input.value;
+      }
+      this.getMatches(query)
+        .then(() => {
+          this.buildMenu();
+          this.showMenu();
+        });
     });
   }
 
@@ -107,8 +119,8 @@ class Autocomplete {
 
   handleTyping() {
     this.setSelectValue('');
-    this.getMatches(this.$input.value);
-    this.handleResult();
+    this.getMatches(this.$input.value)
+      .then(() => this.handleResult());
   }
 
   handleResult() {
@@ -123,7 +135,15 @@ class Autocomplete {
     this.$amount.innerHTML = this.state.options.length;
   }
 
-  getMatches(query) {
+  async getMatches(query) {
+    if (this.apiUrl) {
+      await this.getRemoteMatches(query);
+    } else {
+      this.getSelectMatches(query);
+    }
+  }
+
+  getSelectMatches(query) {
     if (query === '') {
       const options = [...this.$select.options];
       options.shift();
@@ -132,6 +152,28 @@ class Autocomplete {
     }
 
     this.state.options = fuzzyMatchStringInArray(query, [...this.$select.options]);
+  }
+
+  async getRemoteMatches(query) {
+    if (query.length < 5) {
+      return;
+    }
+
+    let result;
+    try {
+      const request = await fetch(`${this.apiUrl}?q=${query}`);
+      result = await request.json();
+    } catch (error) {
+      result = {
+        HasError: true,
+      };
+    }
+
+    if (result.HasError) {
+      return;
+    }
+
+    this.state.options = result.items;
   }
 
   handleInputKeyPressDown() {
@@ -153,11 +195,19 @@ class Autocomplete {
       // build autocomplete list item
       const $newOption = this.$optionTemplate.cloneNode(true);
       $newOption.hidden = false;
-      $newOption.dataset.optionValue = option.value;
-      $newOption.innerHTML = option.innerText;
-      $newOption.addEventListener('click', () => {
-        this.selectOption(option.value);
-      });
+      if (this.apiUrl) {
+        // depending on data structure from api
+        $newOption.dataset.optionValue = option.id;
+        $newOption.innerHTML = option.name;
+      } else {
+        // value and innerText from `<option>`
+        $newOption.dataset.optionValue = option.value;
+        $newOption.innerHTML = option.innerText;
+      }
+
+      // $newOption.addEventListener('click', () => {
+      //   this.selectOption(option.value);
+      // });
       this.$list.appendChild($newOption);
     });
   }
@@ -212,9 +262,11 @@ class Autocomplete {
   }
 
   setSelectValue(value) {
-    this.$select.value = value;
-    const event = new Event('externalChange');
-    this.$select.dispatchEvent(event);
+    if (!this.apiUrl) {
+      this.$select.value = value;
+      const event = new Event('externalChange');
+      this.$select.dispatchEvent(event);
+    }
 
     if (value === '') {
       this.$input.setAttribute('aria-invalid', 'true');

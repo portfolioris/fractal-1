@@ -23,7 +23,7 @@ module.exports = {
       },
     },
     {
-      name: 'search',
+      name: 'magnifier',
       context: {
         icon: 'icon-magnifier',
       },
