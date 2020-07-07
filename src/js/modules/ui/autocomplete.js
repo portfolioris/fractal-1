@@ -10,9 +10,7 @@ class Autocomplete {
     this.$el = $el;
     this.apiUrl = this.$el.dataset.apiUrl;
 
-    if (this.apiUrl) {
-      //
-    } else {
+    if (!this.apiUrl) {
       this.$wrapSelect = this.$el.querySelector('[data-module-bind*=autocomplete-wrap-select]');
       this.$select = this.$wrapSelect.querySelector('[data-module-bind*=autocomplete-select]');
     }
@@ -21,7 +19,8 @@ class Autocomplete {
     this.$input = this.$el.querySelector('[data-module-bind*=autocomplete-input]');
     this.$list = this.$el.querySelector('[data-module-bind*=autocomplete-list]');
     this.$amount = this.$el.querySelector('[data-module-bind*=autocomplete-amount]');
-    this.$optionTemplate = this.$el.querySelector('[data-module-bind*=autocomplete-list-option]');
+    this.listItemSelector = '[data-module-bind*=autocomplete-list-option]'; // I need this later
+    this.$optionTemplate = this.$el.querySelector(this.listItemSelector);
   }
 
   init() {
@@ -36,6 +35,16 @@ class Autocomplete {
     this.handleInputEvents();
     this.handleOptionsKeystroke();
     this.hideFoldoutOnBlur();
+    this.handleListClick();
+  }
+
+  // event delegation for list item click
+  handleListClick() {
+    this.$list.addEventListener('click', (e) => {
+      if (e.target && e.target.matches(this.listItemSelector)) {
+        this.selectOption(e.target.dataset.optionValue);
+      }
+    });
   }
 
   // set aria roles, visually replace <select> by <input> and <ul>
