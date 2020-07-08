@@ -35,23 +35,20 @@
           aria-expanded="false"
         >
 
-        {{#unless isAsync}}
+        <div class="c-autocomplete__icon" data-module-bind="autocomplete-icon">
+          {{#unless isAsync}}
           {{! dropdown icon }}
-          <div class="c-autocomplete__search-icon" data-module-bind="autocomplete-search-icon">
             {{ render '@atoms-icon--chevron-down' }}
-          </div>
-        {{/unless}}
-
-        {{#if isAsync}}
+          {{/unless}}
+          {{#if isAsync}}
           {{! search icon }}
-          <div class="c-autocomplete__search-icon" data-module-bind="autocomplete-search-icon">
             {{ render '@atoms-icon--magnifier' }}
-          </div>
-        {{/if}}
+          {{/if}}
+        </div>
 
 
         {{! empty input button }}
-        <button type="button" class="o-button-clean  c-autocomplete__clear-btn"
+        <button type="button" class="o-button-clean  c-autocomplete__icon  c-autocomplete__icon--clear"
                 data-module-bind="autocomplete-clear" hidden>
           <span class="u-visually-hidden">Clear field</span>
           {{ render '@atoms-icon--cross' }}
@@ -77,13 +74,13 @@
       </ul>
 
       <div aria-live="polite" role="status" class="u-visually-hidden">
-        <span data-module-bind="autocomplete-amount"></span> results.
+        <span data-module-bind="autocomplete-amount">0</span> results.
       </div>
 
     </div>
   </div>
 
-  <p hidden id="error--{{ name }}" class="c-form-field__message" data-module-bind="validate-error">
-    Error for {{ name }}.</p>
+  <p hidden id="error--{{ name }}" class="c-form-field__message"
+     data-module-bind="validate-error"></p>
 
 </div>

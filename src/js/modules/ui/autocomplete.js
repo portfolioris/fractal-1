@@ -21,11 +21,14 @@ class Autocomplete {
     // I need this later in the click handler
     this.listItemSelector = '[data-module-bind=autocomplete-list-option]';
     this.$optionTemplate = $el.querySelector(this.listItemSelector);
+    this.$icon = $el.querySelector('[data-module-bind=autocomplete-icon]');
+    this.$clearBtn = $el.querySelector('[data-module-bind=autocomplete-clear]');
   }
 
   init() {
     this.handleInputEvents();
     this.handleListEvents();
+    this.handleClearBtn();
     this.hideFoldoutOnBlur();
 
     if (this.$input.value.length < this.queryMinLength) {
@@ -178,10 +181,15 @@ class Autocomplete {
   }
 
   handleTyping() {
-    this.setSelectValue('');
+    if (this.$input.value.length) {
+      this.showClearButton();
+    } else {
+      this.hideClearButton();
+    }
+    // this.setSelectValue('');
 
     if (this.$input.value.length < this.queryMinLength) {
-      this.showMessage('Keep typing...');
+      this.showMessage('Keep typing...', 0);
       return;
     }
 
@@ -194,21 +202,19 @@ class Autocomplete {
    */
   handleResult(options) {
     if (!options.length) {
-      this.showMessage('No results.');
+      this.showMessage('No results.', 0);
       this.setSelectValue('');
     } else {
       this.buildMenu(options);
     }
 
     this.showMenu();
-    // set live region text (screen reader announcement)
-    this.$amount.innerHTML = options.length;
   }
 
   /**
    * @param {string} message
    */
-  showMessage(message) {
+  showMessage(message, amount) {
     this.$list.innerHTML = '';
     const $loaderOption = this.$optionTemplate.cloneNode(true);
     // make it unselectable
@@ -217,6 +223,8 @@ class Autocomplete {
     $loaderOption.hidden = false;
     this.$list.appendChild($loaderOption);
     this.showMenu();
+    // set live region text (screen reader announcement)
+    this.$amount.innerHTML = amount;
   }
 
   /**
@@ -251,7 +259,7 @@ class Autocomplete {
     const { signal } = controller;
     // controller.abort();
 
-    this.showMessage('Loading...');
+    this.showMessage('Loading...', 0);
 
     let result;
     try {
@@ -303,6 +311,9 @@ class Autocomplete {
 
       this.$list.appendChild($option);
     });
+
+    // set live region text (screen reader announcement)
+    this.$amount.innerHTML = options.length;
   }
 
   /**
@@ -342,6 +353,24 @@ class Autocomplete {
     this.$input.setAttribute('aria-expanded', 'false');
     this.$list.hidden = true;
     this.state.activeOption = null;
+  }
+
+  showClearButton() {
+    this.$icon.hidden = true;
+    this.$clearBtn.hidden = false;
+  }
+
+  hideClearButton() {
+    this.$icon.hidden = false;
+    this.$clearBtn.hidden = true;
+  }
+
+  handleClearBtn() {
+    this.$clearBtn.addEventListener('click', () => {
+      this.$input.value = '';
+      this.$input.focus();
+      this.handleTyping();
+    });
   }
 }
 

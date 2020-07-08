@@ -18,13 +18,17 @@
   position: relative;
 }
 
-.c-autocomplete__search-icon {
+.c-autocomplete__icon {
   pointer-events: none;
   position: absolute;
   top: 50%;
   right: $supple-space-base;
   z-index: 1;
   transform: translate(50%, -50%);
+}
+
+.c-autocomplete__icon--clear {
+  pointer-events: auto;
 }
 
 .c-autocomplete__list {
