@@ -10,7 +10,7 @@ class Autocomplete {
     this.queryMinLength = $el.dataset.queryMinLength;
 
     if (!this.apiUrl) {
-      this.$wrapSelect = $el.querySelector('[data-module-bind*=autocomplete-wrap-select]');
+      this.$wrapSelect = $el.querySelector('[data-module-bind=autocomplete-wrap-select]');
       this.$select = this.$wrapSelect.querySelector('[data-module-bind*=autocomplete-select]');
     }
 
@@ -24,6 +24,14 @@ class Autocomplete {
   }
 
   init() {
+    this.handleInputEvents();
+    this.handleListEvents();
+    this.hideFoldoutOnBlur();
+
+    if (this.$input.value.length < this.queryMinLength) {
+      return;
+    }
+
     this.getMatches('')
       .then((options) => {
         this.buildMenu(options);
@@ -32,10 +40,6 @@ class Autocomplete {
           this.setupEnhancement();
         }
       });
-
-    this.handleInputEvents();
-    this.handleListEvents();
-    this.hideFoldoutOnBlur();
   }
 
   handleListEvents() {
@@ -156,9 +160,15 @@ class Autocomplete {
 
     this.$input.addEventListener('focus', () => {
       let query = '';
+
       if (this.apiUrl) {
         query = this.$input.value;
       }
+
+      if (query.length < this.queryMinLength) {
+        return;
+      }
+
       this.getMatches(query)
         .then((options) => {
           this.buildMenu(options);
@@ -169,19 +179,14 @@ class Autocomplete {
 
   handleTyping() {
     this.setSelectValue('');
+
+    if (this.$input.value.length < this.queryMinLength) {
+      this.showMessage('Keep typing...');
+      return;
+    }
+
     this.getMatches(this.$input.value)
       .then((options) => this.handleResult(options));
-  }
-
-  /**
-   * @param {string} message
-   */
-  showMessage(message) {
-    this.$list.innerHTML = '';
-    const $loaderOption = this.$optionTemplate.cloneNode(true);
-    $loaderOption.innerHTML = message;
-    $loaderOption.hidden = false;
-    this.$list.appendChild($loaderOption);
   }
 
   /**
@@ -189,7 +194,7 @@ class Autocomplete {
    */
   handleResult(options) {
     if (!options.length) {
-      // this.showMessage('No results.');
+      this.showMessage('No results.');
       this.setSelectValue('');
     } else {
       this.buildMenu(options);
@@ -201,14 +206,23 @@ class Autocomplete {
   }
 
   /**
+   * @param {string} message
+   */
+  showMessage(message) {
+    this.$list.innerHTML = '';
+    const $loaderOption = this.$optionTemplate.cloneNode(true);
+    // make it unselectable
+    $loaderOption.removeAttribute('data-module-bind');
+    $loaderOption.innerHTML = message;
+    $loaderOption.hidden = false;
+    this.$list.appendChild($loaderOption);
+    this.showMenu();
+  }
+
+  /**
    * @param {string} query
    */
   async getMatches(query) {
-    if (query.length < this.queryMinLength) {
-      this.showMessage('Keep typing...');
-      return [];
-    }
-
     if (this.apiUrl) {
       return this.getRemoteMatches(query);
     }
