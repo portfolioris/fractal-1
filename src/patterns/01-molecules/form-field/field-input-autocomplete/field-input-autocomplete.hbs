@@ -6,6 +6,7 @@
     class="c-autocomplete"
     data-module="ui/autocomplete"
     {{#if isAsync}}data-api-url="https://api.github.com/search/repositories"{{/if}}
+    data-query-min-length="{{ queryMinLength }}"
   >
 
     {{#unless isAsync}}
@@ -72,7 +73,6 @@
           role="option"
           tabindex="-1"
           aria-selected="false"
-          data-option-value=""
         ></li>
       </ul>
 

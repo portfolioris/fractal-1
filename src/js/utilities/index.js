@@ -31,6 +31,10 @@ const simplifyString = (string) => (
 
 exports.simplifyString = simplifyString;
 
+/**
+ * @param {string} string
+ * @param {array} array
+ */
 const fuzzyMatchStringInArray = (string, array) => {
   const simpleString = simplifyString(string);
   return array.filter(({ value }) => simplifyString(value).search(simpleString) > -1);

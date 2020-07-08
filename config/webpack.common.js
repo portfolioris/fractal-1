@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const config = require('../package.json').config;
+const { config } = require('../package.json');
 
 module.exports = {
   mode: 'production',

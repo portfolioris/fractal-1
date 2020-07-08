@@ -3,49 +3,99 @@ import { getKeyCode, fuzzyMatchStringInArray } from '../../utilities';
 class Autocomplete {
   constructor($el) {
     this.state = {
-      options: [],
       activeOption: null,
     };
 
-    this.$el = $el;
-    this.apiUrl = this.$el.dataset.apiUrl;
+    this.apiUrl = $el.dataset.apiUrl;
+    this.queryMinLength = $el.dataset.queryMinLength;
 
     if (!this.apiUrl) {
-      this.$wrapSelect = this.$el.querySelector('[data-module-bind*=autocomplete-wrap-select]');
+      this.$wrapSelect = $el.querySelector('[data-module-bind*=autocomplete-wrap-select]');
       this.$select = this.$wrapSelect.querySelector('[data-module-bind*=autocomplete-select]');
     }
 
-    this.$enhanced = this.$el.querySelector(' [data-module-bind*=autocomplete-enhanced]');
-    this.$input = this.$el.querySelector('[data-module-bind*=autocomplete-input]');
-    this.$list = this.$el.querySelector('[data-module-bind*=autocomplete-list]');
-    this.$amount = this.$el.querySelector('[data-module-bind*=autocomplete-amount]');
+    this.$enhanced = $el.querySelector(' [data-module-bind=autocomplete-enhanced]');
+    this.$input = $el.querySelector('[data-module-bind=autocomplete-input]');
+    this.$list = $el.querySelector('[data-module-bind=autocomplete-list]');
+    this.$amount = $el.querySelector('[data-module-bind=autocomplete-amount]');
     // I need this later in the click handler
-    this.listItemSelector = '[data-module-bind*=autocomplete-list-option]';
-    this.$optionTemplate = this.$el.querySelector(this.listItemSelector);
+    this.listItemSelector = '[data-module-bind=autocomplete-list-option]';
+    this.$optionTemplate = $el.querySelector(this.listItemSelector);
   }
 
   init() {
-    if (!this.apiUrl) {
-      this.getMatches('')
-        .then(() => {
-          this.buildMenu();
+    this.getMatches('')
+      .then((options) => {
+        this.buildMenu(options);
+
+        if (!this.apiUrl) {
           this.setupEnhancement();
-        });
-    }
+        }
+      });
 
     this.handleInputEvents();
-    this.handleOptionsKeystroke();
+    this.handleListEvents();
     this.hideFoldoutOnBlur();
-    this.handleListClick();
   }
 
-  // event delegation for list item click
-  handleListClick() {
+  handleListEvents() {
+    // event delegation for list item click
     this.$list.addEventListener('click', (e) => {
       if (e.target && e.target.matches(this.listItemSelector)) {
         this.selectOption(e.target.dataset.optionValue);
       }
     });
+
+    // keyboard navigation in the list
+    this.$list.addEventListener('keydown', (e) => {
+      const keyCode = getKeyCode(e);
+      switch (keyCode) {
+        case 'enter':
+          this.selectOption(e.target.dataset.optionValue);
+          break;
+        case 'tab':
+          this.hideMenu();
+          break;
+        case 'arrowup':
+        case 'up':
+          if (this.state.activeOption !== 0) {
+            this.highlightOption(this.state.activeOption - 1);
+          } else {
+            this.$input.focus();
+          }
+          break;
+        case 'arrowdown':
+        case 'down':
+          this.highlightOption(this.state.activeOption + 1);
+          break;
+        case 'escape':
+        case 'esc':
+          this.hideMenu();
+          break;
+        // space, tab ?
+        default:
+        // focus ?
+      }
+    });
+  }
+
+  /**
+   * @param {number} index
+   */
+  highlightOption(index) {
+    const $options = this.$list.querySelectorAll(this.listItemSelector);
+
+    if (index >= $options.length) {
+      return;
+    }
+
+    if (this.state.activeOption) {
+      $options[this.state.activeOption].setAttribute('aria-selected', 'false');
+    }
+
+    this.state.activeOption = index;
+    $options[this.state.activeOption].focus();
+    $options[this.state.activeOption].setAttribute('aria-selected', 'true');
   }
 
   // set aria roles, visually replace <select> by <input> and <ul>
@@ -110,69 +160,88 @@ class Autocomplete {
         query = this.$input.value;
       }
       this.getMatches(query)
-        .then(() => {
-          this.buildMenu();
+        .then((options) => {
+          this.buildMenu(options);
           this.showMenu();
         });
     });
   }
 
-  showNoResult() {
-    this.$list.innerHTML = '';
-    const $loaderOption = this.$optionTemplate.cloneNode(true);
-    $loaderOption.innerHTML = 'No results.';
-    $loaderOption.removeAttribute('tabindex');
-    $loaderOption.hidden = false;
-    this.$list.appendChild($loaderOption);
-    this.setSelectValue('');
-  }
-
   handleTyping() {
     this.setSelectValue('');
     this.getMatches(this.$input.value)
-      .then(() => this.handleResult());
+      .then((options) => this.handleResult(options));
   }
 
-  handleResult() {
-    if (!this.state.options.length) {
-      this.showNoResult();
+  /**
+   * @param {string} message
+   */
+  showMessage(message) {
+    this.$list.innerHTML = '';
+    const $loaderOption = this.$optionTemplate.cloneNode(true);
+    $loaderOption.innerHTML = message;
+    $loaderOption.hidden = false;
+    this.$list.appendChild($loaderOption);
+  }
+
+  /**
+   * @param {array} options
+   */
+  handleResult(options) {
+    if (!options.length) {
+      // this.showMessage('No results.');
+      this.setSelectValue('');
     } else {
-      this.buildMenu();
+      this.buildMenu(options);
     }
 
     this.showMenu();
     // set live region text (screen reader announcement)
-    this.$amount.innerHTML = this.state.options.length;
+    this.$amount.innerHTML = options.length;
   }
 
+  /**
+   * @param {string} query
+   */
   async getMatches(query) {
-    if (this.apiUrl) {
-      await this.getRemoteMatches(query);
-    } else {
-      this.getSelectMatches(query);
+    if (query.length < this.queryMinLength) {
+      this.showMessage('Keep typing...');
+      return [];
     }
+
+    if (this.apiUrl) {
+      return this.getRemoteMatches(query);
+    }
+
+    return this.getSelectMatches(query);
   }
 
+  /**
+   * @param {string} query
+   */
   getSelectMatches(query) {
     if (query === '') {
       const options = [...this.$select.options];
       options.shift();
-      this.state.options = options;
-      return;
+      return options;
     }
 
-    this.state.options = fuzzyMatchStringInArray(query, [...this.$select.options]);
+    return fuzzyMatchStringInArray(query, [...this.$select.options]);
   }
 
+  /**
+   * @param {string} query
+   */
   async getRemoteMatches(query) {
-    if (query.length < 5) {
-      // TODO: show minlength message
-      return;
-    }
+    const controller = new AbortController();
+    const { signal } = controller;
+    // controller.abort();
+
+    this.showMessage('Loading...');
 
     let result;
     try {
-      const request = await fetch(`${this.apiUrl}?q=${query}`);
+      const request = await fetch(`${this.apiUrl}?q=${query}`, { signal });
       result = await request.json();
     } catch (error) {
       result = {
@@ -181,97 +250,59 @@ class Autocomplete {
     }
 
     if (result.HasError) {
-      return;
+      return [];
     }
 
-    this.state.options = result.items;
+    return result.items;
   }
 
   handleInputKeyPressDown() {
-    if (!this.state.options.length) {
+    const $options = this.$list.querySelectorAll(this.listItemSelector);
+
+    if (!$options.length) {
       return;
     }
 
     // show menu, focus first item
     this.showMenu();
-    this.$options = this.$list.querySelectorAll('[data-module-bind=autocomplete-list-option]');
-    this.$options[0].setAttribute('aria-selected', 'true');
-    this.$options[0].focus();
-    this.state.activeOption = 0;
+    this.highlightOption(0);
   }
 
-  buildMenu() {
+  /**
+   * @param {array} options
+   */
+  buildMenu(options) {
     this.$list.innerHTML = '';
-    this.state.options.forEach((option) => {
+    options.forEach((option) => {
       // build autocomplete list item
-      const $newOption = this.$optionTemplate.cloneNode(true);
-      $newOption.hidden = false;
+      const $option = this.$optionTemplate.cloneNode(true);
+      $option.hidden = false;
       if (this.apiUrl) {
         // depending on data structure from api
-        $newOption.dataset.optionValue = option.id;
-        $newOption.innerHTML = option.name;
+        $option.dataset.optionValue = option.id;
+        $option.innerHTML = option.name;
       } else {
         // value and innerText from `<option>`
-        $newOption.dataset.optionValue = option.value;
-        $newOption.innerHTML = option.innerText;
+        $option.dataset.optionValue = option.value;
+        $option.innerHTML = option.innerText;
       }
 
-      // $newOption.addEventListener('click', () => {
-      //   this.selectOption(option.value);
-      // });
-      this.$list.appendChild($newOption);
+      this.$list.appendChild($option);
     });
   }
 
-  handleOptionsKeystroke() {
-    this.$list.addEventListener('keydown', (e) => {
-      const keyCode = getKeyCode(e);
-      switch (keyCode) {
-        case 'enter':
-          this.selectOption(this.$options[this.state.activeOption].dataset.optionValue);
-          break;
-        case 'tab':
-          this.hideMenu();
-          break;
-        case 'arrowup':
-        case 'up':
-          if (this.state.activeOption !== 0) {
-            this.$options[this.state.activeOption].setAttribute('aria-selected', 'false');
-            this.state.activeOption -= 1;
-            this.$options[this.state.activeOption].focus();
-            this.$options[this.state.activeOption].setAttribute('aria-selected', 'true');
-          }
-          break;
-        case 'arrowdown':
-        case 'down':
-          if (this.state.activeOption + 1 < this.$options.length) {
-            this.$options[this.state.activeOption].setAttribute('aria-selected', 'false');
-            this.state.activeOption += 1;
-            this.$options[this.state.activeOption].focus();
-            this.$options[this.state.activeOption].setAttribute('aria-selected', 'true');
-          }
-          break;
-        case 'escape':
-        case 'esc':
-          this.hideMenu();
-          break;
-        // space, tab ?
-        default:
-        // focus ?
-      }
-    });
-  }
-
+  /**
+   * @param {string} value
+   */
   selectOption(value) {
-    const optionObj = this.state.options.find((option) => (
-      option.value === value
-    ));
-
-    this.setSelectValue(optionObj.value);
-    this.$input.value = optionObj.value;
+    this.setSelectValue(value);
+    this.$input.value = value;
     this.hideMenu();
   }
 
+  /**
+   * @param {string} value
+   */
   setSelectValue(value) {
     if (!this.apiUrl) {
       this.$select.value = value;

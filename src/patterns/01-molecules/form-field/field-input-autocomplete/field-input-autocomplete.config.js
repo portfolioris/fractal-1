@@ -1,6 +1,11 @@
 module.exports = {
   context: {
     name: 'autocomplete-example',
+    queryMinLength: 0,
+    label: {
+      label: 'Autocomplete example',
+      for: 'autocomplete-example',
+    },
     inputSelect: {
       name: 'autocomplete-example',
       id: 'autocomplete-example',
@@ -38,7 +43,13 @@ module.exports = {
     {
       name: 'autocomplete-async',
       context: {
+        queryMinLength: 5,
         isAsync: true,
+        label: {
+          label: 'Async autocomplete example',
+          hint: 'Search for repos on Github, starting at 5+ characters',
+          for: 'autocomplete-example',
+        },
       },
     },
   ],
