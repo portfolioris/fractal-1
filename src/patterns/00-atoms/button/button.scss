@@ -22,6 +22,8 @@ Atoms.Button
   //font-weight: $font-weight-semibold;
   line-height: 0;
   letter-spacing: 1px;
+  background-color: $color-white;
+  border: 1px solid $color-black;
   // animation
   //transition: $base-transition-duration-short $base-timing-function;
   transition-property: color, background-color, border;

@@ -1,0 +1,36 @@
+/*  =========================================================================
+    Components.Show-More
+    ========================================================================= */
+
+/*  Block
+    ========================================================================= */
+
+.c-show-more {
+  //
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-show-more__container {
+  overflow: hidden;
+}
+
+.c-show-more__divider {
+  display: flex;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    height: 1px;
+    flex-grow: 1;
+    background-color: $color-black;
+  }
+}
+
+.c-show-more__btn {
+  transform: translateY(-50%);
+}
