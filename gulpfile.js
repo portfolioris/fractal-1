@@ -224,6 +224,18 @@ const connectTask = () => {
   });
 };
 
+const buildStyleguide = (cb) => {
+  fractal.web.set('builder.dest', `${__dirname}/${config.paths.build.root}`);
+  const builder = fractal.web.builder();
+
+  builder.build().then(() => {
+    console.log('Fractal static HTML build complete.');
+    cb();
+  });
+};
+
+exports.buildStyleguide = buildStyleguide;
+
 
 /*  Task: watch
     Setup files watches to track changes/additions/deletions of files and take
@@ -283,7 +295,6 @@ exports.serve = series(
   parallel(
     copyAssetsTask,
     svgSpriteTask,
-    // patternlabAssetsTask,
     javascriptLintTask,
     javascriptDevTask,
     stylesDevTask,
@@ -299,6 +310,7 @@ exports.serve = series(
  */
 exports.build = series(
   parallel(
+    buildStyleguide,
     copyAssetsTask,
     svgSpriteTask,
     javascriptProdTask,
