@@ -1,0 +1,233 @@
+/*  =========================================================================
+    Components.Tablist
+    ========================================================================= */
+
+/*  Module
+    ========================================================================= */
+
+.c-tabs {
+  //
+}
+
+
+/*  Elements
+    ========================================================================= */
+
+/**
+  Container for adding a fake border at the top of the panel
+ */
+.c-tabs__wrap-tablist {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: $color-gray;
+
+  &::after {
+    content: '';
+    flex-grow: 1;
+    border-bottom: 1px solid $color-black;
+  }
+}
+
+.c-tabs__tablist {
+  display: inline-flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.c-tabs__list-item {
+  flex-shrink: 0;
+}
+
+.c-tabs__tab-heading {
+  display: block;
+}
+
+/**
+Extra text in the tab
+ */
+.c-tabs__byline {
+  display: block;
+  color: $color-black;
+}
+
+/**
+<button>
+1. Focus state.
+2. Polyfill is added for :focus-visible. Focus styles removed again of focus is set via keyboard nav.
+ */
+.c-tabs__tab {
+  flex-shrink: 0;
+  padding: $supple-space-small;
+  text-align: left;
+  position: relative;
+  border-right: 1px solid $color-black;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-black;
+    width: 6px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $base-transition-duration-short $base-timing-function;
+  }
+
+  &[aria-selected='true'] {
+    background-color: $color-white;
+    //box-shadow: 0 0 $supple-space-small transparentize($color-off-black, 0.5);
+    z-index: 1;
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  #{$global-interaction-states} {
+    outline: none;
+    background-color: $color-white;
+  }
+
+  &:focus {
+    text-decoration: underline; /* [1] */
+    outline: none;
+
+    &:not(.focus-visible) {
+      .js-focus-visible & {
+        text-decoration: none; /* [2] */
+      }
+    }
+  }
+}
+
+.c-tabs__expanded-first-panel,
+.c-tabs__tablist-expanded,
+.c-tabs__read-more,
+.c-tabs__side-toc {
+  display: none;
+}
+
+.c-tabs__tablist-expanded {
+  position: sticky;
+  top: 0;
+  border: solid $color-black;
+  border-width: 1px 0 1px 1px;
+  margin: $supple-space-large 0;
+}
+
+.c-tabs__expanded-item {
+  position: relative;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $color-black;
+  }
+}
+
+.c-tabs__side-toc {
+  padding: 0 $supple-space-small;
+}
+
+
+
+.c-tabs__expanded-tab {
+  padding: $supple-space-tiny $supple-space-small;
+  font-weight: $font-weight-bold;
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background-color: $color-gray;
+    transform: scaleX(0);
+  }
+
+  #{$global-interaction-states} {
+    color: $color-black;
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  &[aria-selected='true'] {
+    background-color: $color-white;
+
+    &::before {
+      transform: scaleX(1);
+      background-color: $color-black;
+    }
+
+    .c-icon {
+      //color: $color-brand-secondary-base;
+    }
+
+    + .c-tabs__side-toc {
+      display: block;
+    }
+  }
+}
+
+/**
+  Panel which holds the content
+  3. overlap the shadow of the tabs
+ */
+.c-tabs__panel {
+  //background-color: $color-white; /* [3] */
+  border: 1px solid $color-black;
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: $supple-space-base;
+
+  &:focus {
+    //outline: 2px solid transparentize($color-brand-primary-base, 0.8); /* [1] */
+
+    &:not(.focus-visible) {
+      .js-focus-visible & {
+        outline: none; /* [2] */
+      }
+    }
+  }
+}
+
+.c-tabs__panel-toc {
+  background-color: $color-gray;
+}
+
+.c-tabs__panel-content {
+  padding-top: $supple-space-base;
+  padding-bottom: $supple-space-base;
+}
+
+
+
+/*  Responsive
+    ========================================================================= */
+
+@include supple-mq(desk) {
+  .c-tabs__read-more,
+  .c-tabs__expanded-first-panel,
+  .c-tabs__tablist-expanded {
+    display: block;
+  }
+
+  .c-tabs__panel-toc,
+  .c-tabs__panel--first,
+  .c-tabs__wrap-tablist {
+    display: none;
+  }
+
+  .c-tabs__panel-content {
+    padding: $supple-space-large $supple-space-base $supple-space-base;
+  }
+}
