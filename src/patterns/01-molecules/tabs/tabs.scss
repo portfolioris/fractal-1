@@ -10,6 +10,7 @@
 }
 
 
+
 /*  Elements
     ========================================================================= */
 
@@ -41,17 +42,6 @@
   flex-shrink: 0;
 }
 
-.c-tabs__tab-heading {
-  display: block;
-}
-
-/**
-Extra text in the tab
- */
-.c-tabs__byline {
-  display: block;
-  color: $color-black;
-}
 
 /**
 <button>
@@ -80,7 +70,7 @@ Extra text in the tab
 
   &[aria-selected='true'] {
     background-color: $color-white;
-    //box-shadow: 0 0 $supple-space-small transparentize($color-off-black, 0.5);
+    box-shadow: 0 0 $supple-space-small transparentize($color-black, 0.5);
     z-index: 1;
 
     &::before {
@@ -105,10 +95,8 @@ Extra text in the tab
   }
 }
 
-.c-tabs__expanded-first-panel,
 .c-tabs__tablist-expanded,
-.c-tabs__read-more,
-.c-tabs__side-toc {
+.c-tabs__read-more {
   display: none;
 }
 
@@ -127,12 +115,6 @@ Extra text in the tab
     border-bottom: 1px solid $color-black;
   }
 }
-
-.c-tabs__side-toc {
-  padding: 0 $supple-space-small;
-}
-
-
 
 .c-tabs__expanded-tab {
   padding: $supple-space-tiny $supple-space-small;
@@ -167,30 +149,19 @@ Extra text in the tab
       transform: scaleX(1);
       background-color: $color-black;
     }
-
-    .c-icon {
-      //color: $color-brand-secondary-base;
-    }
-
-    + .c-tabs__side-toc {
-      display: block;
-    }
   }
 }
 
 /**
   Panel which holds the content
-  3. overlap the shadow of the tabs
  */
 .c-tabs__panel {
-  //background-color: $color-white; /* [3] */
-  border: 1px solid $color-black;
-  border-radius: 5px;
   position: relative;
   margin-bottom: $supple-space-base;
+  padding: $supple-space-base;
 
   &:focus {
-    //outline: 2px solid transparentize($color-brand-primary-base, 0.8); /* [1] */
+    outline: 2px solid transparentize($color-black, 0.8); /* [1] */
 
     &:not(.focus-visible) {
       .js-focus-visible & {
@@ -198,10 +169,6 @@ Extra text in the tab
       }
     }
   }
-}
-
-.c-tabs__panel-toc {
-  background-color: $color-gray;
 }
 
 .c-tabs__panel-content {
@@ -221,10 +188,12 @@ Extra text in the tab
     display: block;
   }
 
-  .c-tabs__panel-toc,
-  .c-tabs__panel--first,
   .c-tabs__wrap-tablist {
     display: none;
+  }
+
+  .c-tabs__panel {
+    border: 1px solid $color-black;
   }
 
   .c-tabs__panel-content {

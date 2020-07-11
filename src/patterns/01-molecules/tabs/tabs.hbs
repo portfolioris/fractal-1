@@ -13,7 +13,7 @@
             aria-controls="panel-{{ @index }}"
             id="tab-{{ @index }}"
           >
-            <span class="c-tabs__tab-heading">{{ tabHeading }}</span>
+            {{ tabHeading }}
           </button>
         </div>
       {{/each}}
@@ -56,7 +56,7 @@
 
         {{#each tabs}} {{! panels, actually }}
           <div
-            class="c-tabs__panel"
+            class="c-tabs__panel  u-module"
             data-module-bind="tabs-panel"
             tabindex="0"
             role="tabpanel"
@@ -64,7 +64,7 @@
             aria-labelledby="tab-{{ @index }}"
           >
 
-            {{ content }}
+            {{{ content }}}
 
           </div>
         {{/each}}
@@ -74,4 +74,3 @@
   </div>
 
 </div>
-

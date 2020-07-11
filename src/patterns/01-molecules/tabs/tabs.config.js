@@ -1,34 +1,27 @@
+const { LoremIpsum } = require('lorem-ipsum');
+
+const lorem = new LoremIpsum();
+lorem.format = ('html');
+
 module.exports = {
   context: {
     tabs: [
       {
         firstTab: true,
         tabHeading: 'Intro',
-        content: 'lipsum',
+        content: lorem.generateParagraphs(4),
       },
       {
-        tabHeading: 'Dit ga je leren',
-        content: 'dolor',
+        tabHeading: 'Second tab',
+        content: lorem.generateParagraphs(4),
       },
       {
-        tabHeading: 'Inhoud',
-        content: 'si',
+        tabHeading: 'Third tab',
+        content: lorem.generateParagraphs(4),
       },
       {
-        tabHeading: 'Kosten',
-        content: 'amet',
-      },
-      {
-        tabHeading: 'Docenten',
-        content: 'baz',
-      },
-      {
-        tabHeading: 'Traject',
-        content: 'foo',
-      },
-      {
-        tabHeading: 'Starten',
-        content: 'bar',
+        tabHeading: 'Final tab',
+        content: lorem.generateParagraphs(4),
       },
     ],
   },
