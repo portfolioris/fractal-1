@@ -34,5 +34,11 @@ module.exports = {
         icon: 'icon-cross',
       },
     },
+    {
+      name: 'triangle',
+      context: {
+        icon: 'icon-triangle',
+      },
+    },
   ],
 };

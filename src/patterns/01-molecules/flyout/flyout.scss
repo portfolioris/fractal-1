@@ -1,0 +1,88 @@
+/*  =========================================================================
+    Components.Flyout
+    ========================================================================= */
+
+/*  Module
+    ========================================================================= */
+
+.c-flyout {
+  display: inline-block;
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-flyout__wrap-button {
+  position: relative;
+}
+
+.c-flyout__panel {
+  position: absolute;
+  z-index: 3;
+  left: $supple-space-tiny;
+  right: $supple-space-tiny;
+  margin-top: $supple-space-small;
+  border: 1px solid $color-gray;
+  padding: $supple-space-small;
+}
+
+.c-flyout__arrow {
+  position: absolute;
+  //bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: $color-white;
+  filter: drop-shadow(0 -1px 0 $color-gray);
+  display: none;
+
+  .c-icon {
+    width: 16px;
+    height: 8px;
+  }
+}
+
+.c-flyout__arrow--palm {
+  top: calc(100% + #{$supple-space-small - 8px + 1px});
+  //bottom: -$supple-space-small - 1px;
+  z-index: 4;
+  //top: auto;
+}
+
+.c-flyout__button[aria-expanded='true'] + .c-flyout__arrow--palm {
+  display: block;
+}
+
+.c-flyout__close-icon {
+  position: relative;
+  z-index: 3;
+  display: block;
+}
+
+
+
+/*  Responsive
+    ========================================================================= */
+
+@include supple-mq(lap) {
+  .c-flyout {
+    position: relative;
+  }
+
+  .c-flyout__panel {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 360px;
+  }
+
+  .c-flyout__arrow--palm {
+    display: none !important;
+  }
+
+  .c-flyout__arrow--desk {
+    display: block;
+    bottom: 100%;
+  }
+}

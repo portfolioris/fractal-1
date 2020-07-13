@@ -1,0 +1,26 @@
+<div class="c-flyout" data-module="ui/flyout">
+  <div class="c-flyout__wrap-button">
+
+    {{ render '@atoms-button' toggle }}
+
+    <span class="c-flyout__arrow  c-flyout__arrow--palm">
+      {{ render '@atoms-icon--triangle' }}
+    </span>
+
+  </div>
+  <div class="c-flyout__panel  u-module" hidden data-module-bind="flyout-panel" hidden>
+
+    <span class="c-flyout__arrow  c-flyout__arrow--desk">
+      {{ render '@atoms-icon--triangle' }}
+    </span>
+
+
+    {{#filterFoldout.arrowIconDesk}}
+      {{> atoms-icon }}
+    {{/filterFoldout.arrowIconDesk}}
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda aut, commodi culpa
+      delectus deleniti, in itaque maiores, modi necessitatibus nihil officiis provident quibusdam
+      quisquam reprehenderit sapiente sint vel voluptates.</p>
+  </div>
+</div>
