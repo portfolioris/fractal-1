@@ -6,5 +6,8 @@ module.exports = {
       propList: ['*'],
       minPixelValue: 4,
     },
+    // 'postcss-logical': {
+    //   preserve: true,
+    // },
   },
 };

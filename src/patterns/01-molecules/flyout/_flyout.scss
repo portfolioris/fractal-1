@@ -30,7 +30,9 @@
 
 .c-flyout__arrow {
   position: absolute;
-  //bottom: 100%;
+  top: calc(100% + #{$supple-space-small - 8px + 1px});
+  z-index: 4;
+  // TODO: add correction for screen edges
   left: 50%;
   transform: translateX(-50%);
   color: $color-white;
@@ -43,14 +45,7 @@
   }
 }
 
-.c-flyout__arrow--palm {
-  top: calc(100% + #{$supple-space-small - 8px + 1px});
-  //bottom: -$supple-space-small - 1px;
-  z-index: 4;
-  //top: auto;
-}
-
-.c-flyout__button[aria-expanded='true'] + .c-flyout__arrow--palm {
+.c-flyout__button[aria-expanded='true'] + .c-flyout__arrow {
   display: block;
 }
 
@@ -75,14 +70,5 @@
     left: 50%;
     transform: translateX(-50%);
     min-width: 360px;
-  }
-
-  .c-flyout__arrow--palm {
-    display: none !important;
-  }
-
-  .c-flyout__arrow--desk {
-    display: block;
-    bottom: 100%;
   }
 }

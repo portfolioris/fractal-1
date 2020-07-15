@@ -6,8 +6,8 @@ const browserSync = require('browser-sync');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const eslint = require('gulp-eslint');
-const notify = require('gulp-notify');
-const plumber = require('gulp-plumber');
+// const notify = require('gulp-notify');
+// const plumber = require('gulp-plumber');
 const sass = require('gulp-dart-sass');
 const tildeImporter = require('node-sass-tilde-importer');
 const stylelint = require('gulp-stylelint');
@@ -24,7 +24,7 @@ const webpackConfigES5 = require('./config/webpack.es5');
 const webpackConfigES6 = require('./config/webpack.es6');
 
 
-/*----------------------------------------------------------------------------*\
+/* ----------------------------------------------------------------------------*\
     Internal Tasks
 \*----------------------------------------------------------------------------*/
 
@@ -59,16 +59,10 @@ const copyBuildTask = () => (
 \*----------------------------------------------------------------------------*/
 
 const stylesDevTask = () => (
-  src(`${config.paths.source.sass}**/*.scss`)
-    .pipe(plumber({
-      errorHandler: (err) => {
-        notify.onError({
-          title: `Error in ${err.plugin}`,
-          message: err.message,
-        })(err);
-        browserSync.notify(`${err.plugin}: ${err.message}`, 10000);
-      },
-    }))
+  src([
+    `${config.paths.source.sass}**/*.scss`,
+    `${config.paths.source.patterns}**/*.scss`,
+  ])
     .pipe(stylelint({
       reporters: [
         {
@@ -86,12 +80,12 @@ const stylesDevTask = () => (
     .pipe(postcss())
     .pipe(sourcemaps.write('.'))
     .pipe(dest(config.paths.public.css))
-    .pipe(browserSync.stream())
+    // .pipe(browserSync.stream())
 );
 
 const stylesProdTask = () => (
   src(`${config.paths.source.sass}**/*.scss`)
-    .pipe(plumber())
+    // .pipe(plumber())
     .pipe(sass({
       importer: tildeImporter, // enable imports from /node_modules/ using tilde character
       precision: 8,
@@ -111,7 +105,7 @@ const stylesProdTask = () => (
 // Lint scripts
 const javascriptLintTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    .pipe(plumber())
+    // .pipe(plumber())
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
@@ -121,7 +115,7 @@ const javascriptLintTask = (cb) => {
 
 const javascriptDevTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    .pipe(plumber())
+    // .pipe(plumber())
     .pipe(webpackStream(webpackConfigDev, webpack, (err, stats) => {
       // log errors and warnings
       if (stats.hasErrors() || stats.hasWarnings()) {
@@ -140,14 +134,14 @@ const javascriptDevTask = (cb) => {
 
 const javascriptES6Task = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    .pipe(plumber())
+    // .pipe(plumber())
     .pipe(webpackStream(webpackConfigES6, webpack, () => cb()))
     .pipe(dest(config.paths.public.js));
 };
 
 const javascriptES5Task = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    .pipe(plumber())
+    // .pipe(plumber())
     .pipe(webpackStream(webpackConfigES5, webpack, () => cb()))
     .pipe(dest(config.paths.public.js));
 };
