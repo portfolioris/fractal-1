@@ -18,7 +18,8 @@
     "intersection-observer": "^0.11.0",
     "scroll-into-view": "^1.14.2",
     "supple": "^4.0.1",
-    "svgxuse": "^1.2.6"
+    "svgxuse": "^1.2.6",
+    "wicg-inert": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

@@ -28,7 +28,11 @@
 </head>
 <body class="{{ bodyClass }}">
 
-{{{ yield }}}
+<div data-module-bind="modal-page">
+
+  {{{ yield }}}
+
+</div>
 
 <!-- Legacy bundle javascript -->
 <script nomodule src="../../js/bundle.es5.js" async></script>

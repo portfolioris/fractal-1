@@ -1,11 +1,9 @@
 /* your global dependencies */
-// import 'MODULE_FROM_NPM';
+import 'wicg-inert';
+import 'focus-visible';
 
 /**
  * Utilities
  */
 import './utilities/conditioner';
 import './utilities/setExtLinks';
-
-/* your components */
-// import './components/YOUR_MODULE';

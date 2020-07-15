@@ -1,0 +1,143 @@
+/*  =========================================================================
+    Components.Modal
+    ========================================================================= */
+
+/*  Animation
+    ========================================================================= */
+
+@keyframes modalIn {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateY($supple-space-large);
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+    transform: translateY($supple-space-large);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes overlayIn {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+/*  Block
+    ========================================================================= */
+
+.c-modal {
+  position: fixed;
+  //z-index: #{get-z-index(modal)};
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-modal__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparentize($color-black, 0.5);
+  opacity: 0;
+}
+
+.c-modal__modal {
+  background-color: $color-white;
+  width: calc(100% - #{$supple-space-base});
+  max-width: 640px;
+  max-height: calc(100% - #{$supple-space-base});
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &::after { /* [1] */
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to top, $color-white 20%, transparentize($color-white, 1) 100%);
+    height: $supple-space-base;
+  }
+}
+
+.c-modal__header {
+  border-bottom: 1px solid $color-black;
+  padding: $supple-space-small $supple-space-small 0;
+}
+
+.c-modal__content {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: $supple-space-small $supple-space-small 1px;
+}
+
+.c-modal__close-button {
+  //color: $color-links-light;
+}
+
+
+
+/*  State
+    ========================================================================= */
+
+.c-modal[aria-hidden='false'] {
+  display: flex;
+
+  .c-modal__modal {
+    animation: modalIn $base-transition-duration ease-out;
+  }
+
+  .c-modal__overlay {
+    animation: overlayIn $base-transition-duration-short linear forwards;
+  }
+}
+
+
+
+/*  Responsive
+    ========================================================================= */
+
+@include supple-mq(lap) {
+  .c-modal__header {
+    padding: $supple-space-base $supple-space-base 0;
+  }
+
+  .c-modal__content {
+    padding: $supple-space-base $supple-space-base 1px;
+  }
+
+  .c-modal__modal {
+    max-height: calc(100% - #{$supple-space-base*2});
+  }
+}
