@@ -1,37 +1,25 @@
-<section class="o-layer  o-layer--large  t-bg--white">
-  <div class="o-retain  o-retain--default">
+<form method="post" action="" data-module="ui/validate">
+  <fieldset>
+    <legend>Text inputs</legend>
 
-    <div class="o-layout  o-layout--gutter">
-      <div class="o-layout__cell  u-fraction--8of12@from-lap  u-fraction--5of12@from-desk">
-        <h1>The title of the form</h1>
+    {{ render '@molecules-field-input-text' nameField merge=true }}
+    {{ render '@molecules-field-input-text' emailField merge=true }}
+    {{ render '@molecules-field-input-autocomplete' autocompleteField merge=true }}
+    {{ render '@molecules-field-input-radioset' radioField merge=true }}
+  </fieldset>
 
-        <form method="post" action="" data-module="ui/validate">
-          <fieldset>
-            <legend>Text inputs</legend>
+  <fieldset
+    hidden disabled
+    data-module-bind="validate-conditional"
+    data-field-name="expand-fieldset"
+    data-field-value="yes"
+  >
+    <legend>More inputs</legend>
 
-            {{ render '@molecules-field-input-text' nameField merge=true }}
-            {{ render '@molecules-field-input-text' emailField merge=true }}
-            {{ render '@molecules-field-input-autocomplete' autocompleteField merge=true }}
-            {{ render '@molecules-field-input-radioset' radioField merge=true }}
-          </fieldset>
+    {{ render '@molecules-field-input-number' }}
 
-          <fieldset
-            hidden disabled
-            data-module-bind="validate-conditional"
-            data-field-name="expand-fieldset"
-            data-field-value="yes"
-          >
-            <legend>More inputs</legend>
+  </fieldset>
 
-            {{ render '@molecules-field-input-number' }}
+  {{ render '@molecules-field-input-submit' submit merge=true }}
 
-          </fieldset>
-
-          {{ render '@molecules-field-input-submit' submit merge=true }}
-
-        </form>
-      </div>
-    </div>
-
-  </div>
-</section>
+</form>
