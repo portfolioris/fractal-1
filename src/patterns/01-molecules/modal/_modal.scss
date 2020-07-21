@@ -102,10 +102,6 @@
   padding: $supple-space-small $supple-space-small 1px;
 }
 
-.c-modal__close-button {
-  //color: $color-links-light;
-}
-
 
 
 /*  State
@@ -130,7 +126,7 @@
 
 @include supple-mq(lap) {
   .c-modal__header {
-    padding: $supple-space-base $supple-space-base 0;
+    padding: $supple-space-base;
   }
 
   .c-modal__content {

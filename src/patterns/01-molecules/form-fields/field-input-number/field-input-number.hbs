@@ -2,6 +2,24 @@
 
   {{ render "@atoms-label" label merge=true }}
 
+  <input-number data-module="ui/input-number">
+    <input
+      class="c-input-text  c-input-number__input"
+      type="number"
+      id="{{ id }}"
+      name="{{ name }}"
+      min="{{ min }}"
+      max="{{ max }}"
+      value="{{ value }}"
+      step="{{ step }}"
+      {{#if isRequired}}
+      required
+      {{/if}}
+    >
+  </input-number>
+
+  <!--
+
   <div class="c-input-number" data-module="ui/input-number">
 
     <button
@@ -42,8 +60,8 @@
     </button>
 
     <div class="u-visually-hidden" role="status" aria-live="polite" data-module-bind="input-number-status">{{ value }}</div>
-
   </div>
+      -->
 
   <p hidden id="error--{{ name }}" class="c-form-field__message" data-module-bind="validate-error">Error for {{ name }}.</p>
 </div>
