@@ -23,6 +23,16 @@
   display: block;
 }
 
+.c-breadcrumbs__link {
+  &[aria-current] {
+    text-decoration: none;
+
+    #{$global-interaction-states} {
+      text-decoration: underline;
+    }
+  }
+}
+
 
 /*  Responsive
     ========================================================================= */

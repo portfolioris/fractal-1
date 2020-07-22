@@ -29,11 +29,7 @@
             </span>
           {{/if}}
           <span class="o-layout__cell  o-layout__cell--fit">
-            {{#if isLast }}
-              <span>{{ title }}</span>
-            {{else}}
-              <a href="{{ href }}">{{ title }}</a>
-            {{/if}}
+            <a class="c-breadcrumbs__link" href="{{ href }}" {{#if isLast}}aria-current="page"{{/if}}>{{ title }}</a>
           </span>
           {{#unless isLast }}
             <span class="o-layout__cell  o-layout__cell--fit  {{#if isParent}}c-breadcrumbs__parent-arrow-right{{/if}}">

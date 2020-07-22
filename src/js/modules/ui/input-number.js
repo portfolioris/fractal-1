@@ -1,3 +1,4 @@
+/*
 class InputNumber {
   constructor($el) {
     this.$el = $el;
@@ -38,8 +39,23 @@ class InputNumber {
     }
   }
 }
+*/
 
-export default ($el) => {
-  const inst = new InputNumber($el);
-  inst.init();
+class InputNumberWC extends HTMLElement {
+  // constructor() {
+  //   super();
+  // }
+  connectedCallback() {
+    this.innerHTML = `
+    <p>foobar</p>
+    <slot></slot>
+    <p>end</p>
+    `;
+  }
+}
+
+export default () => {
+  window.customElements.define('input-number', InputNumberWC);
+  // const inst = new InputNumber($el);
+  // inst.init();
 };
