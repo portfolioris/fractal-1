@@ -3,6 +3,8 @@
     Purely css styled select input field
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Module
     ========================================================================= */
 
@@ -45,7 +47,7 @@
 .c-select__wrap-icon {
   position: absolute;
   top: 50%;
-  @include supple-rem(right, $supple-space-base);
+  right: vars.$space-base;
   z-index: 1;
   transform: translate(50%, -50%);
   font-size: 1em;

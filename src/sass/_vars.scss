@@ -1,20 +1,13 @@
 /*  =========================================================================
     settings.vars
-    Any variables you find set in supple that you do not wish
-    to keep, simply redefine here. This means that if the framework, for example,
-    sets your `$supple-base-font-size` at 16px and you wish it to be 14px, simply
-    redeclare that variable in this file.
     ========================================================================= */
 
-/*  =========================================================================
-    Overrides
-    Place any variables that should override supple defaults here.
-    ========================================================================= */
+@forward '../../node_modules/supple/settings/defaults/index' with (
+  $font-size: 16px,
+  $line-height: 24px,
+);
 
-$supple-base-font-size: 16px;
-$supple-base-line-height: 24px;
-
-$supple-breakpoint-has-fractions: (lap, desk);
+// $breakpoint-has-fractions: (lap, desk);
 
 
 
@@ -26,7 +19,7 @@ $supple-breakpoint-has-fractions: (lap, desk);
 /*  Fonts
     ========================================================================= */
 
-$font-family-primary: 'Public Sans', sans-serif !default;
+$font-family-primary: 'Public Sans', sans-serif;
 $font-weight-regular: 400;
 $font-weight-bold: 700;
 
@@ -35,8 +28,8 @@ $font-weight-bold: 700;
 /*  Colors
     ========================================================================= */
 
-$color-black: #000000 !default;
-$color-white: #ffffff !default;
+$color-black: #000000;
+$color-white: #ffffff;
 $color-gray: #cccccc;
 
 
@@ -51,6 +44,6 @@ $global-interaction-states: '&:hover, &:active, &:focus';
 /*  Animations
     ========================================================================= */
 
-$base-timing-function: cubic-bezier(0.55, 0, 0.1, 1) !default;
-$base-transition-duration: 300ms !default;
-$base-transition-duration-short: 150ms !default;
+$base-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+$base-transition-duration: 300ms;
+$base-transition-duration-short: 150ms;

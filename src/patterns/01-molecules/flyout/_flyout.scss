@@ -2,6 +2,9 @@
     Components.Flyout
     ========================================================================= */
 
+@use 'sass/vars';
+@use 'supple/tools/mixins';
+
 /*  Module
     ========================================================================= */
 
@@ -21,22 +24,22 @@
 .c-flyout__panel {
   position: absolute;
   z-index: 3;
-  left: $supple-space-tiny;
-  right: $supple-space-tiny;
-  margin-top: $supple-space-small;
-  border: 1px solid $color-gray;
-  padding: $supple-space-small;
+  left: vars.$space-tiny;
+  right: vars.$space-tiny;
+  margin-top: vars.$space-small;
+  border: 1px solid vars.$color-gray;
+  padding: vars.$space-small;
 }
 
 .c-flyout__arrow {
   position: absolute;
-  top: calc(100% + #{$supple-space-small - 8px + 1px});
+  top: calc(100% + #{vars.$space-small - 8px + 1px});
   z-index: 4;
   // TODO: add correction for screen edges
   left: 50%;
   transform: translateX(-50%);
-  color: $color-white;
-  filter: drop-shadow(0 -1px 0 $color-gray);
+  color: vars.$color-white;
+  filter: drop-shadow(0 -1px 0 vars.$color-gray);
   display: none;
 
   .c-icon {
@@ -60,7 +63,7 @@
 /*  Responsive
     ========================================================================= */
 
-@include supple-mq(lap) {
+@include mixins.mq(lap) {
   .c-flyout {
     position: relative;
   }

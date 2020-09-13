@@ -2,26 +2,28 @@
     Components.InputText
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Module
     ========================================================================= */
 
 .c-input-text {
-  //border: 2px solid $color-beige;
+  //border: 2px solid vars.$color-beige;
   border-radius: 2px;
-  //background: $color-white;
-  padding: calc(#{$supple-space-tiny * 1.5} - 2px) calc(#{$supple-space-small} - 2px);
-  //color: $color-off-black;
+  //background: vars.$color-white;
+  padding: calc(#{vars.$space-tiny * 1.5} - 2px) calc(#{vars.$space-small} - 2px);
+  //color: vars.$color-off-black;
   outline: 0;
   box-shadow: none;
   width: 100%;
   font: inherit;
-  line-height: $supple-line-height-ratio;
+  line-height: vars.$line-height-ratio;
   appearance: none;
   //transition: border-color $base-transition-duration-short $base-timing-function;
 
   &:focus,
   &:hover {
-    //border-color: $color-gray;
+    //border-color: vars.$color-gray;
   }
 
   &[aria-invalid='true'] {

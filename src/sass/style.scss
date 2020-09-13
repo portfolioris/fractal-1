@@ -1,4 +1,4 @@
-/*! we are you | weareyou.com */
+/*! Fractal-1 | portfolioris.nl */
 
 /*  =========================================================================
     Style
@@ -8,82 +8,69 @@
 /*  Settings
     ========================================================================= */
 
-@import 'settings/vars';
-@import '~supple/lib/settings/defaults';
-@import '~supple/lib/settings/responsive';
-
-
-
-/*  Tools
-    ========================================================================= */
-
-@import '~sass-mq/mq';
-@import '~supple/lib/tools/functions';
-@import '~supple/lib/tools/mixins';
+@use 'vars';
 
 
 
 /*  Generic
     ========================================================================= */
 
-@import-normalize;
-@import '~supple/lib/generic/reset';
+@use 'supple/generic/reset';
 
 
 
 /*  Elements
     ========================================================================= */
 
-@import 'elements/toplevel';
-@import 'elements/typography';
-@import '~supple/lib/elements/headings';
+@use 'elements/toplevel';
+@use 'elements/typography';
+@use 'supple/elements/headings';
 
 
 
 /*  Objects
     ========================================================================= */
 
-@import '~supple/lib/objects/list-clean';
-@import '~supple/lib/objects/layout';
-@import '~supple/lib/objects/flexembed';
+@use '~supple/objects/list-clean';
+@use '~supple/objects/layout';
+@use '~supple/objects/aspect-ratio';
 
 
 
 /*  Components
     ========================================================================= */
 
-// @import ';
-@import '../patterns/00-atoms/icon/icon';
-@import '../patterns/00-atoms/button/button';
-@import '../patterns/00-atoms/form-input/label/label';
-@import '../patterns/00-atoms/form-input/input-text/input.text';
-@import '../patterns/00-atoms/form-input/input-control/input.control';
-@import '../patterns/00-atoms/form-input/input-select/input-select';
-@import '../patterns/01-molecules/form-fields/field-input-number/field-input-number';
-@import '../patterns/01-molecules/form-fields/form-field';
-@import '../patterns/01-molecules/breadcrumbs/breadcrumbs';
-@import '../patterns/01-molecules/pagination/pagination';
-@import '../patterns/01-molecules/form-fields/field-input-autocomplete/field-input-autocomplete';
-@import '../patterns/01-molecules/show-more/show-more';
-@import '../patterns/01-molecules/tabs/tabs';
-@import '../patterns/01-molecules/flyout/flyout';
-@import '../patterns/01-molecules/modal/modal';
+@use '../patterns/00-atoms/icon/icon';
+@use '../patterns/00-atoms/button/button';
+@use '../patterns/00-atoms/form-input/label/label';
+@use '../patterns/00-atoms/form-input/input-text/input-text';
+@use '../patterns/00-atoms/form-input/input-control/input-control';
+@use '../patterns/00-atoms/form-input/input-select/input-select';
+@use '../patterns/01-molecules/form-fields/field-input-number/field-input-number';
+@use '../patterns/01-molecules/form-fields/form-field';
+@use '../patterns/01-molecules/breadcrumbs/breadcrumbs';
+@use '../patterns/01-molecules/pagination/pagination';
+@use '../patterns/01-molecules/form-fields/field-input-autocomplete/field-input-autocomplete';
+@use '../patterns/01-molecules/show-more/show-more';
+@use '../patterns/01-molecules/tabs/tabs';
+@use '../patterns/01-molecules/flyout/flyout';
+@use '../patterns/01-molecules/modal/modal';
 
 
 
 /*  Theme
     ========================================================================= */
 
-//@import 'theme/colors';
+//@use 'theme/colors';
 
 
 
 /*  Utilities
     ========================================================================= */
 
-@import '~supple/lib/utilities/fractions';
-@import '~supple/lib/utilities/module';
-@import '~supple/lib/utilities/visually-hidden';
-@import '~supple/lib/utilities/hidden';
-@import '~supple/lib/utilities/spacing';
-@import 'utilities/utilities';
+@use '~supple/utilities/colspan';
+@use '~supple/utilities/module';
+@use '~supple/utilities/visually-hidden';
+@use '~supple/utilities/hidden';
+@use '~supple/utilities/spacing';
+@use 'utilities/utilities';

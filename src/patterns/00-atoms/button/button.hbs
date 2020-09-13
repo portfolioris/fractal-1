@@ -1,15 +1,15 @@
-<{{element}}
-  {{#if type}}type="{{type}}"{{/if}}
-  {{#if href}}href="{{href}}{{#if anchor}}{{anchor}}{{/if}}"{{/if}}
-  {{#if target}}target="{{target}}"{{/if}}
-  class="c-button  {{#if modifier}}c-button--{{modifier}}{{/if}}  {{#if hasIcon}}c-button--has-icon{{/if}}  {{#if isReversed}}c-button--reversed{{/if}}  {{#if hideLabel}}c-button--hide-label{{/if}}"
-  {{#if id}}id="{{id}}"{{/if}}
+<{{ element }}
+  {{#if type}}type="{{ type }}"{{/if}}
+  {{#if href}}href="{{ href }}{{#if anchor}}{{ anchor }}{{/if}}"{{/if}}
+  {{#if target}}target="{{ target }}"{{/if}}
+  class="c-button  {{#if modifier}}{{ modifier }}{{/if}}  {{#if hasIcon}}c-button--has-icon{{/if}}  {{#if isReversed}}c-button--reversed{{/if}}  {{#if hideLabel}}c-button--hide-label{{/if}}  {{#if isFullWidth}}c-button--full-width{{/if}}"
+  {{#if id}}id="{{ id }}"{{/if}}
   {{#if isDisabled}}disabled{{/if}}
-  {{{data}}}
+  {{{ data }}}
 >
   <span class="c-button__inner">
     <span class="c-button__label  {{#if hideLabel}}u-visually-hidden{{/if}}" data-module-bind="btn-label">
-      {{{label}}}
+      {{{ label }}}
     </span>
 
     {{#if hasIcon}}
@@ -19,4 +19,4 @@
     {{/if}}
 
   </span>
-</{{element}}>
+</{{ element }}>

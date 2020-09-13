@@ -2,13 +2,15 @@
     Components.Input-control
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Module
     ========================================================================= */
 
 .c-input-control {
   display: flex;
   align-items: flex-start;
-  margin-bottom: $supple-space-tiny;
+  margin-bottom: vars.$space-tiny;
   position: relative;
 }
 
@@ -25,12 +27,12 @@
 }
 
 .c-input-control__indicator {
-  border: 2px solid $color-black;
+  border: 2px solid vars.$color-black;
   border-radius: 3px;
-  margin-right: $supple-space-tiny;
-  color: $color-white;
-  background-color: $color-white;
-  transition: border-color $base-transition-duration-short $base-timing-function;
+  margin-right: vars.$space-tiny;
+  color: vars.$color-white;
+  background-color: vars.$color-white;
+  transition: border-color vars.$base-transition-duration-short vars.$base-timing-function;
 
   svg {
     fill: currentColor;
@@ -52,10 +54,10 @@
     width: 8px;
     height: 8px;
     margin: 6px;
-    background-color: $color-black;
+    background-color: vars.$color-black;
     border-radius: 50%;
     opacity: 0;
-    transition: opacity $base-transition-duration-short $base-timing-function;
+    transition: opacity vars.$base-transition-duration-short vars.$base-timing-function;
   }
 }
 
@@ -70,12 +72,12 @@
 
 .c-input-control:hover .c-input-control__indicator,
 .c-input-control__input:focus ~ .c-input-control__indicator {
-  border-color: $color-black;
+  border-color: vars.$color-black;
 }
 
 .c-input-control__input[type='checkbox']:checked ~ .c-input-control__indicator {
-  border-color: $color-black;
-  background-color: $color-black;
+  border-color: vars.$color-black;
+  background-color: vars.$color-black;
 }
 
 .c-input-control__input[type='radio']:checked ~ .c-input-control__indicator {

@@ -3,27 +3,14 @@
     Icon system based on svg sprites
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Module
     ========================================================================= */
 
 .c-icon {
   display: block;
-  width: #{$supple-line-height-ratio}em;
-  height: #{$supple-line-height-ratio}em;
+  width: #{vars.$line-height-ratio}em;
+  height: #{vars.$line-height-ratio}em;
   fill: currentColor;
-}
-
-
-
-/*  Modifiers
-    ========================================================================= */
-
-.c-icon--beta {
-  //width: $beta;
-  //height: $beta;
-}
-
-.c-icon--delta {
-  //width: $delta;
-  //height: $delta;
 }

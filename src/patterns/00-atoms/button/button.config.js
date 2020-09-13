@@ -9,11 +9,18 @@ module.exports = {
     data: null,
     hasIcon: false,
   },
-  variants: [{
-    name: 'large',
-    context: {
-      modifier: 'large',
-      label: 'Large button',
+  variants: [
+    {
+      name: 'with icon',
+      context: {
+        hasIcon: true,
+      },
     },
-  }],
+    {
+      name: 'with icon reversed',
+      context: {
+        isReversed: true,
+        hasIcon: true,
+      },
+    }],
 };

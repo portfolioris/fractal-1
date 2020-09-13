@@ -2,6 +2,8 @@
     Components.Autocomplete
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Block
     ========================================================================= */
 
@@ -22,7 +24,7 @@
   pointer-events: none;
   position: absolute;
   top: 50%;
-  right: $supple-space-base;
+  right: vars.$space-base;
   z-index: 1;
   transform: translate(50%, -50%);
 }
@@ -37,23 +39,23 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: $color-gray;
+  background-color: vars.$color-gray;
   max-height: 280px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .c-autocomplete__option {
-  padding: $supple-space-tiny;
-  border: solid $color-black;
+  padding: vars.$space-tiny;
+  border: solid vars.$color-black;
   border-width: 0 1px 1px;
-  color: $color-black;
+  color: vars.$color-black;
 
   &[tabindex] {
     cursor: pointer;
 
-    #{$global-interaction-states} {
-      background-color: $color-white;
+    #{vars.$global-interaction-states} {
+      background-color: vars.$color-white;
     }
   }
 }

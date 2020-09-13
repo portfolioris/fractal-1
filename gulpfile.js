@@ -76,6 +76,7 @@ const stylesDevTask = () => (
     .pipe(sass({
       importer: tildeImporter,
       precision: 8,
+      includePaths: ['src', 'node_modules'],
     }))
     .pipe(postcss())
     .pipe(sourcemaps.write('.'))
