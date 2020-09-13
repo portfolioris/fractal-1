@@ -4,6 +4,15 @@
 
 @use 'sass/vars';
 
+
+
+/*  Variables
+    ========================================================================= */
+
+$color-error: vars.$color-red;
+
+
+
 /*  Block
     ========================================================================= */
 
@@ -19,5 +28,5 @@
 .c-form-field__message {
   margin-top: vars.$space-tiny;
   margin-bottom: 0;
-  color: #ff0000;
+  color: $color-error;
 }

@@ -2,32 +2,37 @@
     Components.InputText
     ========================================================================= */
 
+/*  Variables
+    ========================================================================= */
+
 @use 'sass/vars';
+$color: vars.$color-black;
+$border-width: 2px;
+$border-radius: 4px;
+$border-color: vars.$color-black;
+$background: vars.$color-white;
+$hover-color: vars.$color-black;
+$hover-border-color: vars.$color-black;
+$hover-background: vars.$color-gray;
+$invalid-border-color: vars.$color-red;
+
+
 
 /*  Module
     ========================================================================= */
 
 .c-input-text {
-  //border: 2px solid vars.$color-beige;
-  border-radius: 2px;
-  //background: vars.$color-white;
-  padding: calc(#{vars.$space-tiny * 1.5} - 2px) calc(#{vars.$space-small} - 2px);
-  //color: vars.$color-off-black;
-  outline: 0;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  background: $background;
+  padding: calc(#{vars.$space-small} - #{$border-width});
   box-shadow: none;
   width: 100%;
   font: inherit;
-  line-height: vars.$line-height-ratio;
   appearance: none;
-  //transition: border-color $base-transition-duration-short $base-timing-function;
-
-  &:focus,
-  &:hover {
-    //border-color: vars.$color-gray;
-  }
 
   &[aria-invalid='true'] {
-    border-color: #ff0000;
+    border-color: $invalid-border-color;
   }
 }
 

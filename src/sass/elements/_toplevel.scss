@@ -19,15 +19,6 @@ button svg {
   pointer-events: none;
 }
 
-fieldset,
-figure {
-  margin: 0;
-}
-
-
-/**
- * Override from normalize.css
- */
 b,
 strong {
   font-weight: vars.$font-weight-bold;
@@ -41,4 +32,8 @@ td,
 th,
 caption {
   text-align: left;
+}
+
+[hidden] {
+  display: none !important;
 }

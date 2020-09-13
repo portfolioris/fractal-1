@@ -23,7 +23,7 @@
     ========================================================================= */
 
 @use 'elements/toplevel';
-@use 'elements/typography';
+@use 'elements/font-face';
 @use 'supple/elements/headings';
 
 
@@ -58,19 +58,13 @@
 
 
 
-/*  Theme
-    ========================================================================= */
-
-//@use 'theme/colors';
-
-
-
 /*  Utilities
     ========================================================================= */
 
-@use '~supple/utilities/colspan';
+//@use 'supple/utilities/colspan' with (
+//  $in-breakpoint: (desk),
+//);
 @use '~supple/utilities/module';
 @use '~supple/utilities/visually-hidden';
 @use '~supple/utilities/hidden';
 @use '~supple/utilities/spacing';
-@use 'utilities/utilities';

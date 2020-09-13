@@ -2,13 +2,10 @@
 Atoms.Button
 ========================================================================= */
 
-@use 'sass/vars';
-
-
-
 /*  Variables
     ========================================================================= */
 
+@use 'sass/vars';
 $color: vars.$color-black;
 $border-width: 2px;
 $border-radius: 4px;
@@ -17,6 +14,8 @@ $background: vars.$color-white;
 $hover-color: vars.$color-black;
 $hover-border-color: vars.$color-black;
 $hover-background: vars.$color-gray;
+
+
 
 /*  Module
     ========================================================================= */

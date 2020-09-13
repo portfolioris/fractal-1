@@ -2,34 +2,15 @@
 
   {{ render "@atoms-label" label merge=true }}
 
-  <input-number data-module="ui/input-number">
-    <input
-      class="c-input-text  c-input-number__input"
-      type="number"
-      id="{{ id }}"
-      name="{{ name }}"
-      min="{{ min }}"
-      max="{{ max }}"
-      value="{{ value }}"
-      step="{{ step }}"
-      {{#if isRequired}}
-      required
-      {{/if}}
-    >
-  </input-number>
-
-  <!--
-
   <div class="c-input-number" data-module="ui/input-number">
 
     <button
-      data-module-bind="input-number-remove"
+      data-module-bind="input-number-decrease"
       hidden
       type="button"
       aria-describedby="label-{{ id }}"
-      class="c-input-number__btn  c-input-number__btn--remove"
     >
-      <span class="u-visually-hidden">Remove</span>
+      <span class="u-visually-hidden">decrease</span>
       {{ render '@atoms-icon' minus }}
     </button>
 
@@ -49,19 +30,17 @@
     >
 
     <button
-      data-module-bind="input-number-add"
+      data-module-bind="input-number-increase"
       hidden
       type="button"
       aria-describedby="label-{{ id }}"
-      class="c-input-number__btn  c-input-number__btn--remove"
     >
-      <span class="u-visually-hidden">Add</span>
+      <span class="u-visually-hidden">Increase</span>
       {{ render '@atoms-icon' plus }}
     </button>
 
     <div class="u-visually-hidden" role="status" aria-live="polite" data-module-bind="input-number-status">{{ value }}</div>
   </div>
-      -->
 
   <p hidden id="error--{{ name }}" class="c-form-field__message" data-module-bind="validate-error">Error for {{ name }}.</p>
 </div>

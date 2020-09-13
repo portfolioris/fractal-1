@@ -119,7 +119,9 @@ class Tabs {
 
   // controls to go to previous/next tab by pressing left/right keys
   handleKeyUpTab(event) {
-    const currentPanel = Array.from(this.$panels).find(($panel) => $panel.id === this.state.activePanelId);
+    const currentPanel = Array.from(this.$panels).find(
+      ($panel) => $panel.id === this.state.activePanelId,
+    );
     const currentTabIndex = Array.from(this.$panels).indexOf(currentPanel);
 
     const keyCode = getKeyCode(event);

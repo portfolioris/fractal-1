@@ -1,23 +1,22 @@
-/*
 class InputNumber {
   constructor($el) {
     this.$el = $el;
-    this.$addBtn = this.$el.querySelector('[data-module-bind*=input-number-add]');
-    this.$removeBtn = this.$el.querySelector('[data-module-bind*=input-number-remove]');
+    this.$increaseBtn = this.$el.querySelector('[data-module-bind*=input-number-increase]');
+    this.$decreaseBtn = this.$el.querySelector('[data-module-bind*=input-number-decrease]');
     this.$input = this.$el.querySelector('[data-module-bind*=input-number-input]');
     this.$status = this.$el.querySelector('[data-module-bind*=input-number-status]');
-    this.step = parseFloat(this.$input.step);
+    this.step = parseFloat(this.$input.step) || 1;
     this.min = parseFloat(this.$input.min);
     this.max = parseFloat(this.$input.max);
   }
 
   init() {
     // if module inits, show buttons
-    this.$addBtn.hidden = false;
-    this.$removeBtn.hidden = false;
+    this.$increaseBtn.hidden = false;
+    this.$decreaseBtn.hidden = false;
 
-    this.$addBtn.addEventListener('click', () => this.increase());
-    this.$removeBtn.addEventListener('click', () => this.decrease());
+    this.$increaseBtn.addEventListener('click', () => this.increase());
+    this.$decreaseBtn.addEventListener('click', () => this.decrease());
   }
 
   getInputValue() {
@@ -39,23 +38,8 @@ class InputNumber {
     }
   }
 }
-*/
 
-class InputNumberWC extends HTMLElement {
-  // constructor() {
-  //   super();
-  // }
-  connectedCallback() {
-    this.innerHTML = `
-    <p>foobar</p>
-    <slot></slot>
-    <p>end</p>
-    `;
-  }
-}
-
-export default () => {
-  window.customElements.define('input-number', InputNumberWC);
-  // const inst = new InputNumber($el);
-  // inst.init();
+export default ($el) => {
+  const inst = new InputNumber($el);
+  inst.init();
 };
