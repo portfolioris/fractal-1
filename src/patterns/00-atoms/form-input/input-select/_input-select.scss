@@ -11,11 +11,11 @@
 
 
 /*  Module
+    1. Overlap the <select> and icon, align with logical properties
     ========================================================================= */
 
 .c-select {
-  //position: relative;
-  display: grid;
+  display: grid; /* [1] */
 }
 
 

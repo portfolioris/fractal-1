@@ -6,6 +6,14 @@
     ========================================================================= */
 
 @use 'sass/vars';
+$border-color: vars.$shared-input-border-color;
+$border-width: vars.$shared-input-border-width;
+$border-radius: vars.$shared-input-border-radius;
+$background: vars.$shared-input-background;
+$icon-color: vars.$shared-input-border-color;
+$indicator-size: vars.$line-height;
+$radio-dot-size: vars.$space-tiny;
+$hover-border-color: vars.$shared-input-hover-border-color;
 
 
 
@@ -14,9 +22,9 @@
 
 .c-input-control {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: vars.$space-tiny;
-  position: relative;
+  align-items: start;
+  gap: vars.$space-tiny;
+  //margin-block-end: vars.$space-tiny;
 }
 
 
@@ -26,23 +34,24 @@
 
 .c-input-control__input {
   position: absolute;
-  width: 1.5em;
-  height: 1.5em;
+  block-size: $indicator-size;
+  inline-size: $indicator-size;
   opacity: 0;
 }
 
 .c-input-control__indicator {
-  border: 2px solid vars.$color-black;
-  border-radius: 3px;
-  margin-right: vars.$space-tiny;
-  color: vars.$color-white;
-  background-color: vars.$color-white;
+  display: block;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  color: $icon-color;
+  background: $background;
   transition: border-color vars.$base-transition-duration-short vars.$base-timing-function;
 
   svg {
     fill: currentColor;
-    width: calc(1.5em - 4px);
-    height: calc(1.5em - 4px);
+    block-size: calc(#{$indicator-size} - #{$border-width * 2});
+    inline-size: calc(#{$indicator-size} - #{$border-width * 2});
+    opacity: 0;
   }
 }
 
@@ -56,18 +65,14 @@
   &::after {
     content: '';
     display: block;
-    width: 8px;
-    height: 8px;
-    margin: 6px;
-    background-color: vars.$color-black;
+    inline-size: $radio-dot-size;
+    block-size: $radio-dot-size;
+    margin: ($indicator-size - $border-width * 2 - $radio-dot-size) / 2;
+    background-color: $icon-color;
     border-radius: 50%;
     opacity: 0;
     transition: opacity vars.$base-transition-duration-short vars.$base-timing-function;
   }
-}
-
-.c-input-control__label {
-  //font-weight: $font-weight-regular;
 }
 
 
@@ -77,12 +82,13 @@
 
 .c-input-control:hover .c-input-control__indicator,
 .c-input-control__input:focus ~ .c-input-control__indicator {
-  border-color: vars.$color-black;
+  box-shadow: 0 0 0 2px $hover-border-color;
 }
 
 .c-input-control__input[type='checkbox']:checked ~ .c-input-control__indicator {
-  border-color: vars.$color-black;
-  background-color: vars.$color-black;
+  svg {
+    opacity: 1;
+  }
 }
 
 .c-input-control__input[type='radio']:checked ~ .c-input-control__indicator {

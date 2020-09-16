@@ -4,6 +4,7 @@
 
 @use 'sass/vars';
 @use 'supple/tools/mixins';
+@use 'sass/functions';
 
 /*  Module
     ========================================================================= */
@@ -23,10 +24,13 @@
 
 .c-flyout__panel {
   position: absolute;
-  z-index: 3;
+  z-index: functions.get-z-index(flyout-panel);
+  // todo: not supported in most modern browsers
   left: vars.$space-tiny;
   right: vars.$space-tiny;
-  margin-top: vars.$space-small;
+  // supported in FF
+  inset-inline: vars.$space-tiny;
+  margin-block-start: vars.$space-small;
   border: 1px solid vars.$color-gray;
   padding: vars.$space-small;
 }
@@ -69,7 +73,6 @@
   }
 
   .c-flyout__panel {
-    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     min-width: 360px;

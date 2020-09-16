@@ -1,20 +1,22 @@
 <label class="c-input-control  {{ modifier }}" for="{{ id }}">
-  <input
-    id="{{ id }}"
-    name="{{ name }}"
-    value="{{ value }}"
-    class="c-input-control__input"
-    type="{{ type }}"
-    {{#if isChecked }}checked{{/if}}
-    {{#if isDisabled }}disabled{{/if}}
-    {{#if isRequired }}required{{/if}}
-    {{#if autocomplete }}autocomplete="{{ autocomplete }}"{{/if}}
-    {{#if data}}
-      {{{data}}}
-    {{/if}}
-  >
-  <span class="c-input-control__indicator">
-    {{ render '@atoms-icon' icon }}
+  <span>
+    <input
+      id="{{ id }}"
+      name="{{ name }}"
+      value="{{ value }}"
+      class="c-input-control__input"
+      type="{{ type }}"
+      {{#if isChecked }}checked{{/if}}
+      {{#if isDisabled }}disabled{{/if}}
+      {{#if isRequired }}required{{/if}}
+      {{#if autocomplete }}autocomplete="{{ autocomplete }}"{{/if}}
+      {{#if data}}
+        {{{data}}}
+      {{/if}}
+    >
+    <span class="c-input-control__indicator">
+      {{ render '@atoms-icon' icon }}
+    </span>
   </span>
   <span class="c-input-control__label">{{ label }}</span>
 </label>

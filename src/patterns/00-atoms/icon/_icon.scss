@@ -10,7 +10,7 @@
 
 .c-icon {
   display: block;
-  width: #{vars.$line-height-ratio}em;
-  height: #{vars.$line-height-ratio}em;
+  inline-size: vars.$line-height;
+  block-size: vars.$line-height;
   fill: currentColor;
 }

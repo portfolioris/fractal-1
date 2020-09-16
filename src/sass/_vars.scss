@@ -30,7 +30,7 @@ $font-weight-bold: 700;
 
 $color-black: #000000;
 $color-white: #ffffff;
-$color-gray: #cccccc;
+$color-gray: #aaaaaa;
 $color-red: #ff0000;
 
 
@@ -40,6 +40,17 @@ $color-red: #ff0000;
 
 $global-interaction-states: '&:hover, &:active, &:focus';
 
+/**
+Shared styles between input elements
+ */
+$shared-input-border-width: 2px;
+$shared-input-border-radius: 4px;
+$shared-input-border-color: $color-black;
+$shared-input-background: $color-white;
+$shared-input-hover-color: $color-black;
+$shared-input-hover-border-color: $color-gray;
+$shared-input-hover-background: $color-gray;
+$shared-input-invalid-border-color: $color-red;
 
 
 /*  Animations

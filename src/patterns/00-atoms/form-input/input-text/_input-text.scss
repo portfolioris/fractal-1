@@ -7,14 +7,12 @@
 
 @use 'sass/vars';
 $color: vars.$color-black;
-$border-width: 2px;
-$border-radius: 4px;
-$border-color: vars.$color-black;
-$background: vars.$color-white;
-$hover-color: vars.$color-black;
-$hover-border-color: vars.$color-black;
-$hover-background: vars.$color-gray;
-$invalid-border-color: vars.$color-red;
+$border-width: vars.$shared-input-border-width;
+$border-radius: vars.$shared-input-border-radius;
+$border-color: vars.$shared-input-border-color;
+$background: vars.$shared-input-background;
+$hover-border-color: vars.$shared-input-hover-border-color;
+$invalid-border-color: vars.$shared-input-invalid-border-color;
 
 
 
@@ -27,9 +25,13 @@ $invalid-border-color: vars.$color-red;
   background: $background;
   padding: calc(#{vars.$space-small} - #{$border-width});
   box-shadow: none;
-  width: 100%;
+  inline-size: 100%;
   font: inherit;
   appearance: none;
+
+  #{vars.$global-interaction-states} {
+    box-shadow: 0 0 0 $border-width $hover-border-color;
+  }
 
   &[aria-invalid='true'] {
     border-color: $invalid-border-color;
