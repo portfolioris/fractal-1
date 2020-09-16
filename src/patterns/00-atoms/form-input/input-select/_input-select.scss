@@ -1,5 +1,5 @@
 /*  =========================================================================
-    Foundation.Atoms.Forms.InputSelect
+    Atoms.InputSelect
     Purely css styled select input field
     ========================================================================= */
 
@@ -14,9 +14,8 @@
     ========================================================================= */
 
 .c-select {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+  //position: relative;
+  display: grid;
 }
 
 
@@ -25,8 +24,10 @@
     ========================================================================= */
 
 .c-select__element {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   appearance: none;
-  padding-right: 2.5rem;
+  padding-inline-end: 2.5rem;
 
   &::-ms-expand {
     display: none;
@@ -34,10 +35,10 @@
 }
 
 .c-select__wrap-icon {
-  position: absolute;
-  top: 50%;
-  right: vars.$space-small;
-  z-index: 1;
-  transform: translateY(-50%);
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: end;
+  align-self: center;
+  padding-inline-end: vars.$space-small;
   pointer-events: none;
 }

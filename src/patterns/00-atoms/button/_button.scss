@@ -30,7 +30,7 @@ $hover-background: vars.$color-gray;
   border-radius: $border-radius;
   // text
   text-decoration: none;
-  text-align: left;
+  text-align: start;
   font: inherit;
   line-height: 0;
   background: $background;
@@ -74,7 +74,7 @@ $hover-background: vars.$color-gray;
 }
 
 .c-button__wrap-icon {
-  padding-right: calc(#{vars.$space-small} - #{$border-width});
+  padding-inline-end: calc(#{vars.$space-small} - #{$border-width});
 }
 
 
@@ -91,8 +91,8 @@ $hover-background: vars.$color-gray;
   }
 
   .c-button__wrap-icon {
-    padding-right: 0;
-    padding-left: calc(#{vars.$space-small} - #{$border-width});
+    padding-inline-end: 0;
+    padding-inline-start: calc(#{vars.$space-small} - #{$border-width});
   }
 }
 
