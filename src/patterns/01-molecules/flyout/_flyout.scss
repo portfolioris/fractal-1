@@ -73,5 +73,16 @@
     left: 50%;
     transform: translateX(-50%);
     min-width: 360px;
+
+    //&.is-offset-left {
+    //  left: 0;
+    //  transform: translateX(0);
+    //}
+    //
+    //&.is-offset-right {
+    //  right: 0;
+    //  left: auto;
+    //  transform: translateX(0);
+    //}
   }
 }

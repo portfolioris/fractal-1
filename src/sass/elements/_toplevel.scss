@@ -13,6 +13,7 @@ html {
   color: vars.$color-black;
   font-weight: vars.$font-weight-regular;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 button svg {

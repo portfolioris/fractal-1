@@ -34,19 +34,41 @@ class Flyout {
     this.$toggleFoldout.setAttribute('aria-expanded', 'true');
     this.$foldout.hidden = false;
     this.state.isOpen = true;
-    // setTimeout(() => {
     document.documentElement.addEventListener('click', this.hideFoldoutOnBlur);
+    // todo: add fix if flyout is outside screen edges
+    // this.correctOverflow();
+    // todo: add flyout initial focus handler
     // if (this.$toggleFoldout.dataset.foldout__focus) {
     //   this.$el.querySelector(`#${this.$toggleFoldout.dataset.foldout__focus}`).focus();
     // }
-    // }, 0);
+  }
+
+  correctOverflow() {
+    this.observer = new IntersectionObserver((entries) => {
+      console.log(entries[0].boundingClientRect, window.innerWidth);
+      if (entries[0].boundingClientRect.x < 0) {
+        this.$foldout.classList.add('is-offset-left');
+      }
+
+      if (entries[0].boundingClientRect.right > window.innerWidth) {
+        console.log('offsetr');
+        this.$foldout.classList.add('is-offset-right');
+      }
+    }, {
+      threshold: 0.99,
+    });
+
+    this.observer.observe(this.$foldout);
   }
 
   closeFoldout() {
     this.$toggleFoldout.setAttribute('aria-expanded', 'false');
     this.$foldout.hidden = true;
     this.state.isOpen = false;
+    this.$foldout.classList.remove('is-offset-left');
+    this.$foldout.classList.remove('is-offset-right');
     document.documentElement.removeEventListener('click', this.hideFoldoutOnBlur);
+    this.observer.unobserve(this.$foldout);
   }
 
   handleClickToggleFoldout() {
