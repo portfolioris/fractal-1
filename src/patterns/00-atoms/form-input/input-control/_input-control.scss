@@ -23,8 +23,7 @@ $hover-border-color: vars.$shared-input-hover-border-color;
 .c-input-control {
   display: flex;
   align-items: start;
-  gap: vars.$space-tiny;
-  //margin-block-end: vars.$space-tiny;
+  margin-block-end: vars.$space-tiny;
 }
 
 
@@ -41,6 +40,7 @@ $hover-border-color: vars.$shared-input-hover-border-color;
 
 .c-input-control__indicator {
   display: block;
+  margin-inline-end: vars.$space-tiny;
   border: $border-width solid $border-color;
   border-radius: $border-radius;
   color: $icon-color;

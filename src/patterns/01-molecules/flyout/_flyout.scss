@@ -47,8 +47,8 @@
   display: none;
 
   .c-icon {
-    width: 16px;
-    height: 8px;
+    inline-size: 16px;
+    block-size: 8px;
   }
 }
 
@@ -75,7 +75,7 @@
   .c-flyout__panel {
     left: 50%;
     transform: translateX(-50%);
-    min-width: 360px;
+    min-inline-size: 360px;
 
     //&.is-offset-left {
     //  left: 0;

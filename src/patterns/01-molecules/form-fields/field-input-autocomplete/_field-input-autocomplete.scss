@@ -3,6 +3,9 @@
     ========================================================================= */
 
 @use 'sass/vars';
+@use 'sass/functions';
+
+
 
 /*  Block
     ========================================================================= */
@@ -20,13 +23,21 @@
   position: relative;
 }
 
+.c-autocomplete__field {
+  display: grid;
+}
+
+.c-autocomplete__input,
 .c-autocomplete__icon {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+.c-autocomplete__icon {
+  align-self: center;
+  justify-self: end;
   pointer-events: none;
-  position: absolute;
-  top: 50%;
-  right: vars.$space-base;
-  z-index: 1;
-  transform: translate(50%, -50%);
+  margin-inline-end: vars.$space-small;
 }
 
 .c-autocomplete__icon--clear {
@@ -35,12 +46,11 @@
 
 .c-autocomplete__list {
   position: absolute;
-  z-index: 1;
-  top: 100%;
+  z-index: functions.get-z-index(flyout-panel);
   left: 0;
   right: 0;
   background-color: vars.$color-gray;
-  max-height: 280px;
+  max-block-size: 280px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }

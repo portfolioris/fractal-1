@@ -244,7 +244,8 @@ const watchTask = (cb) => {
   watch([
     `${config.paths.source.sass}**/*.scss`,
     `${config.paths.source.patterns}**/*.scss`,
-  ], series(stylesDevTask, copyBuildTask));
+  // ], series(stylesDevTask, copyBuildTask));
+  ], series(stylesDevTask));
 
   /**
    * Javascripts

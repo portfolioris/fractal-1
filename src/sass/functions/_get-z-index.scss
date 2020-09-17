@@ -4,7 +4,7 @@
  * when needed.
 \* ========================================================================== */
 
-$z-index-order: (
+$_z-index-order: (
   /* Bottom element, lowest z-index */
   'flyout-panel',
   'i-am-on-top',
@@ -23,12 +23,12 @@ See https://sass-guidelin.es/#mixins
     $element: #{&};
   }
 
-  $z-index: index($z-index-order, $element);
+  $z-index: index($_z-index-order, $element);
 
   @if $z-index {
     @return $z-index;
   }
 
-  @warn 'There is no item "#{$element}" in this list; choose one of: #{$z-index-order}';
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$_z-index-order}';
   @return null;
 }

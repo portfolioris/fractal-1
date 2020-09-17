@@ -20,8 +20,7 @@
       {{#unless isAsync}}hidden{{/unless}}
       data-module-bind="autocomplete-enhanced"
     >
-      <div
-        class="c-search-field">
+      <div class="c-autocomplete__field">
         <input
           class="c-input-text  c-autocomplete__input"
           data-module-bind="autocomplete-input"
@@ -45,7 +44,6 @@
             {{ render '@atoms-icon--magnifier' }}
           {{/if}}
         </div>
-
 
         {{! empty input button }}
         <button type="button" class="o-button-clean  c-autocomplete__icon  c-autocomplete__icon--clear"
