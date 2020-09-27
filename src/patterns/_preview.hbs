@@ -20,11 +20,8 @@
 
   <link rel="stylesheet" href="{{ path '/css/style.css' }}" media="all">
 
-
   {{! List dependencies in the head for faster discovery/preloading. They are deferred by default. }}
   <script type="module" src="../../js/bundle.es6.js?{{ cacheBuster }}"></script>
-
-  <link rel="stylesheet" href="../../css/pattern-scaffolding.css?{{ cacheBuster }}" media="all" />
 </head>
 <body class="{{ bodyClass }}">
 
