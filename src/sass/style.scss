@@ -15,7 +15,7 @@
 /*  Generic
     ========================================================================= */
 
-@use 'supple/generic/reset';
+@use '@supple-kit/supple-css/generic/reset';
 
 
 
@@ -24,23 +24,23 @@
 
 @use 'elements/toplevel';
 @use 'elements/font-face';
-@use 'supple/elements/headings';
+//@use '@supple-kit/supple-css/generic/elements/headings';
 
 
 
 /*  Objects
     ========================================================================= */
 
-@use 'supple/objects/list-clean';
-@use 'supple/objects/layout' with (
+@use '@supple-kit/supple-css/objects/list-clean';
+@use '@supple-kit/supple-css/objects/layout' with (
   $gaps: (
     'base': vars.$space-base,
     'small': vars.$space-small,
     'tiny': vars.$space-tiny,
   ),
 );
-@use '~supple/objects/aspect-ratio';
-@use '~supple/objects/flow';
+//@use '@supple-kit/supple-css/objects/aspect-ratio';
+@use '@supple-kit/supple-css/objects/flow';
 @use '../patterns/00-atoms/objects/retain';
 
 
@@ -71,7 +71,7 @@
 //@use 'supple/utilities/colspan' with (
 //  $in-breakpoint: (desk),
 //);
-@use '~supple/utilities/module';
-@use '~supple/utilities/visually-hidden';
-@use '~supple/utilities/hidden';
-@use '~supple/utilities/spacing';
+//@use '@supple-kit/supple-css/utilities/module';
+//@use '@supple-kit/supple-css/utilities/visually-hidden';
+//@use '@supple-kit/supple-css/utilities/hidden';
+@use '@supple-kit/supple-css/utilities/spacing';

@@ -3,17 +3,15 @@
     ========================================================================= */
 
 @use 'sass/vars';
-@use 'supple/tools/mixins';
+@use '@supple-kit/supple-css/tools/mixins';
+
+
 
 /*  Module
     ========================================================================= */
 
 .c-tabs {
   //
-}
-
-.o-layer--large {
-  padding-block: vars.$space-large;
 }
 
 
