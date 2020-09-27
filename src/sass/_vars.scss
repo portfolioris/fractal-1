@@ -2,12 +2,10 @@
     settings.vars
     ========================================================================= */
 
-@forward '../../node_modules/supple/settings/defaults/index' with (
+@forward '../../node_modules/supple/settings/defaults' with (
   $font-size: 16px,
   $line-height: 24px,
 );
-
-// $breakpoint-has-fractions: (lap, desk);
 
 
 
@@ -31,6 +29,7 @@ $font-weight-bold: 700;
 $color-black: #000000;
 $color-white: #ffffff;
 $color-gray: #aaaaaa;
+$color-gray-light: #dddddd;
 $color-red: #ff0000;
 
 

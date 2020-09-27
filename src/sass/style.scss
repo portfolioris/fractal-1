@@ -31,9 +31,16 @@
 /*  Objects
     ========================================================================= */
 
-@use '~supple/objects/list-clean';
-@use '~supple/objects/layout';
+@use 'supple/objects/list-clean';
+@use 'supple/objects/layout' with (
+  $gaps: (
+    'base': vars.$space-base,
+    'small': vars.$space-small,
+    'tiny': vars.$space-tiny,
+  ),
+);
 @use '~supple/objects/aspect-ratio';
+@use '~supple/objects/flow';
 @use '../patterns/00-atoms/objects/retain';
 
 

@@ -19,7 +19,7 @@
 .c-input-number__input,
 input[type='number'] {
   -moz-appearance: textfield;
-  width: calc(3ch + 2 * (#{vars.$space-small} - 2px));
+  inline-size: calc(3ch + 2 * (#{vars.$space-small} - 2px));
   text-align: center;
 }
 

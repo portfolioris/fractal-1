@@ -4,6 +4,8 @@
 
 @use 'sass/vars';
 
+
+
 /*  Block
     ========================================================================= */
 
@@ -27,7 +29,7 @@
   &::after {
     content: '';
     display: block;
-    height: 1px;
+    block-size: 1px;
     flex-grow: 1;
     background-color: vars.$color-black;
   }

@@ -1,7 +1,7 @@
 <nav class="c-paging" aria-labelledby="pagination-label">
   <div hidden id="pagination-label">Pagination</div>
 
-  <div class="o-layout  c-paging__layout--no-wrap  o-layout--align-middle  o-layout--align-center">
+  <div class="o-layout  c-paging__layout--no-wrap  o-layout--align-inline-center  o-layout--align-block-center">
 
     {{#if nextIsAvailable }}
       <div class="c-paging__next  o-layout__cell  o-layout__cell--fit">
@@ -22,7 +22,7 @@
     {{/if}}
 
     <div class="c-paging__panes  o-layout__cell  o-layout__cell--fit">
-      <ol class="o-layout  o-layout--align-center  u-margin-bottom-none">
+      <ol class="o-layout  o-layout--align-inline-center">
 
         {{#each pages }}
           <li class="o-layout__cell  o-layout__cell--fit">

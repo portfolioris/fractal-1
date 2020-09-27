@@ -12,6 +12,10 @@
   //
 }
 
+.o-layer--large {
+  padding-block: vars.$space-large;
+}
+
 
 
 /*  Elements
@@ -25,12 +29,12 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: vars.$color-gray;
+  background-color: vars.$color-white;
 
   &::after {
     content: '';
     flex-grow: 1;
-    border-bottom: 1px solid vars.$color-black;
+    border-block-end: 1px solid vars.$color-black;
   }
 }
 
@@ -41,39 +45,42 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.c-tabs__list-item {
-  flex-shrink: 0;
-}
-
 
 /**
 <button>
 1. Focus state.
-2. Polyfill is added for :focus-visible. Focus styles removed again of focus is set via keyboard nav.
+2. Polyfill is added for :focus-visible. Focus styles removed again if focus is set via keyboard nav.
  */
 .c-tabs__tab {
+  display: block;
   flex-shrink: 0;
   padding: vars.$space-small;
-  text-align: left;
+  text-decoration: none;
   position: relative;
-  border-right: 1px solid vars.$color-black;
+  border-inline-start: 1px solid vars.$color-black;
+  border-block: 1px solid vars.$color-black;
+  background-color: vars.$color-gray-light;
+
+  &:last-child {
+    border-inline-end: 1px solid vars.$color-black;
+  }
 
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     background-color: vars.$color-black;
-    width: 6px;
+    inline-size: vars.$space-tiny;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform vars.$base-transition-duration-short vars.$base-timing-function;
   }
 
   &[aria-selected='true'] {
+    border-block-end-color: transparent;
     background-color: vars.$color-white;
-    box-shadow: 0 0 vars.$space-small transparentize(vars.$color-black, 0.5);
     z-index: 1;
 
     &::before {
@@ -82,13 +89,11 @@
   }
 
   #{vars.$global-interaction-states} {
-    outline: none;
     background-color: vars.$color-white;
   }
 
   &:focus {
     text-decoration: underline; /* [1] */
-    outline: none;
 
     &:not(.focus-visible) {
       .js-focus-visible & {
@@ -102,62 +107,18 @@
   display: none;
   position: sticky;
   top: 0;
-  border: solid vars.$color-black;
-  border-width: 1px 0 1px 1px;
-  margin: vars.$space-large 0;
+  margin-block: vars.$space-large;
 }
 
-.c-tabs__expanded-item {
-  position: relative;
-
-  &:not(:last-of-type) {
-    border-bottom: 1px solid vars.$color-black;
-  }
-}
-
-.c-tabs__expanded-tab {
-  padding: vars.$space-tiny vars.$space-small;
-  font-weight: vars.$font-weight-bold;
-  display: block;
-  width: 100%;
-  text-align: left;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 4px;
-    background-color: vars.$color-gray;
-    transform: scaleX(0);
-  }
-
-  #{vars.$global-interaction-states} {
-    color: vars.$color-black;
-
-    &::before {
-      transform: scaleX(1);
-    }
-  }
-
-  &[aria-selected='true'] {
-    background-color: vars.$color-white;
-
-    &::before {
-      transform: scaleX(1);
-      background-color: vars.$color-black;
-    }
-  }
-}
 
 /**
   Panel which holds the content
  */
 .c-tabs__panel {
   position: relative;
-  margin-bottom: vars.$space-base;
+  margin-block-end: vars.$space-base;
   padding: vars.$space-base;
+  scroll-margin-top: vars.$space-large + vars.$space-tiny;
 
   &:focus {
     outline: 2px solid transparentize(vars.$color-black, 0.8); /* [1] */
@@ -170,18 +131,12 @@
   }
 }
 
-.c-tabs__panel-content {
-  padding-top: vars.$space-base;
-  padding-bottom: vars.$space-base;
-}
-
 
 
 /*  Responsive
     ========================================================================= */
 
 @include mixins.mq(desk) {
-  .c-tabs__expanded-first-panel,
   .c-tabs__tablist-expanded {
     display: block;
   }
@@ -190,11 +145,16 @@
     display: none;
   }
 
-  .c-tabs__panel {
-    border: 1px solid vars.$color-black;
+  .c-tabs__tab {
+    border-block-end: none;
+
+    &:last-child {
+      border-inline-end: none;
+      border-block-end: 1px solid vars.$color-black;
+    }
   }
 
-  .c-tabs__panel-content {
-    padding: vars.$space-large vars.$space-base vars.$space-base;
+  .c-tabs__panel {
+    border: 1px solid vars.$color-black;
   }
 }

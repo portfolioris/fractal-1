@@ -22,7 +22,7 @@ $hover-border-color: vars.$shared-input-hover-border-color;
 
 .c-input-control {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   margin-block-end: vars.$space-tiny;
 }
 

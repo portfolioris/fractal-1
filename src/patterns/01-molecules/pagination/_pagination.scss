@@ -23,16 +23,13 @@
 .c-paging__item {
   display: block;
   padding: vars.$space-tiny;
-  min-width: vars.$space-tiny*5;
+  min-inline-size: vars.$space-tiny*5;
   text-align: center;
   text-decoration: none;
 
-  #{vars.$global-interaction-states} {
-    //background-color: vars.$color-off-black;
-  }
-
+  #{vars.$global-interaction-states},
   &[aria-current='true'] {
-    //background-color: vars.$color-off-black;
+    background-color: vars.$color-gray;
   }
 }
 

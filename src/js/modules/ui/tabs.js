@@ -110,7 +110,7 @@ class Tabs {
         break;
       case 'end':
         event.preventDefault();
-        this.activatePanel(this.$panels[this.$panels.length - 1].id, true);
+        this.activatePanel(this.$panels[this.$panels.length - 1].id);
         break;
       default:
         break;

@@ -58,7 +58,8 @@
 .c-autocomplete__option {
   padding: vars.$space-tiny;
   border: solid vars.$color-black;
-  border-width: 0 1px 1px;
+  border-block-width: 0 1px;
+  border-inline-width: 1px;
   color: vars.$color-black;
 
   &[tabindex] {

@@ -3,6 +3,7 @@
     ========================================================================= */
 
 @use 'sass/vars';
+@use 'sass/functions';
 @use 'supple/tools/mixins';
 
 /*  Animation
@@ -50,7 +51,7 @@
 
 .c-modal {
   position: fixed;
-  //z-index: #{get-z-index(modal)};
+  z-index: functions.get-z-index(modal);
   top: 0;
   right: 0;
   bottom: 0;
@@ -76,9 +77,9 @@
 
 .c-modal__modal {
   background-color: vars.$color-white;
-  width: calc(100% - #{vars.$space-base});
-  max-width: 640px;
-  max-height: calc(100% - #{vars.$space-base});
+  inline-size: calc(100% - #{vars.$space-base});
+  max-inline-size: 640px;
+  max-block-size: calc(100% - #{vars.$space-base});
   display: flex;
   flex-direction: column;
   position: relative;
@@ -89,20 +90,25 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(to top, vars.$color-white 20%, transparentize(vars.$color-white, 1) 100%);
-    height: vars.$space-base;
+    block-size: vars.$space-small;
+    background-image: linear-gradient(transparentize(vars.$color-white, 1), vars.$color-white);
   }
 }
 
+.c-modal__close-button {
+  display: block;
+  // todo: size to heading h3. seems not correct to do it via font-size.
+}
+
 .c-modal__header {
-  border-bottom: 1px solid vars.$color-black;
-  padding: vars.$space-small vars.$space-small 0;
+  border-block-end: 1px solid vars.$color-black;
+  padding: vars.$space-small;
 }
 
 .c-modal__content {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  padding: vars.$space-small vars.$space-small 1px;
+  padding: vars.$space-small;
 }
 
 
@@ -128,15 +134,16 @@
     ========================================================================= */
 
 @include mixins.mq(lap) {
-  .c-modal__header {
+  .c-modal__header,
+  .c-modal__content {
     padding: vars.$space-base;
   }
 
-  .c-modal__content {
-    padding: vars.$space-base vars.$space-base 1px;
-  }
-
   .c-modal__modal {
-    max-height: calc(100% - #{vars.$space-base*2});
+    max-block-size: calc(100% - #{vars.$space-base*2});
+
+    &::after {
+      block-size: vars.$space-base;
+    }
   }
 }

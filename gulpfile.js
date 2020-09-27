@@ -64,6 +64,7 @@ const stylesDevTask = () => (
     `${config.paths.source.patterns}**/*.scss`,
   ])
     .pipe(stylelint({
+      failAfterError: false,
       reporters: [
         {
           formatter: 'string',
@@ -81,7 +82,6 @@ const stylesDevTask = () => (
     .pipe(postcss())
     .pipe(sourcemaps.write('.'))
     .pipe(dest(config.paths.public.css))
-    // .pipe(browserSync.stream())
 );
 
 const stylesProdTask = () => (
@@ -224,7 +224,7 @@ const buildStyleguide = (cb) => {
   const builder = fractal.web.builder();
 
   builder.build().then(() => {
-    console.log('Fractal static HTML build complete.');
+    logger.success('Fractal static HTML build complete.');
     cb();
   });
 };

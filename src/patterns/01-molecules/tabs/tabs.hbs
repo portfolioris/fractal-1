@@ -4,73 +4,58 @@
     <div class="c-tabs__tablist" role="tablist" aria-labelledby="tablist-subjects">
       <div id="tablist-subjects" class="u-visually-hidden">Subjects</div>
       {{#each tabs }}
-        <div class="c-tabs__list-item">
-          <button
-            type="button"
-            class="c-tabs__tab  o-button-clean"
+          <a
+            class="c-tabs__tab"
             data-module-bind="tabs-tab"
             role="tab"
-            aria-controls="panel-{{ @index }}"
-            id="tab-{{ @index }}"
+            href="#panel-{{ id }}"
+            aria-controls="panel-{{ id }}"
+            id="tab-{{ id }}"
           >
             {{ tabHeading }}
-          </button>
-        </div>
+          </a>
       {{/each}}
     </div>
   </div>
 
   <div class="o-layout  o-layout--equalheight">
     <div class="o-layout__cell  o-layout__cell--fit">
-      <div>
-        <div class="c-tabs__tablist-expanded" role="tablist" aria-labelledby="tablist-subjects">
-          {{#each tabs }}
-            <div class="c-tabs__expanded-item" data-module-bind="tablist-item">
-              <button
-                type="button"
-                class="c-tabs__expanded-tab  o-button-clean"
-                data-module-bind="tabs-tab-expanded"
-                role="tab"
-                aria-controls="panel-{{ @index }}"
-              >
-                      <span class="o-layout  o-layout--gap-small  o-layout--align-middle">
-                        <span class="o-layout__cell  o-layout__cell--fill">
-                          {{ tabHeading }}
-                        </span>
-                        <span class="o-layout__cell  o-layout__cell--fit">
-                          {{ render '@atoms-icon--chevron-right' }}
-                        </span>
-
-                      </span>
-              </button>
-            </div>
-
-          {{/each}}
-        </div>
+      <div class="c-tabs__tablist-expanded" role="tablist" aria-labelledby="tablist-subjects">
+        {{#each tabs }}
+          <a
+            class="c-tabs__tab  _c-tabs__expanded-tab"
+            data-module-bind="tabs-tab-expanded"
+            role="tab"
+            href="#panel-{{ id }}"
+            aria-controls="panel-{{ id }}"
+          >
+            <span class="o-layout  o-layout--gap-small  o-layout--align-block-center">
+              <span class="o-layout__cell  o-layout__cell--fill">
+                {{ tabHeading }}
+              </span>
+              <span class="o-layout__cell  o-layout__cell--fit">
+                {{ render '@atoms-icon--chevron-right' }}
+              </span>
+            </span>
+          </a>
+        {{/each}}
       </div>
-
     </div>
-
     <div class="o-layout__cell  o-layout__cell--fill">
       <div>
-
         {{#each tabs}} {{! panels, actually }}
           <div
-            class="c-tabs__panel  u-module"
+            class="c-tabs__panel"
             data-module-bind="tabs-panel"
             tabindex="0"
             role="tabpanel"
-            id="panel-{{ @index }}"
-            aria-labelledby="tab-{{ @index }}"
+            id="panel-{{ id }}"
+            aria-labelledby="tab-{{ id }}"
           >
-
             {{{ content }}}
-
           </div>
         {{/each}}
       </div>
-
     </div>
   </div>
-
 </div>
