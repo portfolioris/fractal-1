@@ -18,7 +18,6 @@
     "focus-visible": "^5.1.0",
     "intersection-observer": "^0.11.0",
     "scroll-into-view": "^1.15.0",
-    "supple": "git://github.com/supple-css/supple.git#feature/future-proof",
     "svgxuse": "^1.2.6",
     "wicg-inert": "^3.0.3"
   },
