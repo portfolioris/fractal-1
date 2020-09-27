@@ -1,15 +1,21 @@
 /*  =========================================================================
-    Foundation.Atoms.Forms.InputSelect
+    Atoms.InputSelect
     Purely css styled select input field
     ========================================================================= */
 
+/*  Variables
+    ========================================================================= */
+
+@use 'sass/vars';
+
+
+
 /*  Module
+    1. Overlap the <select> and icon, align with logical properties
     ========================================================================= */
 
 .c-select {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+  display: grid; /* [1] */
 }
 
 
@@ -18,36 +24,21 @@
     ========================================================================= */
 
 .c-select__element {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
   appearance: none;
-  padding-right: 2.5rem;
-
-  /**
-   * Remove excess padding and border in Firefox 4+
-   */
-  &::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
+  padding-inline-end: 2.5rem;
 
   &::-ms-expand {
     display: none;
   }
-
-  /**
-   * Undo the Firefox inner focus ring
-   */
-  &:focus:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 currentColor;
-  }
 }
 
 .c-select__wrap-icon {
-  position: absolute;
-  top: 50%;
-  @include supple-rem(right, $supple-space-base);
-  z-index: 1;
-  transform: translate(50%, -50%);
-  font-size: 1em;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: end;
+  align-self: center;
+  padding-inline-end: vars.$space-small;
   pointer-events: none;
 }

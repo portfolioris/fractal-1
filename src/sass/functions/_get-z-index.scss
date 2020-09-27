@@ -1,0 +1,34 @@
+/* ========================================================================== *\
+	#Z-INDEX
+	A map with all the classes which have a z-index. Add new classes to the map
+ * when needed.
+\* ========================================================================== */
+
+$_z-index-order: (
+  /* Bottom element, lowest z-index */
+  'flyout-panel',
+  'modal',
+  /* Top elements, highest z-index */
+);
+
+
+/*  Functions
+This function will return a z-index based on the position of the element in the z-index map.
+Stylelint is ignored on purpose: shouldn't rely on functions too much.
+See https://sass-guidelin.es/#mixins
+    ========================================================================= */
+
+@function get-z-index($element: '') {
+  @if ($element == '') {
+    $element: #{&};
+  }
+
+  $z-index: index($_z-index-order, $element);
+
+  @if $z-index {
+    @return $z-index;
+  }
+
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$_z-index-order}';
+  @return null;
+}

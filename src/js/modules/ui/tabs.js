@@ -46,15 +46,13 @@ class Tabs {
 
   // activate panel on click tab
   handleClickTab(event) {
-    this.activateTab(event.currentTarget);
+    this.activatePanel(event.currentTarget.getAttribute('aria-controls'));
   }
 
-  activateTab(tab, setFocus = true) {
+  activatePanel(panelId, setFocus = true) {
     this.deactivateTabs();
 
-    // lookup panel to activate
-    const $activePanel = Array.from(this.$panels).find(($panel) => $panel.id === tab.getAttribute('aria-controls'));
-
+    const $activePanel = Array.from(this.$panels).find(($panel) => $panel.id === panelId);
     this.state.activePanelId = $activePanel.id;
 
     // lookup tab to activate
@@ -99,7 +97,7 @@ class Tabs {
   }
 
   activateFirstTab(setFocus = true) {
-    this.activateTab(this.$tabs[0], setFocus);
+    this.activatePanel(this.$panels[0].id, setFocus);
   }
 
   // controls to jump to first/last tab by pressing home/end keys
@@ -112,7 +110,7 @@ class Tabs {
         break;
       case 'end':
         event.preventDefault();
-        this.activateTab(this.$tabs[this.$tabs.length - 1], true);
+        this.activatePanel(this.$panels[this.$panels.length - 1].id);
         break;
       default:
         break;
@@ -121,21 +119,28 @@ class Tabs {
 
   // controls to go to previous/next tab by pressing left/right keys
   handleKeyUpTab(event) {
-    const currentTabIndex = Array.from(this.$tabs).indexOf(event.target);
+    const currentPanel = Array.from(this.$panels).find(
+      ($panel) => $panel.id === this.state.activePanelId,
+    );
+    const currentTabIndex = Array.from(this.$panels).indexOf(currentPanel);
 
     const keyCode = getKeyCode(event);
     switch (keyCode) {
       case 'left':
       case 'arrowleft':
+      case 'up':
+      case 'arrowup':
         if (currentTabIndex - 1 >= 0) {
-          this.activateTab(this.$tabs[currentTabIndex - 1]);
+          this.activatePanel(this.$panels[currentTabIndex - 1].id);
         }
         break;
       case 'right':
       case 'arrowright':
+      case 'down':
+      case 'arrowdown':
         // go to next tab
-        if (currentTabIndex + 1 < this.$tabs.length) {
-          this.activateTab(this.$tabs[currentTabIndex + 1]);
+        if (currentTabIndex + 1 < this.$panels.length) {
+          this.activatePanel(this.$panels[currentTabIndex + 1].id);
         }
         break;
       default:

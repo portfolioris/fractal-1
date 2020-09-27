@@ -2,6 +2,10 @@
     Components.Flyout
     ========================================================================= */
 
+@use 'sass/vars';
+@use '@supple-kit/supple-css/tools/mixins';
+@use 'sass/functions';
+
 /*  Module
     ========================================================================= */
 
@@ -20,28 +24,31 @@
 
 .c-flyout__panel {
   position: absolute;
-  z-index: 3;
-  left: $supple-space-tiny;
-  right: $supple-space-tiny;
-  margin-top: $supple-space-small;
-  border: 1px solid $color-gray;
-  padding: $supple-space-small;
+  z-index: functions.get-z-index(flyout-panel);
+  // todo: not supported in most modern browsers
+  left: vars.$space-tiny;
+  right: vars.$space-tiny;
+  // supported in FF
+  inset-inline: vars.$space-tiny;
+  margin-block-start: vars.$space-small;
+  border: 1px solid vars.$color-gray;
+  padding: vars.$space-small;
 }
 
 .c-flyout__arrow {
   position: absolute;
-  top: calc(100% + #{$supple-space-small - 8px + 1px});
+  top: calc(100% + #{vars.$space-small - 8px + 1px});
   z-index: 4;
   // TODO: add correction for screen edges
   left: 50%;
   transform: translateX(-50%);
-  color: $color-white;
-  filter: drop-shadow(0 -1px 0 $color-gray);
+  color: vars.$color-white;
+  filter: drop-shadow(0 -1px 0 vars.$color-gray);
   display: none;
 
   .c-icon {
-    width: 16px;
-    height: 8px;
+    inline-size: 16px;
+    block-size: 8px;
   }
 }
 
@@ -60,15 +67,25 @@
 /*  Responsive
     ========================================================================= */
 
-@include supple-mq(lap) {
+@include mixins.mq(lap) {
   .c-flyout {
     position: relative;
   }
 
   .c-flyout__panel {
-    top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    min-width: 360px;
+    min-inline-size: 360px;
+
+    //&.is-offset-left {
+    //  left: 0;
+    //  transform: translateX(0);
+    //}
+    //
+    //&.is-offset-right {
+    //  right: 0;
+    //  left: auto;
+    //  transform: translateX(0);
+    //}
   }
 }

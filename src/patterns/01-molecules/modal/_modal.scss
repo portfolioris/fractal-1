@@ -2,6 +2,10 @@
     Components.Modal
     ========================================================================= */
 
+@use 'sass/vars';
+@use 'sass/functions';
+@use '@supple-kit/supple-css/tools/mixins';
+
 /*  Animation
     ========================================================================= */
 
@@ -9,13 +13,13 @@
   0% {
     display: none;
     opacity: 0;
-    transform: translateY($supple-space-large);
+    transform: translateY(vars.$space-large);
   }
 
   1% {
     display: block;
     opacity: 0;
-    transform: translateY($supple-space-large);
+    transform: translateY(vars.$space-large);
   }
 
   100% {
@@ -47,7 +51,7 @@
 
 .c-modal {
   position: fixed;
-  //z-index: #{get-z-index(modal)};
+  z-index: functions.get-z-index(modal);
   top: 0;
   right: 0;
   bottom: 0;
@@ -67,15 +71,15 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: transparentize($color-black, 0.5);
+  background-color: transparentize(vars.$color-black, 0.5);
   opacity: 0;
 }
 
 .c-modal__modal {
-  background-color: $color-white;
-  width: calc(100% - #{$supple-space-base});
-  max-width: 640px;
-  max-height: calc(100% - #{$supple-space-base});
+  background-color: vars.$color-white;
+  inline-size: calc(100% - #{vars.$space-base});
+  max-inline-size: 640px;
+  max-block-size: calc(100% - #{vars.$space-base});
   display: flex;
   flex-direction: column;
   position: relative;
@@ -86,20 +90,25 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(to top, $color-white 20%, transparentize($color-white, 1) 100%);
-    height: $supple-space-base;
+    block-size: vars.$space-small;
+    background-image: linear-gradient(transparentize(vars.$color-white, 1), vars.$color-white);
   }
 }
 
+.c-modal__close-button {
+  display: block;
+  // todo: size to heading h3. seems not correct to do it via font-size.
+}
+
 .c-modal__header {
-  border-bottom: 1px solid $color-black;
-  padding: $supple-space-small $supple-space-small 0;
+  border-block-end: 1px solid vars.$color-black;
+  padding: vars.$space-small;
 }
 
 .c-modal__content {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  padding: $supple-space-small $supple-space-small 1px;
+  padding: vars.$space-small;
 }
 
 
@@ -111,11 +120,11 @@
   display: flex;
 
   .c-modal__modal {
-    animation: modalIn $base-transition-duration ease-out;
+    animation: modalIn vars.$base-transition-duration ease-out;
   }
 
   .c-modal__overlay {
-    animation: overlayIn $base-transition-duration-short linear forwards;
+    animation: overlayIn vars.$base-transition-duration-short linear forwards;
   }
 }
 
@@ -124,16 +133,17 @@
 /*  Responsive
     ========================================================================= */
 
-@include supple-mq(lap) {
-  .c-modal__header {
-    padding: $supple-space-base;
-  }
-
+@include mixins.mq(lap) {
+  .c-modal__header,
   .c-modal__content {
-    padding: $supple-space-base $supple-space-base 1px;
+    padding: vars.$space-base;
   }
 
   .c-modal__modal {
-    max-height: calc(100% - #{$supple-space-base*2});
+    max-block-size: calc(100% - #{vars.$space-base*2});
+
+    &::after {
+      block-size: vars.$space-base;
+    }
   }
 }

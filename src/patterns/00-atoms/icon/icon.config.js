@@ -1,7 +1,6 @@
 module.exports = {
   context: {
-    icon: 'icon-arrow-right',
-    modifier: null,
+    icon: 'icon-chevron-right',
   },
   variants: [
     {

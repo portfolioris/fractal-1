@@ -2,6 +2,8 @@
     Components.Label
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Module
     ========================================================================= */
 
@@ -9,7 +11,7 @@ label,
 legend,
 .c-label {
   display: block;
-  margin-bottom: $supple-space-tiny;
+  margin-block-end: vars.$space-tiny;
 }
 
 
@@ -23,6 +25,6 @@ legend,
 }
 
 .c-label__label {
-  font-weight: $font-weight-bold;
+  font-weight: vars.$font-weight-bold;
 }
 

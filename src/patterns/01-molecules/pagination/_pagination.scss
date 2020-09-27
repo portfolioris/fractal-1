@@ -2,6 +2,8 @@
     Components.Pagination
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Block
     ========================================================================= */
 
@@ -20,17 +22,14 @@
 
 .c-paging__item {
   display: block;
-  padding: $supple-space-tiny;
-  min-width: $supple-space-tiny*5;
+  padding: vars.$space-tiny;
+  min-inline-size: vars.$space-tiny*5;
   text-align: center;
   text-decoration: none;
 
-  #{$global-interaction-states} {
-    //background-color: $color-off-black;
-  }
-
+  #{vars.$global-interaction-states},
   &[aria-current='true'] {
-    //background-color: $color-off-black;
+    background-color: vars.$color-gray;
   }
 }
 

@@ -1,49 +1,30 @@
 /*  =========================================================================
-    foundation.elements.toplevel
+    elements.toplevel
     Describes toplevel styles such as HTML, body, etc.
     ========================================================================= */
 
+@use 'sass/vars';
+
+
+
 /*  Module
-    Core module
     ========================================================================= */
 
 html {
-  font-family: $font-family-primary;
-  color: $color-black;
-  font-weight: $font-weight-regular;
+  font-family: vars.$font-family-primary;
+  color: vars.$color-black;
+  font-weight: vars.$font-weight-regular;
   scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background: $color-black;
-}
-
-button {
-  cursor: pointer;
+  overflow-x: hidden;
 }
 
 button svg {
   pointer-events: none;
 }
 
-fieldset,
-figure {
-  margin: 0;
-}
-
-
-/**
- * Override from normalize.css
- */
 b,
 strong {
-  font-weight: $font-weight-bold;
+  font-weight: vars.$font-weight-bold;
 }
 
 table {
@@ -54,4 +35,8 @@ td,
 th,
 caption {
   text-align: left;
+}
+
+[hidden] {
+  display: none !important;
 }

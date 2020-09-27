@@ -1,16 +1,10 @@
 /*  =========================================================================
-    atoms.icon
-    Icon system based on svg sprites
+    Atoms.Objects.Retain
     ========================================================================= */
 
-@use 'sass/vars';
+@use '@supple-kit/supple-css/objects/retain';
+
+
 
 /*  Module
     ========================================================================= */
-
-.c-icon {
-  display: block;
-  inline-size: vars.$line-height;
-  block-size: vars.$line-height;
-  fill: currentColor;
-}

@@ -2,6 +2,8 @@
     Components.Input-number
     ========================================================================= */
 
+@use 'sass/vars';
+
 /*  Block
     ========================================================================= */
 
@@ -17,7 +19,7 @@
 .c-input-number__input,
 input[type='number'] {
   -moz-appearance: textfield;
-  width: calc(3ch + 2 * (#{$supple-space-small} - 2px));
+  inline-size: calc(3ch + 2 * (#{vars.$space-small} - 2px));
   text-align: center;
 }
 
@@ -25,8 +27,4 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.c-input-number__btn {
-  background-color: #dddddd;
 }

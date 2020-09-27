@@ -2,6 +2,9 @@
     Components.Breadcrumbs
     ========================================================================= */
 
+@use 'sass/vars';
+@use '@supple-kit/supple-css/tools/mixins';
+
 /*  Block
     ========================================================================= */
 
@@ -27,7 +30,7 @@
   &[aria-current] {
     text-decoration: none;
 
-    #{$global-interaction-states} {
+    #{vars.$global-interaction-states} {
       text-decoration: underline;
     }
   }
@@ -37,7 +40,7 @@
 /*  Responsive
     ========================================================================= */
 
-@include supple-mq(lap) {
+@include mixins.mq(lap) {
   .c-breadcrumbs__parent-arrow-right,
   .c-breadcrumbs__item {
     display: block;

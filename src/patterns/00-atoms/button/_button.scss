@@ -2,6 +2,21 @@
 Atoms.Button
 ========================================================================= */
 
+/*  Variables
+    ========================================================================= */
+
+@use 'sass/vars';
+$color: vars.$color-black;
+$border-width: 2px;
+$border-radius: 4px;
+$border-color: vars.$color-black;
+$background: vars.$color-white;
+$hover-color: vars.$color-black;
+$hover-border-color: vars.$color-black;
+$hover-background: vars.$color-gray;
+
+
+
 /*  Module
     ========================================================================= */
 
@@ -11,43 +26,35 @@ Atoms.Button
   display: inline-block;
   vertical-align: middle;
   // spacing
-  //border: 1px solid $color-brand-primary-base;
-  border-radius: 5px;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
   // text
   text-decoration: none;
-  text-align: left;
+  text-align: start;
   font: inherit;
-  //font-size: $micro;
-  text-transform: uppercase;
-  //font-weight: $font-weight-semibold;
   line-height: 0;
-  letter-spacing: 1px;
-  background-color: $color-white;
-  border: 1px solid $color-black;
+  background: $background;
+  color: $color;
   // animation
-  //transition: $base-transition-duration-short $base-timing-function;
+  transition: vars.$base-transition-duration-short vars.$base-timing-function;
   transition-property: color, background-color, border;
 
-  //#{$global-interaction-states} {
-  //background-color: #a71432; // todo: enable
-  //border-color: #a71432; // todo: enable
-  //color: $color-white;
-
-  //&a.c-button__wrap-icon {
-  //  transform: translateX($supple-space-tiny / 2);
-  //}
-  //}
+  #{vars.$global-interaction-states} {
+    background: $hover-background;
+    border-color: $hover-border-color;
+    color: $hover-color;
+  }
 
   // if supported
   &:focus-visible {
     //outline: none;
-    //box-shadow: 0 0 2px 2px $color-brand-c; // todo: enable
+    //box-shadow: 0 0 2px 2px vars.$color-brand-c; // todo: enable
   }
 
   // firefox' way of support
   &:-moz-focusring {
     //outline: none;
-    //box-shadow: 0 0 2px 2px $color-brand-c; // todo: enable
+    //box-shadow: 0 0 2px 2px vars.$color-brand-c; // todo: enable
   }
 }
 
@@ -56,43 +63,24 @@ Atoms.Button
 /*  Elements
     ========================================================================= */
 
-/**
-  * 1. Reset that line-height again
-  */
 .c-button__inner {
   display: flex;
-  line-height: 1; /* [1] */
+  align-items: center;
+  line-height: 1;
 }
 
 .c-button__label {
-  padding: $supple-space-tiny*1.5 $supple-space-small;
-  //color: $color-brand-primary-base;
+  padding: calc(#{vars.$space-small} - #{$border-width});
+}
+
+.c-button__wrap-icon {
+  padding-inline-end: calc(#{vars.$space-small} - #{$border-width});
 }
 
 
 
 /*  Modifiers
     ========================================================================= */
-
-.c-button--large {
-  //font-size: $normalis;
-  //font-weight: $font-weight-extrabold;
-  letter-spacing: 0.5px;
-
-  .c-button__label {
-    padding: $supple-space-small;
-  }
-}
-
-.c-button--flat {
-  background-color: transparent;
-  border: none;
-
-  .c-button__label {
-    padding: 0;
-  }
-}
-
 
 /**
   * Reversed
@@ -101,38 +89,17 @@ Atoms.Button
   .c-button__inner {
     flex-direction: row-reverse;
   }
+
+  .c-button__wrap-icon {
+    padding-inline-end: 0;
+    padding-inline-start: calc(#{vars.$space-small} - #{$border-width});
+  }
 }
 
 
 /**
   * Full width
-  */
+ */
 .c-button--full-width {
-  width: 100%;
-}
-
-
-/**
-  * Colours
-  */
-.c-button--contrast {
-  //background-color: $color-brand-secondary-base;
-  //border-color: $color-brand-secondary-base;
-
-  .c-button__label {
-    //color: $color-white;
-  }
-}
-
-
-
-/*  Theming
-    ========================================================================= */
-
-.t-color--light {
-  .c-button--flat {
-    .c-button__label {
-      //color: $color-white;
-    }
-  }
+  display: block;
 }

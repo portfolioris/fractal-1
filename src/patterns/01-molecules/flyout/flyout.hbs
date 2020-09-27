@@ -1,14 +1,14 @@
 <div class="c-flyout" data-module="ui/flyout">
   <div class="c-flyout__wrap-button">
 
-    {{ render '@atoms-button' toggle }}
+    {{ render '@atoms-button' toggle merge=true }}
 
     <span class="c-flyout__arrow">
       {{ render '@atoms-icon--triangle' }}
     </span>
 
   </div>
-  <div class="c-flyout__panel  u-module" hidden data-module-bind="flyout-panel" hidden>
+  <div class="c-flyout__panel  o-flow" data-module-bind="flyout-panel" hidden>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias assumenda aut, commodi culpa
       delectus deleniti, in itaque maiores, modi necessitatibus nihil officiis provident quibusdam
       quisquam reprehenderit sapiente sint vel voluptates.</p>

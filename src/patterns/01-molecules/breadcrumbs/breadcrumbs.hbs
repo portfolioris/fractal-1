@@ -19,10 +19,10 @@
 
 <nav aria-labelledby="breadcrumbs-label" class="c-breadcrumbs">
   <div id="breadcrumbs-label" class="u-visually-hidden">Breadcrumbs</div>
-  <ol class="o-layout  o-layout--align-middle">
+  <ol class="o-layout  o-layout--align-block-center">
     {{#each items }}
       <li class="o-layout__cell  o-layout__cell--fit  c-breadcrumbs__item  {{#if isParent}}c-breadcrumbs__parent{{/if}}">
-        <span class="o-layout  o-layout--align-middle">
+        <span class="o-layout  o-layout--align-block-center">
           {{#if isParent }}
             <span class="o-layout__cell  o-layout__cell--fit  c-breadcrumbs__parent-arrow-left">
               {{ render '@atoms-icon--chevron-left' }}
