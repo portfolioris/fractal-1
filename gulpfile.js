@@ -116,7 +116,6 @@ const javascriptLintTask = (cb) => {
 
 const javascriptDevTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    // .pipe(plumber())
     .pipe(webpackStream(webpackConfigDev, webpack, (err, stats) => {
       // log errors and warnings
       if (stats.hasErrors() || stats.hasWarnings()) {
@@ -135,14 +134,12 @@ const javascriptDevTask = (cb) => {
 
 const javascriptES6Task = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    // .pipe(plumber())
     .pipe(webpackStream(webpackConfigES6, webpack, () => cb()))
     .pipe(dest(config.paths.public.js));
 };
 
 const javascriptES5Task = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    // .pipe(plumber())
     .pipe(webpackStream(webpackConfigES5, webpack, () => cb()))
     .pipe(dest(config.paths.public.js));
 };
@@ -244,24 +241,23 @@ const watchTask = (cb) => {
   watch([
     `${config.paths.source.sass}**/*.scss`,
     `${config.paths.source.patterns}**/*.scss`,
-  // ], series(stylesDevTask, copyBuildTask));
-  ], series(stylesDevTask));
+  ], stylesDevTask);
 
   /**
    * Javascripts
    */
-  watch(`${config.paths.source.js}**/*.js`, series(javascriptLintTask, copyBuildTask));
+  watch(`${config.paths.source.js}**/*.js`, javascriptLintTask);
 
   /**
    * SVG
    */
-  watch(`${config.paths.source.svg}**/*.svg`, series(svgSpriteTask, copyBuildTask));
+  watch(`${config.paths.source.svg}**/*.svg`, svgSpriteTask);
 
 
   /**
    * Assets (enable if your assets public path differs from the source)
    */
-  watch(config.paths.source.assets, series(copyAssetsTask, copyBuildTask));
+  watch(config.paths.source.assets, copyAssetsTask);
 
   cb();
 };
@@ -272,16 +268,6 @@ const watchTask = (cb) => {
     Tasks which will be used from the command line. These tasks chain together
     all other tasks mentioned in this file.
 \*----------------------------------------------------------------------------*/
-
-/**
- * Build styleguide
- */
-// const patternlabAssetsTask = parallel(
-//   fullPatternlabTask,
-//   copyStyleguideTask,
-//   copyStyleguideCssTask,
-//   copyAnnotationsTask,
-// );
 
 /**
  * task: serve
