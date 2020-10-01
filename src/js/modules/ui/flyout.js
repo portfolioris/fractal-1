@@ -1,3 +1,5 @@
+import { getKeyCode } from '../../utilities';
+
 /**
  * Flyout
  * Generic system for a toggle button and overlapping foldout (flyout)
@@ -22,6 +24,7 @@ class Flyout {
     this.$toggleFoldout = this.$el.querySelector(' [data-module-bind=flyout-toggle]');
     this.$foldout = this.$el.querySelector('[data-module-bind=flyout-panel]');
     this.hideFoldoutOnBlur = this.hideFoldoutOnBlur.bind(this);
+    this.handleEscape = this.handleEscape.bind(this);
   }
 
   init() {
@@ -35,6 +38,7 @@ class Flyout {
     this.$foldout.hidden = false;
     this.state.isOpen = true;
     document.documentElement.addEventListener('click', this.hideFoldoutOnBlur);
+    document.addEventListener('keyup', this.handleEscape);
     // todo: add fix if flyout is outside screen edges
     this.correctOverflow();
     // todo: add flyout initial focus handler
@@ -55,7 +59,7 @@ class Flyout {
         this.$foldout.style.setProperty('--offset', entries[0].boundingClientRect.right - document.documentElement.clientWidth);
       }
     }, {
-      threshold: 0.99,
+      threshold: 1,
     });
 
     this.observer.observe(this.$foldout);
@@ -68,6 +72,7 @@ class Flyout {
     this.$foldout.classList.remove('is-offset-left');
     this.$foldout.classList.remove('is-offset-right');
     document.documentElement.removeEventListener('click', this.hideFoldoutOnBlur);
+    document.removeEventListener('keyup', this.handleEscape);
     this.observer.unobserve(this.$foldout);
   }
 
@@ -84,6 +89,14 @@ class Flyout {
   // hide foldout when clicking outside the component
   hideFoldoutOnBlur(e) {
     if (!this.$el.contains(e.target)) {
+      this.closeFoldout();
+    }
+  }
+
+  handleEscape(e) {
+    const keyCode = getKeyCode(e);
+
+    if (keyCode === 'esc' || keyCode === 'escape') {
       this.closeFoldout();
     }
   }

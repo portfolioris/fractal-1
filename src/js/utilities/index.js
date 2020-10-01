@@ -10,7 +10,7 @@ const toTwoDigit = (number) => (
 exports.toTwoDigit = toTwoDigit;
 
 const getKeyCode = (e) => {
-  let code;
+  let code = '';
 
   if (e.key !== undefined) {
     code = e.key;

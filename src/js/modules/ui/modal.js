@@ -51,7 +51,6 @@ class Modal {
 
     if (key === 27) {
       this.closeModal();
-      // e.stopPropagation();
     }
   }
 
