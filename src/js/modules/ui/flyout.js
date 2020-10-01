@@ -49,7 +49,6 @@ class Flyout {
 
   correctOverflow() {
     this.observer = new IntersectionObserver((entries) => {
-      console.log(entries[0].boundingClientRect, document.documentElement.clientWidth);
       if (entries[0].boundingClientRect.x < 0) {
         this.$foldout.classList.add('is-offset-left');
       }

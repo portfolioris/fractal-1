@@ -73,10 +73,10 @@
     transform: translateX(-50%);
     min-inline-size: 360px;
 
-    //&.is-offset-left {
-    //  left: 0;
-    //  transform: translateX(0);
-    //}
+    &.is-offset-left {
+      left: 0;
+      transform: translateX(0);
+    }
 
     &.is-offset-right {
       transform: translateX(calc(-50% - var(--offset) * 1px - #{vars.$space-base}));
