@@ -1,0 +1,20 @@
+<textarea
+  class="c-input-text  c-input-text--textarea"
+  id="{{name}}"
+  name="{{name}}"
+  {{#if placeholder}}
+  placeholder="{{placeholder}}"
+  {{/if}}
+  {{#if isRequired}}
+  required
+  {{/if}}
+  {{#if isReadonly}}
+  readonly="readonly"
+  {{/if}}
+  {{#if autocomplete}}
+  autocomplete="{{autocomplete}}"
+  {{/if}}
+  {{#if data}}
+    {{{data}}}
+  {{/if}}
+>{{ value }}</textarea>

@@ -24,6 +24,7 @@ $invalid-border-color: vars.$shared-input-invalid-border-color;
   border-radius: $border-radius;
   background: $background;
   padding: calc(#{vars.$space-small} - #{$border-width});
+  box-shadow: none;
   inline-size: 100%;
   font: inherit;
   appearance: none;

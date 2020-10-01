@@ -36,7 +36,7 @@ class Flyout {
     this.state.isOpen = true;
     document.documentElement.addEventListener('click', this.hideFoldoutOnBlur);
     // todo: add fix if flyout is outside screen edges
-    // this.correctOverflow();
+    this.correctOverflow();
     // todo: add flyout initial focus handler
     // if (this.$toggleFoldout.dataset.foldout__focus) {
     //   this.$el.querySelector(`#${this.$toggleFoldout.dataset.foldout__focus}`).focus();
@@ -45,14 +45,14 @@ class Flyout {
 
   correctOverflow() {
     this.observer = new IntersectionObserver((entries) => {
-      console.log(entries[0].boundingClientRect, window.innerWidth);
+      console.log(entries[0].boundingClientRect, document.documentElement.clientWidth);
       if (entries[0].boundingClientRect.x < 0) {
         this.$foldout.classList.add('is-offset-left');
       }
 
-      if (entries[0].boundingClientRect.right > window.innerWidth) {
-        console.log('offsetr');
+      if (entries[0].boundingClientRect.right > document.documentElement.clientWidth) {
         this.$foldout.classList.add('is-offset-right');
+        this.$foldout.style.setProperty('--offset', entries[0].boundingClientRect.right - document.documentElement.clientWidth);
       }
     }, {
       threshold: 0.99,

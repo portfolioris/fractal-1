@@ -25,10 +25,6 @@
 .c-flyout__panel {
   position: absolute;
   z-index: functions.get-z-index(flyout-panel);
-  // todo: not supported in most modern browsers
-  left: vars.$space-tiny;
-  right: vars.$space-tiny;
-  // supported in FF
   inset-inline: vars.$space-tiny;
   margin-block-start: vars.$space-small;
   border: 1px solid vars.$color-gray;
@@ -38,9 +34,8 @@
 .c-flyout__arrow {
   position: absolute;
   top: calc(100% + #{vars.$space-small - 8px + 1px});
-  z-index: 4;
-  // TODO: add correction for screen edges
-  left: 50%;
+  z-index: functions.get-z-index(flyout-panel) + 1;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
   color: vars.$color-white;
   filter: drop-shadow(0 -1px 0 vars.$color-gray);
@@ -73,6 +68,7 @@
   }
 
   .c-flyout__panel {
+    --offset: 0;
     left: 50%;
     transform: translateX(-50%);
     min-inline-size: 360px;
@@ -81,11 +77,9 @@
     //  left: 0;
     //  transform: translateX(0);
     //}
-    //
-    //&.is-offset-right {
-    //  right: 0;
-    //  left: auto;
-    //  transform: translateX(0);
-    //}
+
+    &.is-offset-right {
+      transform: translateX(calc(-50% - var(--offset) * 1px - #{vars.$space-base}));
+    }
   }
 }
