@@ -1,0 +1,49 @@
+/*  =========================================================================
+    Components.List-links
+    ========================================================================= */
+
+@use 'sass/vars';
+
+
+
+/*  Module
+    ========================================================================= */
+
+.c-list-links {
+  //
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-list-links__link {
+  display: block;
+  text-decoration: none;
+  padding-block: vars.$space-tiny;
+  color: vars.$color-black;
+
+  #{vars.$global-interaction-states} {
+    text-decoration: underline;
+  }
+}
+
+.c-list-links__item:not(:last-of-type) {
+  .c-list-links__link {
+    border-block-end: 1px solid vars.$color-gray;
+  }
+}
+
+
+
+/*  Theming
+    ========================================================================= */
+
+.t-color--light {
+  .c-list-links__item:not(:last-of-type) {
+    .c-list-links__link {
+      border-block-end-color: vars.$color-gray-light;
+    }
+  }
+}

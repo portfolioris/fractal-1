@@ -27,16 +27,18 @@
         </div>
       </header>
 
-      <div class="c-modal__content  o-flow">
+      <div class="c-modal__overflow">
+        <div class="c-modal__content  o-flow">
 
-        <div id="modal-rte-{{ id }}">{{{ rte }}}</div>
+          <div id="modal-rte-{{ id }}">{{{ rte }}}</div>
 
-        <form method="post" action="">
-          <p>{{ render '@atoms-button' submitBtn }}</p>
-        </form>
+          <form method="post" action="">
+            <p>{{ render '@atoms-button' submitBtn }}</p>
+          </form>
 
-        <p>{{ render '@atoms-button' cancelBtn }}</p>
+          <p>{{ render '@atoms-button' cancelBtn }}</p>
 
+        </div>
       </div>
 
     </div>

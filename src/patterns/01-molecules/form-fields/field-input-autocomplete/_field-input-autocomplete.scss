@@ -47,8 +47,9 @@
 .c-autocomplete__list {
   position: absolute;
   z-index: functions.get-z-index(flyout-panel);
-  left: 0;
-  right: 0;
+  inset-inline: 0;
+  //left: 0;
+  //right: 0;
   background-color: vars.$color-gray;
   max-block-size: 280px;
   overflow: auto;

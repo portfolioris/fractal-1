@@ -6,6 +6,8 @@
 @use 'sass/functions';
 @use '@supple-kit/supple-css/tools/mixins';
 
+
+
 /*  Animation
     ========================================================================= */
 
@@ -52,10 +54,7 @@
 .c-modal {
   position: fixed;
   z-index: functions.get-z-index(modal);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   justify-content: center;
   align-items: center;
 }
@@ -67,12 +66,23 @@
 
 .c-modal__overlay {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   background-color: transparentize(vars.$color-black, 0.5);
   opacity: 0;
+}
+
+/**
+  Scroll hints
+ */
+.c-modal__modal,
+.c-modal__header {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    block-size: vars.$space-small;
+    background-image: linear-gradient(transparentize(vars.$color-white, 1), vars.$color-white);
+  }
 }
 
 .c-modal__modal {
@@ -83,31 +93,31 @@
   display: flex;
   flex-direction: column;
   position: relative;
-
-  &::after { /* [1] */
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    block-size: vars.$space-small;
-    background-image: linear-gradient(transparentize(vars.$color-white, 1), vars.$color-white);
-  }
 }
 
 .c-modal__close-button {
   display: block;
-  // todo: size to heading h3. seems not correct to do it via font-size.
 }
 
 .c-modal__header {
   border-block-end: 1px solid vars.$color-black;
   padding: vars.$space-small;
+  position: relative;
+
+  &::after {
+    // reposition, reverse gradient
+    inset: calc(100% + 1px) 0 auto;
+    background-image: linear-gradient(vars.$color-white, transparentize(vars.$color-white, 1));
+  }
+}
+
+.c-modal__overflow {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .c-modal__content {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
   padding: vars.$space-small;
 }
 
@@ -139,11 +149,14 @@
     padding: vars.$space-base;
   }
 
-  .c-modal__modal {
-    max-block-size: calc(100% - #{vars.$space-base*2});
-
+  .c-modal__modal,
+  .c-modal__header {
     &::after {
       block-size: vars.$space-base;
     }
+  }
+
+  .c-modal__modal {
+    max-block-size: calc(100% - #{vars.$space-base*2});
   }
 }

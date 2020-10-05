@@ -25,7 +25,7 @@
 .c-tabs__wrap-tablist {
   display: flex;
   position: sticky;
-  top: 0;
+  inset-inline-start: 0;
   z-index: 2;
   background-color: vars.$color-white;
 
@@ -66,9 +66,8 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: -1px;
-    left: 0;
+    inset-inline-start: 0;
+    inset-block: 0 -1px;
     background-color: vars.$color-black;
     inline-size: vars.$space-tiny;
     transform: scaleX(0);
@@ -104,7 +103,7 @@
 .c-tabs__tablist-expanded {
   display: none;
   position: sticky;
-  top: 0;
+  inset-block-start: 0;
   margin-block: vars.$space-large;
 }
 

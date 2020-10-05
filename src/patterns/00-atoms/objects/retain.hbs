@@ -1,3 +1,17 @@
 <div class="o-retain  {{#if size}}o-retain--{{ size }}{{/if}}">
-  {{> @partial-block }}
+  {{! render what's wrapped in parent component }}
+  {{#>@partial-block}}
+
+    {{! fallback, renders only if you directly browse to the partial }}
+    <div class="o-flow">
+      <p>Creates a wrapper around a block of content, centers, adds padding and retains it to your
+        desired size.</p>
+      <pre>
+    \{{#> '@atoms-retain' size='lap' }}
+      (Content, components)
+    \{{/ '@atoms-retain' }}
+      </pre>
+    </div>
+
+  {{/@partial-block }}
 </div>

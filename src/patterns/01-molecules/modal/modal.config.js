@@ -1,8 +1,8 @@
 module.exports = {
   context: {
     id: 'modal-unique-id',
-    heading: 'Heading of the modal',
-    rte: '<p>Are you sure?</p>',
+    heading: 'Are you sure?',
+    rte: '<p>A good description that describes the consequences of this action.</p>',
     triggerBtn: {
       element: 'button',
       type: 'button',

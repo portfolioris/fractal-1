@@ -1,0 +1,17 @@
+<ul class="o-list-clean  c-list-links">
+  {{#each items}}
+    <li class="c-list-links__item">
+      <a href="{{ link }}" class="c-list-links__link">
+          <span
+            class="o-layout  o-layout--gap-tiny  o-layout--align-block-center">
+            <span class="o-layout__cell  o-layout__cell--fill">
+              {{label}}
+            </span>
+            <span class="o-layout__cell  o-layout__cell--fit  c-list-links__arrow">
+              {{ render '@atoms-icon--chevron-right' }}
+            </span>
+          </span>
+      </a>
+    </li>
+  {{/each}}
+</ul>

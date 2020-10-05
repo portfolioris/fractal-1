@@ -1,0 +1,27 @@
+{{#listIcons}}
+  <dl class="c-list-icons  o-layout  o-layout--gutter-small">
+  {{#listIcons.items}}
+      <div class="o-layout__cell  {{#isHorizontal}}o-layout__cell--fit{{/isHorizontal}}">
+        <div class="c-list-icons__item">
+          {{#hasLink}}
+            <a class="c-list-icons__link" href="{{href}}">
+          {{/hasLink}}
+          <div class="o-layout  o-layout--gutter-tiny" title="{{term}}">
+            <dt class="o-layout__cell  o-layout__cell--fit">
+          <span class="c-list-icons__icon">
+            {{> atoms-icon }}
+          </span>
+              <span class="u-visually-hidden">{{term}}</span>
+            </dt>
+            <dd class="o-layout__cell  o-layout__cell--fit">
+              {{definition}}
+            </dd>
+          </div>
+          {{#hasLink}}
+            </a>
+          {{/hasLink}}
+        </div>
+      </div>
+  {{/listIcons.items}}
+{{/listIcons}}
+</dl>
