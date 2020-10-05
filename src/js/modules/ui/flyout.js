@@ -39,7 +39,6 @@ class Flyout {
     this.state.isOpen = true;
     document.documentElement.addEventListener('click', this.hideFoldoutOnBlur);
     document.addEventListener('keyup', this.handleEscape);
-    // todo: add fix if flyout is outside screen edges
     this.correctOverflow();
     // todo: add flyout initial focus handler
     // if (this.$toggleFoldout.dataset.foldout__focus) {

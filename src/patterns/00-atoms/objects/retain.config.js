@@ -1,12 +1,12 @@
 module.exports = {
   context: {
-    modifier: null,
+    size: null,
   },
   variants: [
     {
       name: 'lap',
       context: {
-        modifier: 'o-retain--lap',
+        size: 'lap',
       },
     },
   ],
