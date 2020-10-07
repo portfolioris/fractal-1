@@ -1,25 +1,30 @@
 <form method="post" action="" data-module="ui/validate">
-  <fieldset>
-    <legend>Text inputs</legend>
+  <div class="o-flow">
+    <fieldset>
+      <legend>Text inputs</legend>
 
-    {{ render '@molecules-field-input-text' nameField merge=true }}
-    {{ render '@molecules-field-input-text' emailField merge=true }}
-    {{ render '@molecules-field-input-autocomplete' autocompleteField merge=true }}
-    {{ render '@molecules-field-input-radioset' radioField merge=true }}
-  </fieldset>
+      <div class="o-flow">
+        {{ render '@molecules-field-input-text' nameField merge=true }}
+        {{ render '@molecules-field-input-text' emailField merge=true }}
+        {{ render '@molecules-field-input-autocomplete' autocompleteField merge=true }}
+        {{ render '@molecules-field-input-radioset' radioField merge=true }}
+      </div>
 
-  <fieldset
-    hidden disabled
-    data-module-bind="validate-conditional"
-    data-field-name="expand-fieldset"
-    data-field-value="yes"
-  >
-    <legend>More inputs</legend>
+    </fieldset>
 
-    {{ render '@molecules-field-input-number' }}
+    <fieldset
+      hidden disabled
+      data-module-bind="validate-conditional"
+      data-field-name="expand-fieldset"
+      data-field-value="yes"
+    >
+      <legend>More inputs</legend>
 
-  </fieldset>
+      {{ render '@molecules-field-input-number' }}
 
-  {{ render '@molecules-field-input-submit' submit merge=true }}
+    </fieldset>
+
+    {{ render '@molecules-field-input-submit' submit merge=true }}
+  </div>
 
 </form>

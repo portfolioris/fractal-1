@@ -1,0 +1,24 @@
+/*  =========================================================================
+    Objects.Layout
+    ========================================================================= */
+
+@use 'sass/vars';
+@use '@supple-kit/supple-css/objects/layout' with (
+  $gaps: (
+    'base': vars.$space-base,
+    'small': vars.$space-small,
+    'tiny': vars.$space-tiny,
+  ),
+);
+
+
+
+/*  Module overrides, extensions
+    ========================================================================= */
+
+/**
+  Override specificity from postcss-dir-pseudo-class
+ */
+.o-layout {
+  padding-inline-start: 0;
+}

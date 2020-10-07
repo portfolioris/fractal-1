@@ -32,16 +32,10 @@
     ========================================================================= */
 
 @use '@supple-kit/supple-css/objects/list-clean';
-@use '@supple-kit/supple-css/objects/layout' with (
-  $gaps: (
-    'base': vars.$space-base,
-    'small': vars.$space-small,
-    'tiny': vars.$space-tiny,
-  ),
-);
 //@use '@supple-kit/supple-css/objects/aspect-ratio';
 @use '@supple-kit/supple-css/objects/flow';
-@use '../patterns/00-atoms/objects/retain';
+@use '../patterns/00-atoms/objects/retain/retain';
+@use '../patterns/00-atoms/objects/layout/layout';
 
 
 /*  Components

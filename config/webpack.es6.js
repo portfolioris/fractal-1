@@ -16,7 +16,6 @@ module.exports = merge(common, {
                   targets: {
                     esmodules: true,
                   },
-                  debug: false,
                 },
               ],
             ],

@@ -90,6 +90,7 @@ const stylesProdTask = () => (
     .pipe(sass({
       importer: tildeImporter, // enable imports from /node_modules/ using tilde character
       precision: 8,
+      includePaths: ['src', 'node_modules'],
     }))
     .pipe(postcss()) // default postcss.config.js
     .pipe(postcss([ // extra: minification
