@@ -1,7 +1,7 @@
-{{#> '@atoms-retain' size='lap' }}
-  <div class="o-layout  o-layout--align-inline-end">
-    <div class="o-layout__cell  o-layout__cell--fit">
-      {{ render '@molecules-flyout' }}
-    </div>
-  </div>
-{{/ '@atoms-retain' }}
+{{#> @atoms-retain size='lap' }}
+  {{#> @atoms-layout align-inline='end' }}
+    {{#> @atoms-cell fit=true }}
+      {{ render @molecules-flyout }}
+    {{/ @atoms-cell }}
+  {{/ @atoms-layout }}
+{{/ @atoms-retain }}

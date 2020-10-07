@@ -19,26 +19,26 @@
 
 <nav aria-labelledby="breadcrumbs-label" class="c-breadcrumbs">
   <div id="breadcrumbs-label" class="u-visually-hidden">Breadcrumbs</div>
-  {{#> '@atoms-layout' element='ol' align-block='center' }}
+  {{#> @atoms-layout element='ol' align-block='center' }}
     {{#each items }}
       <li class="o-layout__cell  o-layout__cell--fit  c-breadcrumbs__item  {{#if isParent}}c-breadcrumbs__parent{{/if}}">
-        {{#> '@atoms-layout' element='span' align-block='center' }}
+        {{#> @atoms-layout element='span' align-block='center' }}
           {{#if isParent }}
             {{#> '@atoms-cell' element='span' fit=true modifier='c-breadcrumbs__parent-arrow-left' }}
               {{ render '@atoms-icon--chevron-left' }}
             {{/'@atoms-cell'}}
           {{/if}}
-          {{#> '@atoms-cell' element='span' fit=true }}
+          {{#> @atoms-cell element='span' fit=true }}
             <a class="c-breadcrumbs__link" href="{{ href }}" {{#if isLast}}aria-current="page"{{/if}}>{{ title }}</a>
-          {{/'@atoms-cell'}}
+          {{/ @atoms-cell }}
           {{#unless isLast }}
             <span class="o-layout__cell  o-layout__cell--fit  {{#if isParent}}c-breadcrumbs__parent-arrow-right{{/if}}">
-              {{ render '@atoms-icon--chevron-right' }}
+              {{ render @atoms-icon--chevron-right }}
             </span>
           {{/unless}}
-        {{/'@atoms-layout'}}
+        {{/ @atoms-layout }}
       </li>
     {{/each}}
-  {{/'@atoms-layout'}}
+  {{/ @atoms-layout }}
 </nav>
 
