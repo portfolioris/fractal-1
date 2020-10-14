@@ -39,5 +39,11 @@ module.exports = {
         icon: 'icon-triangle',
       },
     },
+    {
+      name: 'star',
+      context: {
+        icon: 'icon-star',
+      },
+    },
   ],
 };

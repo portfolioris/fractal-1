@@ -2,8 +2,8 @@
     Components.Tablist
     ========================================================================= */
 
-@use 'sass/vars';
-@use '@supple-kit/supple-css/tools/mixins';
+@use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/tools/responsive';
 
 
 
@@ -115,7 +115,7 @@
   position: relative;
   margin-block-end: vars.$space-base;
   padding: vars.$space-base;
-  scroll-margin-top: vars.$space-large + vars.$space-tiny;
+  scroll-margin-block-start: vars.$space-large + vars.$space-tiny;
 
   &:focus {
     outline: 2px solid transparentize(vars.$color-black, 0.8); /* [1] */
@@ -133,7 +133,7 @@
 /*  Responsive
     ========================================================================= */
 
-@include mixins.mq(desk) {
+@include responsive.mq(desk) {
   .c-tabs__tablist-expanded {
     display: block;
   }

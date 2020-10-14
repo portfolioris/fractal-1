@@ -1,22 +1,16 @@
 /*  =========================================================================
-    Components.Forms
+    Components.Star-rating
     ========================================================================= */
 
 @use 'src/sass/vars';
-
-
-
-/*  Variables
-    ========================================================================= */
-
-$color-error: vars.$color-red;
+@use 'node_modules/@supple-kit/supple-css/tools/typography';
 
 
 
 /*  Block
     ========================================================================= */
 
-.c-form-field {
+.c-star-rating {
   //
 }
 
@@ -25,8 +19,14 @@ $color-error: vars.$color-red;
 /*  Elements
     ========================================================================= */
 
-.c-form-field__message {
-  margin-block-start: vars.$space-tiny;
-  margin-block-end: 0;
-  color: $color-error;
+.c-star-rating__empty {
+  color: vars.$color-white;
+}
+
+.c-star-rating__filled {
+  color: #ffa100;
+}
+
+.c-star-rating__amount {
+  @include typography.font-size(vars.$font-size-milli);
 }

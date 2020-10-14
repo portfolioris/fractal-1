@@ -2,9 +2,9 @@
     Components.Flyout
     ========================================================================= */
 
-@use 'sass/vars';
-@use '@supple-kit/supple-css/tools/mixins';
-@use 'sass/functions';
+@use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/tools/responsive';
+@use 'src/sass/functions';
 
 /*  Module
     ========================================================================= */
@@ -34,7 +34,7 @@
 .c-flyout__arrow {
   position: absolute;
   z-index: functions.get-z-index(flyout-panel) + 1;
-  inset-block-start: calc(100% + #{vars.$space-small - 8px + 1px});
+  inset-block-start: calc(100% + #{vars.$space-tiny} + 1px);
   inset-inline-start: 50%;
   transform: translateX(-50%);
   color: vars.$color-white;
@@ -62,7 +62,7 @@
 /*  Responsive
     ========================================================================= */
 
-@include mixins.mq(lap) {
+@include responsive.mq(lap) {
   .c-flyout {
     position: relative;
   }
@@ -73,12 +73,12 @@
     transform: translateX(-50%);
     min-inline-size: 360px;
 
-    &.is-offset-left {
+    &.is-offset-inline-start {
       inset-inline-start: 0;
       transform: translateX(0);
     }
 
-    &.is-offset-right {
+    &.is-offset-inline-end {
       transform: translateX(calc(-50% - var(--offset) * 1px - #{vars.$space-base}));
     }
   }

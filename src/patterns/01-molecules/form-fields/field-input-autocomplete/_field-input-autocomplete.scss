@@ -2,8 +2,8 @@
     Components.Autocomplete
     ========================================================================= */
 
-@use 'sass/vars';
-@use 'sass/functions';
+@use 'src/sass/vars';
+@use 'src/sass/functions';
 
 
 
@@ -48,8 +48,6 @@
   position: absolute;
   z-index: functions.get-z-index(flyout-panel);
   inset-inline: 0;
-  //left: 0;
-  //right: 0;
   background-color: vars.$color-gray;
   max-block-size: 280px;
   overflow: auto;

@@ -15,7 +15,7 @@
 /*  Generic
     ========================================================================= */
 
-@use '@supple-kit/supple-css/generic/reset';
+@use 'node_modules/@supple-kit/supple-css/generic/reset';
 
 
 
@@ -24,16 +24,16 @@
 
 @use 'elements/toplevel';
 @use 'elements/font-face';
-//@use '@supple-kit/supple-css/generic/elements/headings';
+//@use 'node_modules/@supple-kit/supple-css/generic/elements/headings';
 
 
 
 /*  Objects
     ========================================================================= */
 
-@use '@supple-kit/supple-css/objects/list-clean';
-//@use '@supple-kit/supple-css/objects/aspect-ratio';
-@use '@supple-kit/supple-css/objects/flow';
+@use 'node_modules/@supple-kit/supple-css/objects/list-clean';
+//@use 'node_modules/@supple-kit/supple-css/objects/aspect-ratio';
+@use 'node_modules/@supple-kit/supple-css/objects/flow';
 @use '../patterns/00-atoms/objects/retain/retain';
 @use '../patterns/00-atoms/objects/layout/layout';
 
@@ -48,6 +48,7 @@
 @use '../patterns/00-atoms/form-input/input-control/input-control';
 @use '../patterns/00-atoms/form-input/input-select/input-select';
 @use '../patterns/00-atoms/lists/list-links/list-links';
+@use '../patterns/00-atoms/star-rating/star-rating';
 @use '../patterns/01-molecules/form-fields/field-input-number/field-input-number';
 @use '../patterns/01-molecules/form-fields/form-field';
 @use '../patterns/01-molecules/breadcrumbs/breadcrumbs';
@@ -66,7 +67,7 @@
 //@use 'supple/utilities/colspan' with (
 //  $in-breakpoint: (desk),
 //);
-//@use '@supple-kit/supple-css/utilities/module';
-@use '@supple-kit/supple-css/utilities/visually-hidden';
-@use '@supple-kit/supple-css/utilities/hidden';
-@use '@supple-kit/supple-css/utilities/spacing';
+//@use 'node_modules/@supple-kit/supple-css/utilities/module';
+@use 'node_modules/@supple-kit/supple-css/utilities/visually-hidden';
+@use 'node_modules/@supple-kit/supple-css/utilities/hidden';
+@use 'node_modules/@supple-kit/supple-css/utilities/spacing';

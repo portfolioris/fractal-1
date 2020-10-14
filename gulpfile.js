@@ -6,10 +6,7 @@ const browserSync = require('browser-sync');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const eslint = require('gulp-eslint');
-// const notify = require('gulp-notify');
-// const plumber = require('gulp-plumber');
 const sass = require('gulp-dart-sass');
-const tildeImporter = require('node-sass-tilde-importer');
 const stylelint = require('gulp-stylelint');
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
@@ -75,9 +72,7 @@ const stylesDevTask = () => (
     }))
     .pipe(sourcemaps.init())
     .pipe(sass({
-      importer: tildeImporter,
       precision: 8,
-      includePaths: ['src', 'node_modules'],
     }))
     .pipe(postcss())
     .pipe(sourcemaps.write('.'))
@@ -86,11 +81,8 @@ const stylesDevTask = () => (
 
 const stylesProdTask = () => (
   src(`${config.paths.source.sass}**/*.scss`)
-    // .pipe(plumber())
     .pipe(sass({
-      importer: tildeImporter, // enable imports from /node_modules/ using tilde character
       precision: 8,
-      includePaths: ['src', 'node_modules'],
     }))
     .pipe(postcss()) // default postcss.config.js
     .pipe(postcss([ // extra: minification
@@ -107,7 +99,6 @@ const stylesProdTask = () => (
 // Lint scripts
 const javascriptLintTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    // .pipe(plumber())
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());

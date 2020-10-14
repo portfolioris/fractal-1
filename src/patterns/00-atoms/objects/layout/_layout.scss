@@ -2,12 +2,12 @@
     Objects.Layout
     ========================================================================= */
 
-@use 'sass/vars';
-@use '@supple-kit/supple-css/objects/layout' with (
+@use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/objects/layout' with (
   $gaps: (
-    'base': vars.$space-base,
-    'small': vars.$space-small,
-    'tiny': vars.$space-tiny,
+    'base',
+    'small',
+    'tiny'
   ),
 );
 

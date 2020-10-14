@@ -2,10 +2,12 @@
     settings.vars
     ========================================================================= */
 
-@forward '../../node_modules/@supple-kit/supple-css/settings/defaults' with (
+@forward 'node_modules/@supple-kit/supple-css/settings/defaults' with (
   $font-size: 16px,
   $line-height: 24px,
 );
+@use 'node_modules/@supple-kit/supple-css/settings/defaults';
+@use 'node_modules/@supple-kit/supple-css/tools/space';
 
 
 
@@ -14,12 +16,20 @@
     Place any of your own variables that sit on top of the framework here.
     ========================================================================= */
 
+$space-large: space.get('large');
+$space-base: space.get('base');
+$space-small: space.get('small');
+$space-tiny: space.get('tiny');
+
+
+
 /*  Fonts
     ========================================================================= */
 
 $font-family-primary: 'Public Sans', sans-serif;
 $font-weight-regular: 400;
 $font-weight-bold: 700;
+$font-size-milli: 14px;
 
 
 

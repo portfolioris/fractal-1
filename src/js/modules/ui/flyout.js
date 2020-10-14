@@ -49,11 +49,11 @@ class Flyout {
   correctOverflow() {
     this.observer = new IntersectionObserver((entries) => {
       if (entries[0].boundingClientRect.x < 0) {
-        this.$foldout.classList.add('is-offset-left');
+        this.$foldout.classList.add('is-offset-inline-start');
       }
 
       if (entries[0].boundingClientRect.right > document.documentElement.clientWidth) {
-        this.$foldout.classList.add('is-offset-right');
+        this.$foldout.classList.add('is-offset-inline-end');
         this.$foldout.style.setProperty('--offset', entries[0].boundingClientRect.right - document.documentElement.clientWidth);
       }
     }, {
@@ -67,8 +67,8 @@ class Flyout {
     this.$toggleFoldout.setAttribute('aria-expanded', 'false');
     this.$foldout.hidden = true;
     this.state.isOpen = false;
-    this.$foldout.classList.remove('is-offset-left');
-    this.$foldout.classList.remove('is-offset-right');
+    this.$foldout.classList.remove('is-offset-inline-start');
+    this.$foldout.classList.remove('is-offset-inline-end');
     document.documentElement.removeEventListener('click', this.hideFoldoutOnBlur);
     document.removeEventListener('keyup', this.handleEscape);
     this.observer.unobserve(this.$foldout);

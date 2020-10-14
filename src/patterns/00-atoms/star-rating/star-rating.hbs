@@ -1,0 +1,46 @@
+<div class="c-star-rating">
+  <div class="u-visually-hidden">
+    <label for="course-id-rating-{{ id }}">Beoordeling</label>
+    <meter id="course-id-rating-{{ id }}" value="{{ value }}" min="1"
+           max="{{ max }}">
+      {{ value }} out of {{ max }}
+    </meter>
+  </div>
+
+  <div class="o-layout  o-layout--gap-tiny  o-layout--align-block-center">
+    <div class="o-layout__cell  o-layout__cell--fit" aria-hidden="true">
+      <div class="o-layout">
+        <div class="o-layout__cell  o-layout__cell--fit">
+          <span class="c-star-rating__filled">
+            {{ render '@atoms-icon--star' }}
+          </span>
+        </div>
+        <div class="o-layout__cell  o-layout__cell--fit">
+          <span class="c-star-rating__filled">
+            {{ render '@atoms-icon--star' }}
+          </span>
+        </div>
+        <div class="o-layout__cell  o-layout__cell--fit">
+          <span class="c-star-rating__filled">
+            {{ render '@atoms-icon--star' }}
+          </span>
+        </div>
+        <div class="o-layout__cell  o-layout__cell--fit">
+          <span class="c-star-rating__filled">
+            {{ render '@atoms-icon--star' }}
+          </span>
+        </div>
+        <div class="o-layout__cell  o-layout__cell--fit">
+          <span class="c-star-rating__empty">
+            {{ render '@atoms-icon--star' }}
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <div class="o-layout__cell  o-layout__cell--fit">
+      <span class="c-star-rating__amount">({{ amount }}<span class="u-visually-hidden"> beoordelingen</span>)</span>
+    </div>
+  </div>
+
+</div>

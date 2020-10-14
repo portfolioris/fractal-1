@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <path id="shape" class="path" d="M12 2L15.361 7.989 22 9.639 17.622 14.851 18.181 22 12.114 19.231 5.819 22 6.449 15.077 2 9.639 8.456 8.13z" />
+  </defs>
+
+  <use xlink:href="#shape" stroke="#000" stroke-width="2" fill="none" />
+  <use xlink:href="#shape" fill="currentColor"  />
+
+</svg>

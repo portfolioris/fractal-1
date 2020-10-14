@@ -5,7 +5,8 @@
 /*  Variables
     ========================================================================= */
 
-@use 'sass/vars';
+@use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/tools/rem';
 $border-color: vars.$shared-input-border-color;
 $border-width: vars.$shared-input-border-width;
 $border-radius: vars.$shared-input-border-radius;
@@ -67,7 +68,7 @@ $hover-border-color: vars.$shared-input-hover-border-color;
     display: block;
     inline-size: $radio-dot-size;
     block-size: $radio-dot-size;
-    margin: ($indicator-size - $border-width * 2 - $radio-dot-size) / 2;
+    margin: calc((#{rem.convert($indicator-size) - $radio-dot-size} - #{$border-width*2}) / 2);
     background-color: $icon-color;
     border-radius: 50%;
     opacity: 0;

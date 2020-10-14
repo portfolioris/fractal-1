@@ -2,8 +2,8 @@
     Components.Breadcrumbs
     ========================================================================= */
 
-@use 'sass/vars';
-@use '@supple-kit/supple-css/tools/mixins';
+@use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/tools/responsive';
 
 /*  Block
     ========================================================================= */
@@ -40,7 +40,7 @@
 /*  Responsive
     ========================================================================= */
 
-@include mixins.mq(lap) {
+@include responsive.mq(lap) {
   .c-breadcrumbs__parent-arrow-right,
   .c-breadcrumbs__item {
     display: block;
