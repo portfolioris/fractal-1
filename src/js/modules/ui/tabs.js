@@ -136,7 +136,6 @@ class Tabs {
   }
 }
 
-
 // bind main function to $el (<div data-module="ui/tabs" data-context="@visible">)
 export default ($el) => {
   const inst = new Tabs($el);

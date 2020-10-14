@@ -41,4 +41,3 @@ const fuzzyMatchStringInArray = (string, array) => {
 };
 
 exports.fuzzyMatchStringInArray = fuzzyMatchStringInArray;
-

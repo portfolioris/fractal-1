@@ -1,18 +1,13 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base"
+  ],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
     "node": true
   },
   "rules": {
-    "no-multiple-empty-lines": [
-      "error",
-      {
-        "max": 3,
-        "maxEOF": 1
-      }
-    ],
     "no-param-reassign": [
       "error",
       {

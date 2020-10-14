@@ -20,7 +20,6 @@ const webpackConfigDev = require('./config/webpack.dev');
 const webpackConfigES5 = require('./config/webpack.es5');
 const webpackConfigES6 = require('./config/webpack.es6');
 
-
 /* ----------------------------------------------------------------------------*\
     Internal Tasks
 \*----------------------------------------------------------------------------*/
@@ -36,7 +35,6 @@ const copyAssetsTask = () => (
     .pipe(dest(config.paths.public.assets))
 );
 
-
 /**
  * Task copy:buildFiles
  */
@@ -49,7 +47,6 @@ const copyBuildTask = () => (
   ], { base: config.paths.public.root }) // this keeps the directory structure
     .pipe(dest(config.paths.build.root))
 );
-
 
 /*  Task: styles
     Tests for markup errors, compiles and autoprefixes the `scss` files
@@ -91,7 +88,6 @@ const stylesProdTask = () => (
     .pipe(dest(config.paths.public.css))
 );
 
-
 /*  Task: javascript
     Checks our own javascript files for potential errors.
 \*----------------------------------------------------------------------------*/
@@ -104,7 +100,6 @@ const javascriptLintTask = (cb) => {
     .pipe(eslint.failAfterError());
   cb();
 };
-
 
 const javascriptDevTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
@@ -141,7 +136,6 @@ const javascriptProdTask = parallel(
   javascriptES6Task,
 );
 
-
 /*  Task: svg
 \*----------------------------------------------------------------------------*/
 
@@ -156,7 +150,6 @@ const svgSpriteTask = () => (
     }))
     .pipe(dest(config.paths.public.svg))
 );
-
 
 /*  Task: connect
     Fires up a development server using browserSync
@@ -194,7 +187,6 @@ const hbs = require('@frctl/handlebars')({
 fractal.components.engine(hbs); /* set as the default template engine for components */
 fractal.docs.engine(hbs); /* you can also use the same instance for documentation, if you like! */
 
-
 // keep a reference to the fractal CLI console utility
 const logger = fractal.cli.console;
 
@@ -220,7 +212,6 @@ const buildStyleguide = (cb) => {
 
 exports.buildStyleguide = buildStyleguide;
 
-
 /*  Task: watch
     Setup files watches to track changes/additions/deletions of files and take
     action upon those changes
@@ -245,7 +236,6 @@ const watchTask = (cb) => {
    */
   watch(`${config.paths.source.svg}**/*.svg`, svgSpriteTask);
 
-
   /**
    * Assets (enable if your assets public path differs from the source)
    */
@@ -253,7 +243,6 @@ const watchTask = (cb) => {
 
   cb();
 };
-
 
 /* ----------------------------------------------------------------------------*\
     External tasks
@@ -276,7 +265,6 @@ exports.serve = series(
   watchTask,
   connectTask,
 );
-
 
 /**
  * task: build

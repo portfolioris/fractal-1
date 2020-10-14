@@ -213,6 +213,7 @@ class Autocomplete {
 
   /**
    * @param {string} message
+   * @param {number} amount
    */
   showMessage(message, amount) {
     this.$list.innerHTML = '';
