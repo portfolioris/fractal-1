@@ -96,8 +96,7 @@ const stylesProdTask = () => (
 const javascriptLintTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
     .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+    .pipe(eslint.format());
   cb();
 };
 
