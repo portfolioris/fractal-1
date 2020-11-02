@@ -25,10 +25,10 @@ module.exports = {
       },
     ],
     chevronRight: {
-      icon: 'icon-chevron-right',
+      icon: 'chevron-right',
     },
     chevronLeft: {
-      icon: 'icon-chevron-left',
+      icon: 'chevron-left',
     },
   },
 };

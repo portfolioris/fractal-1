@@ -19,7 +19,7 @@
   </div>
 
   <div class="o-layout  o-layout--equalheight">
-    <div class="o-layout__cell  o-layout__cell--fit">
+    <div class="o-layout__fit">
       <div class="c-tabs__tablist-expanded" role="tablist" aria-labelledby="tablist-subjects">
         {{#each tabs }}
           <a
@@ -30,10 +30,10 @@
             aria-controls="panel-{{ id }}"
           >
             <span class="o-layout  o-layout--gap-small  o-layout--align-block-center">
-              <span class="o-layout__cell  o-layout__cell--fill">
+              <span class="o-layout__fill">
                 {{ tabHeading }}
               </span>
-              <span class="o-layout__cell  o-layout__cell--fit">
+              <span class="o-layout__fit">
                 {{ render '@atoms-icon--chevron-right' }}
               </span>
             </span>
@@ -41,7 +41,7 @@
         {{/each}}
       </div>
     </div>
-    <div class="o-layout__cell  o-layout__cell--fill">
+    <div class="o-layout__fill">
       <div>
         {{#each tabs}} {{! panels, actually }}
           <div

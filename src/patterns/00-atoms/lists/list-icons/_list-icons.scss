@@ -1,0 +1,47 @@
+/*  ======================================================
+    Components.List-icons
+    <dl>
+      <dt />
+      <dd />
+    </dl>
+    ====================================================== */
+
+@use 'src/sass/vars';
+
+
+
+/*  Block
+    ====================================================== */
+
+.c-list-icons {
+  //
+}
+
+
+
+/*  Elements
+    ====================================================== */
+
+.c-list-icons__item {
+  padding-block: vars.$space-tiny;
+}
+
+.c-list-icons__icon {
+  color: vars.$color-gray;
+}
+
+
+
+/*  Modifier
+    ====================================================== */
+
+/**
+  Horizontal list
+  Apply border to items if it's not horizontal,
+  but not the last item
+ */
+.c-list-icons:not(.o-layout--fit) {
+  .c-list-icons__item:not(:last-child) {
+    border-block-end: 1px solid vars.$color-gray-light;
+  }
+}

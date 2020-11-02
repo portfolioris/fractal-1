@@ -1,12 +1,12 @@
 <fieldset class="c-form-field">
   {{ render "@atoms-label" label merge=true }}
-  <ul class="o-layout  o-layout--gap-base">
+  {{#> '@atoms-layout' element='ul' gap='base' fit=true }}
     {{#each items }}
-      <li class="o-layout__cell  o-layout__cell--fit">
+      <li>
         {{ render '@atoms-input-control' item merge=true }}
       </li>
     {{/each}}
-  </ul>
+  {{/'@atoms-layout'}}
   <p hidden id="error--{{ name }}" class="c-form-field__message" data-module-bind="validate-error">
     Error for {{ name }}.</p>
 </fieldset>

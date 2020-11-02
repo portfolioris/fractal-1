@@ -13,7 +13,7 @@ module.exports = {
     autocomplete: null,
     data: null,
     icon: {
-      icon: 'icon-check',
+      icon: 'check',
     },
   },
   variants: [

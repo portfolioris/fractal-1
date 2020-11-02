@@ -1,0 +1,15 @@
+<dl class="c-list-icons  o-layout  o-layout--gap-base  {{#if isHorizontal }}o-layout--fit{{/if}}">
+  {{#each items }}
+    <div class="c-list-icons__item">
+      <div class="o-layout  o-layout--fit  o-layout--gap-tiny" title="{{term}}">
+        <dt>
+          <span class="c-list-icons__icon">
+            {{ render '@atoms-icon' icon merge=true }}
+          </span>
+          <span class="u-visually-hidden">{{ term }}</span>
+        </dt>
+        <dd>{{ definition }}</dd>
+      </div>
+    </div>
+  {{/each}}
+</dl>

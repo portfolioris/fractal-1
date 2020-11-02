@@ -12,10 +12,10 @@ module.exports = {
       for: 'field-input-number',
     },
     plus: {
-      icon: 'icon-plus',
+      icon: 'plus',
     },
     minus: {
-      icon: 'icon-minus',
+      icon: 'minus',
     },
   },
 };

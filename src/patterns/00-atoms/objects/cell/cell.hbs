@@ -1,5 +1,5 @@
-<div class="o-layout__cell  {{#if fit}}o-layout__cell--fit{{/if}}  {{#if fill}}o-layout__cell--fill{{/if}}  {{#if modifier}}{{ modifier }}{{/if}}">
+<{{#if element }}{{ element }}{{ else }}div{{/if}} class="{{#if fit}}o-layout__fit{{/if}}  {{#if fill}}o-layout__fill{{/if}}  {{#if modifier}}{{ modifier }}{{/if}}">
   {{#>@partial-block}}
 
   {{/@partial-block }}
-</div>
+</{{#if element }}{{ element }}{{ else }}div{{/if}}>

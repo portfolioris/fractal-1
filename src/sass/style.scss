@@ -1,26 +1,26 @@
 /*! Fractal-1 | portfolioris.nl */
 
-/*  =========================================================================
+/*  ======================================================
     Style
     Styles, extends Supple CSS Framework and defines all imports
-    ========================================================================= */
+    ====================================================== */
 
 /*  Settings
-    ========================================================================= */
+    ====================================================== */
 
 @use 'vars';
 
 
 
 /*  Generic
-    ========================================================================= */
+    ====================================================== */
 
 @use 'node_modules/@supple-kit/supple-css/generic/reset';
 
 
 
 /*  Elements
-    ========================================================================= */
+    ====================================================== */
 
 @use 'elements/toplevel';
 @use 'elements/font-face';
@@ -29,7 +29,7 @@
 
 
 /*  Objects
-    ========================================================================= */
+    ====================================================== */
 
 @use 'node_modules/@supple-kit/supple-css/objects/list-clean';
 @use 'node_modules/@supple-kit/supple-css/objects/flow' with (
@@ -44,7 +44,7 @@
 
 
 /*  Components
-    ========================================================================= */
+    ====================================================== */
 
 @use '../patterns/00-atoms/objects/image/o-picture';
 @use '../patterns/00-atoms/icon/icon';
@@ -54,6 +54,7 @@
 @use '../patterns/00-atoms/form-input/input-control/input-control';
 @use '../patterns/00-atoms/form-input/input-select/input-select';
 @use '../patterns/00-atoms/lists/list-links/list-links';
+@use '../patterns/00-atoms/lists/list-icons/list-icons';
 @use '../patterns/00-atoms/star-rating/star-rating';
 @use '../patterns/01-molecules/form-fields/field-input-number/field-input-number';
 @use '../patterns/01-molecules/form-fields/form-field';
@@ -69,7 +70,7 @@
 
 
 /*  Utilities
-    ========================================================================= */
+    ====================================================== */
 
 //@use 'supple/utilities/colspan' with (
 //  $in-breakpoint: (desk),

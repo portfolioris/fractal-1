@@ -1,48 +1,48 @@
 module.exports = {
   context: {
-    icon: 'icon-chevron-right',
+    icon: 'chevron-right',
   },
   variants: [
     {
       name: 'chevron-right',
       context: {
-        icon: 'icon-chevron-right',
+        icon: 'chevron-right',
       },
     },
     {
       name: 'chevron-left',
       context: {
-        icon: 'icon-chevron-left',
+        icon: 'chevron-left',
       },
     },
     {
       name: 'chevron-down',
       context: {
-        icon: 'icon-chevron-down',
+        icon: 'chevron-down',
       },
     },
     {
       name: 'magnifier',
       context: {
-        icon: 'icon-magnifier',
+        icon: 'magnifier',
       },
     },
     {
       name: 'cross',
       context: {
-        icon: 'icon-cross',
+        icon: 'cross',
       },
     },
     {
       name: 'triangle',
       context: {
-        icon: 'icon-triangle',
+        icon: 'triangle',
       },
     },
     {
       name: 'star',
       context: {
-        icon: 'icon-star',
+        icon: 'star',
       },
     },
   ],

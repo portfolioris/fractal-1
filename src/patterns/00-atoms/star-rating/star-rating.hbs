@@ -7,40 +7,29 @@
     </meter>
   </div>
 
-  <div class="o-layout  o-layout--gap-tiny  o-layout--align-block-center">
-    <div class="o-layout__cell  o-layout__cell--fit" aria-hidden="true">
-      <div class="o-layout">
-        <div class="o-layout__cell  o-layout__cell--fit">
-          <span class="c-star-rating__filled">
-            {{ render '@atoms-icon--star' }}
-          </span>
-        </div>
-        <div class="o-layout__cell  o-layout__cell--fit">
-          <span class="c-star-rating__filled">
-            {{ render '@atoms-icon--star' }}
-          </span>
-        </div>
-        <div class="o-layout__cell  o-layout__cell--fit">
-          <span class="c-star-rating__filled">
-            {{ render '@atoms-icon--star' }}
-          </span>
-        </div>
-        <div class="o-layout__cell  o-layout__cell--fit">
-          <span class="c-star-rating__filled">
-            {{ render '@atoms-icon--star' }}
-          </span>
-        </div>
-        <div class="o-layout__cell  o-layout__cell--fit">
-          <span class="c-star-rating__empty">
-            {{ render '@atoms-icon--star' }}
-          </span>
-        </div>
-      </div>
+  {{#> '@atoms-layout' fit=true gap='tiny' align-block='center' }}
+    <div aria-hidden="true">
+      {{#> '@atoms-layout' fit=true gap=null align-block=null }}
+        <span class="c-star-rating__filled">
+          {{ render '@atoms-icon--star' }}
+        </span>
+        <span class="c-star-rating__filled">
+          {{ render '@atoms-icon--star' }}
+        </span>
+        <span class="c-star-rating__filled">
+          {{ render '@atoms-icon--star' }}
+        </span>
+        <span class="c-star-rating__filled">
+          {{ render '@atoms-icon--star' }}
+        </span>
+        <span class="c-star-rating__empty">
+          {{ render '@atoms-icon--star' }}
+        </span>
+      {{/'@atoms-layout'}}
+    </div>
 
-    </div>
-    <div class="o-layout__cell  o-layout__cell--fit">
-      <span class="c-star-rating__amount">({{ amount }}<span class="u-visually-hidden"> ratings</span>)</span>
-    </div>
-  </div>
+    <span class="c-star-rating__amount">({{ amount }}<span
+        class="u-visually-hidden"> ratings</span>)</span>
+  {{/'@atoms-layout'}}
 
 </div>
