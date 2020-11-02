@@ -1,0 +1,18 @@
+/*  =========================================================================
+    Objects.Clickable
+    Makes an element the clickable link inside it
+    ========================================================================= */
+
+%o-clickable,
+.o-clickable {
+  position: relative;
+
+  a {
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: '';
+      z-index: 1;
+    }
+  }
+}

@@ -22,5 +22,6 @@ module.exports = {
         isReversed: true,
         hasIcon: true,
       },
-    }],
+    },
+  ],
 };

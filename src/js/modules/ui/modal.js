@@ -1,3 +1,5 @@
+import { $, $$ } from '../../utilities';
+
 class Modal {
   constructor($el) {
     this.state = {
@@ -5,11 +7,11 @@ class Modal {
     };
 
     this.$el = $el;
-    this.$page = document.querySelector('[data-module-bind*=modal-page]');
-    this.$modal = this.$el.querySelector('[data-module-bind*=modal-modal]');
-    this.$openBtns = this.$el.querySelectorAll('[data-module-bind*=modal-open]');
-    this.$closeBtns = this.$el.querySelectorAll('[data-module-bind*=modal-close]');
-    this.$focusEl = this.$el.querySelector('[data-module-bind*=modal-gets-focus]');
+    this.$page = $(document, '[data-module-bind=modal-page]');
+    this.$modal = $(this.$el, '[data-module-bind=modal-modal]');
+    this.$openBtns = $$(this.$el, '[data-module-bind=modal-open]');
+    this.$closeBtns = $$(this.$el, '[data-module-bind=modal-close]');
+    this.$focusEl = $(this.$el, '[data-module-bind=modal-gets-focus]');
 
     this.handleEscape = this.handleEscape.bind(this);
   }

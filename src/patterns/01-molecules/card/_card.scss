@@ -1,0 +1,31 @@
+/*  =========================================================================
+    Components.Molecules.Card
+    ========================================================================= */
+
+@use 'src/sass/vars';
+
+
+
+/*  Block
+    ========================================================================= */
+
+.c-card {
+  background-color: vars.$color-white;
+  border: 1px solid vars.$color-black;
+  border-radius: vars.$space-tiny;
+  overflow: hidden;
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+/**
+  * Card content
+  * 1. Make content fill up available space
+  * 2. Align part of content to bottom of card
+ */
+.c-card__content {
+  padding: vars.$space-small;
+}

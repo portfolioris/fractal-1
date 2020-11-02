@@ -43,14 +43,18 @@ class Tabs {
     this.state.activePanelId = $activePanel.id;
 
     // lookup tab to activate
-    const $tabToActivate = Array.from(this.$tabs).find(($tab) => $tab.getAttribute('aria-controls') === this.state.activePanelId);
+    const $tabToActivate = Array.from(this.$tabs).find(
+      ($tab) => $tab.getAttribute('aria-controls') === this.state.activePanelId
+    );
 
     // activate 'palm' tab
     $tabToActivate.removeAttribute('tabindex');
     $tabToActivate.setAttribute('aria-selected', 'true');
 
     // lookup tab expanded to activate
-    const $tabExpandedToActivate = Array.from(this.$tabsExpanded).find(($tab) => $tab.getAttribute('aria-controls') === this.state.activePanelId);
+    const $tabExpandedToActivate = Array.from(this.$tabsExpanded).find(
+      ($tab) => $tab.getAttribute('aria-controls') === this.state.activePanelId
+    );
 
     // activate 'desk' tab
     $tabExpandedToActivate.removeAttribute('tabindex');
@@ -107,7 +111,7 @@ class Tabs {
   // controls to go to previous/next tab by pressing left/right keys
   handleKeyUpTab(event) {
     const currentPanel = Array.from(this.$panels).find(
-      ($panel) => $panel.id === this.state.activePanelId,
+      ($panel) => $panel.id === this.state.activePanelId
     );
     const currentTabIndex = Array.from(this.$panels).indexOf(currentPanel);
 

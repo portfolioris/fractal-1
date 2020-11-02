@@ -1,11 +1,7 @@
-const toTwoDigit = (number) => (
-  number.toLocaleString(
-    undefined,
-    {
-      minimumIntegerDigits: 2,
-    },
-  )
-);
+const toTwoDigit = (number) =>
+  number.toLocaleString(undefined, {
+    minimumIntegerDigits: 2,
+  });
 
 exports.toTwoDigit = toTwoDigit;
 
@@ -25,9 +21,7 @@ const getKeyCode = (e) => {
 
 exports.getKeyCode = getKeyCode;
 
-const simplifyString = (string) => (
-  string.replace(/[^a-zA-Z]/g, '').toLowerCase()
-);
+const simplifyString = (string) => string.replace(/[^a-zA-Z]/g, '').toLowerCase();
 
 exports.simplifyString = simplifyString;
 
@@ -41,3 +35,10 @@ const fuzzyMatchStringInArray = (string, array) => {
 };
 
 exports.fuzzyMatchStringInArray = fuzzyMatchStringInArray;
+
+exports.$ = ($scope, selector) => {
+  return $scope.querySelector(selector);
+};
+exports.$$ = ($scope, selector) => {
+  return $scope.querySelectorAll(selector);
+};

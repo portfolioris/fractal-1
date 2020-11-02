@@ -4,6 +4,8 @@
  * @returns {{valid: boolean, errorType: *, inputName: *, inputValue: *, errorMessage: *}}
  */
 
+import { $ } from './index';
+
 export default ($input) => {
   const errorMessages = {
     valueMissing: $input.dataset.valueMissing || 'This field is required.',
@@ -33,7 +35,7 @@ export default ($input) => {
   // if the input is a radio (part of a set), store the value a little differently
   if ($input.type === 'radio') {
     status.inputValue = null;
-    const $checkedRadio = document.querySelector(`input[name="${$input.name}"]:checked`);
+    const $checkedRadio = $(document, `input[name="${$input.name}"]:checked`);
     if ($checkedRadio) {
       status.inputValue = $checkedRadio.value;
     }

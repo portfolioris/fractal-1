@@ -35,14 +35,13 @@ class Autocomplete {
       return;
     }
 
-    this.getMatches('')
-      .then((options) => {
-        this.buildMenu(options);
+    this.getMatches('').then((options) => {
+      this.buildMenu(options);
 
-        if (!this.apiUrl) {
-          this.setupEnhancement();
-        }
-      });
+      if (!this.apiUrl) {
+        this.setupEnhancement();
+      }
+    });
   }
 
   handleListEvents() {
@@ -172,11 +171,10 @@ class Autocomplete {
         return;
       }
 
-      this.getMatches(query)
-        .then((options) => {
-          this.buildMenu(options);
-          this.showMenu();
-        });
+      this.getMatches(query).then((options) => {
+        this.buildMenu(options);
+        this.showMenu();
+      });
     });
   }
 
@@ -193,8 +191,7 @@ class Autocomplete {
       return;
     }
 
-    this.getMatches(this.$input.value)
-      .then((options) => this.handleResult(options));
+    this.getMatches(this.$input.value).then((options) => this.handleResult(options));
   }
 
   /**

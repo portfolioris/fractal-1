@@ -1,3 +1,5 @@
+import { $ } from '../../utilities';
+
 class ShowMore {
   constructor($el) {
     this.state = {
@@ -5,11 +7,11 @@ class ShowMore {
     };
 
     this.$el = $el;
-    this.$trigger = this.$el.querySelector('[data-module-bind=show-more-btn]');
-    this.$triggerLabel = this.$trigger.querySelector('[data-module-bind=btn-label]');
-    this.$container = this.$el.querySelector('[data-module-bind=show-more-container]');
-    this.$content = this.$el.querySelector('[data-module-bind=show-more-content]');
-    this.$divider = this.$el.querySelector('[data-module-bind=show-more-divider]');
+    this.$trigger = $(this.$el, '[data-module-bind=show-more-btn]');
+    this.$triggerLabel = $(this.$trigger, '[data-module-bind=btn-label]');
+    this.$container = $(this.$el, '[data-module-bind=show-more-container]');
+    this.$content = $(this.$el, '[data-module-bind=show-more-content]');
+    this.$divider = $(this.$el, '[data-module-bind=show-more-divider]');
     this.allowedHeight = this.$el.dataset.allowedHeight;
     this.showLessLabel = this.$trigger.dataset.labelShowLess;
     this.showMoreLabel = this.$trigger.dataset.labelShowMore;

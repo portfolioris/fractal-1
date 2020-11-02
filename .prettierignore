@@ -1,0 +1,4 @@
+# ignore
+/dist/
+/public/
+/node_modules/

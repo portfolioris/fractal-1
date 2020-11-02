@@ -1,4 +1,4 @@
-import { getKeyCode } from '../../utilities';
+import { $, getKeyCode } from '../../utilities';
 
 /**
  * Flyout
@@ -21,8 +21,8 @@ class Flyout {
     };
 
     this.$el = $el;
-    this.$toggleFoldout = this.$el.querySelector(' [data-module-bind=flyout-toggle]');
-    this.$foldout = this.$el.querySelector('[data-module-bind=flyout-panel]');
+    this.$toggleFoldout = $(this.$el, '[data-module-bind=flyout-toggle]');
+    this.$foldout = $(this.$el, '[data-module-bind=flyout-panel]');
     this.hideFoldoutOnBlur = this.hideFoldoutOnBlur.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
   }
@@ -47,18 +47,24 @@ class Flyout {
   }
 
   correctOverflow() {
-    this.observer = new IntersectionObserver((entries) => {
-      if (entries[0].boundingClientRect.x < 0) {
-        this.$foldout.classList.add('is-offset-inline-start');
-      }
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].boundingClientRect.x < 0) {
+          this.$foldout.classList.add('is-offset-inline-start');
+        }
 
-      if (entries[0].boundingClientRect.right > document.documentElement.clientWidth) {
-        this.$foldout.classList.add('is-offset-inline-end');
-        this.$foldout.style.setProperty('--offset', entries[0].boundingClientRect.right - document.documentElement.clientWidth);
+        if (entries[0].boundingClientRect.right > document.documentElement.clientWidth) {
+          this.$foldout.classList.add('is-offset-inline-end');
+          this.$foldout.style.setProperty(
+            '--offset',
+            entries[0].boundingClientRect.right - document.documentElement.clientWidth
+          );
+        }
+      },
+      {
+        threshold: 1,
       }
-    }, {
-      threshold: 1,
-    });
+    );
 
     this.observer.observe(this.$foldout);
   }

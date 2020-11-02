@@ -1,0 +1,22 @@
+<picture>
+  {{#if sources}}
+    {{#each sources }}
+      <source
+        srcset="{{#each srcset}}{{src}} {{width}}w, {{/each}}"
+        media="{{ media }}"
+      />
+    {{/each}}
+  {{/if}}
+
+  <img
+    class="o-picture"
+    width="{{ width }}"
+    height="{{ height }}"
+    {{#if isLazy}}
+    loading="lazy"
+    {{/if}}
+    srcset="{{#each srcset}}{{src}} {{width}}w, {{/each}}"
+    src="{{ src }}"
+    alt="{{ alt }}"
+  />
+</picture>
