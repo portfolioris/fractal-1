@@ -23,7 +23,7 @@ class Validate {
   }
 
   addInputEventListeners() {
-    Array.from(this.$inputs).forEach(($input) => {
+    [...this.$inputs].forEach(($input) => {
       $input.addEventListener('change', this.handleInputChange);
       $input.addEventListener('externalChange', this.handleInputChange);
     });
@@ -33,7 +33,7 @@ class Validate {
     const fieldStatus = validateField($el);
 
     // find error node
-    const $err = Array.from(this.$errors).find(($error) => $error.id === `error--${$el.name}`);
+    const $err = [...this.$errors].find(($error) => $error.id === `error--${$el.name}`);
 
     if (!fieldStatus.valid) {
       // error: set error attributes to field and show errormsg
@@ -59,7 +59,7 @@ class Validate {
 
   checkConditions(fieldStatus) {
     // check which fieldset(s) needs to be activated
-    Array.from(this.$conditionalFieldsets).forEach(($el) => {
+    [...this.$conditionalFieldsets].forEach(($el) => {
       // find a matching fieldset
       if ($el.dataset.fieldName !== fieldStatus.inputName) {
         return;
@@ -79,7 +79,7 @@ class Validate {
     let formIsValid = true;
     let $firstInvalid = null;
 
-    Array.from(this.$inputs).forEach(($input) => {
+    [...this.$inputs].forEach(($input) => {
       // check if field is not disabled or in a disabled <fieldset>
       if (!$input.willValidate) {
         return;

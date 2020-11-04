@@ -113,9 +113,11 @@
  */
 .c-tabs__panel {
   position: relative;
-  margin-block-end: vars.$space-base;
   padding: vars.$space-base;
-  scroll-margin-block-start: vars.$space-large + vars.$space-tiny;
+
+  .is-initialised & {
+    height: 100%;
+  }
 
   &:focus {
     outline: 2px solid transparentize(vars.$color-black, 0.8); /* [1] */

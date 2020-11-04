@@ -32,7 +32,7 @@ class Modal {
   }
 
   handleClickOpen() {
-    Array.from(this.$openBtns).forEach(($openBtn) => {
+    [...this.$openBtns].forEach(($openBtn) => {
       $openBtn.addEventListener('click', () => {
         this.state.$opener = $openBtn;
         this.openModal();
@@ -41,7 +41,7 @@ class Modal {
   }
 
   handleClickClose() {
-    Array.from(this.$closeBtns).forEach(($closeBtn) => {
+    [...this.$closeBtns].forEach(($closeBtn) => {
       $closeBtn.addEventListener('click', () => {
         this.closeModal();
       });
@@ -57,7 +57,7 @@ class Modal {
   }
 
   openModal() {
-    Array.from(this.$openBtns).forEach(($openBtn) => {
+    [...this.$openBtns].forEach(($openBtn) => {
       $openBtn.setAttribute('aria-expanded', 'true');
     });
     this.$modal.setAttribute('aria-hidden', 'false');
@@ -72,7 +72,7 @@ class Modal {
   }
 
   closeModal() {
-    Array.from(this.$openBtns).forEach(($openBtn) => {
+    [...this.$openBtns].forEach(($openBtn) => {
       $openBtn.setAttribute('aria-expanded', 'false');
     });
     this.$modal.setAttribute('aria-hidden', 'true');

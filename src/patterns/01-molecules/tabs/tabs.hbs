@@ -1,4 +1,4 @@
-<div class="c-tabs" data-module="ui/tabs">
+<div class="c-tabs" data-module="ui/tabs" data-context="@visible">
 
   <div class="c-tabs__wrap-tablist">
     <div class="c-tabs__tablist" role="tablist" aria-labelledby="tablist-subjects">
@@ -18,12 +18,12 @@
     </div>
   </div>
 
-  <div class="o-layout  o-layout--equalheight">
+  <div class="o-layout  o-layout--stretch">
     <div class="o-layout__fit">
       <div class="c-tabs__tablist-expanded" role="tablist" aria-labelledby="tablist-subjects">
         {{#each tabs }}
           <a
-            class="c-tabs__tab  _c-tabs__expanded-tab"
+            class="c-tabs__tab"
             data-module-bind="tabs-tab-expanded"
             role="tab"
             href="#panel-{{ id }}"
@@ -42,7 +42,6 @@
       </div>
     </div>
     <div class="o-layout__fill">
-      <div>
         {{#each tabs}} {{! panels, actually }}
           <div
             class="c-tabs__panel"
@@ -52,10 +51,11 @@
             id="panel-{{ id }}"
             aria-labelledby="tab-{{ id }}"
           >
-            {{{ content }}}
+            <div class="o-flow">
+              {{{ content }}}
+            </div>
           </div>
         {{/each}}
-      </div>
     </div>
   </div>
 </div>
