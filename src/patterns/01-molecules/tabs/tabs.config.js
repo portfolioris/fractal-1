@@ -1,7 +1,7 @@
 const { LoremIpsum } = require('lorem-ipsum');
 
 const lorem = new LoremIpsum();
-lorem.format = ('html');
+lorem.format = 'html';
 
 module.exports = {
   context: {

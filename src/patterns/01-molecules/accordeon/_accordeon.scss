@@ -1,0 +1,70 @@
+/*  =========================================================================
+    Components.FAQ
+    ========================================================================= */
+
+@use 'src/sass/vars';
+
+
+
+/*  Block
+    ========================================================================= */
+
+.c-accordeon {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-accordeon__item {
+  border-block-end: 1px solid vars.$color-gray;
+}
+
+.c-accordeon__summary {
+  list-style: none;
+  padding: vars.$space-small;
+  transition: background-color vars.$base-transition-duration vars.$base-timing-function;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  #{vars.$global-interaction-states} {
+    background-color: vars.$color-gray-light;
+  }
+}
+
+.c-accordeon__content-container {
+  overflow: hidden;
+  transition: height vars.$base-transition-duration vars.$base-timing-function;
+}
+
+.c-accordeon__content {
+  padding: vars.$space-small;
+}
+
+.c-accordeon__icon {
+  margin-block-start: 2px;
+  transition: transform vars.$base-transition-duration vars.$base-timing-function;
+  color: vars.$color-gray;
+}
+
+
+
+/*  States
+    ========================================================================= */
+
+.c-accordeon__item.is-initialized {
+  .c-accordeon__content-container {
+    height: 0;
+  }
+}
+
+.c-accordeon__item.is-open {
+  .c-accordeon__icon {
+    transform: rotate(90deg);
+  }
+}

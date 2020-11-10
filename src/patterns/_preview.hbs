@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   {{! Generic app tags }}
-  <link rel="manifest" href="../../assets/manifest/manifest.json">
-  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/manifest/icons/icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/manifest/icons/icon-32x32.png">
+  <link rel="manifest" href="{{ path '/assets/manifest/manifest.json' }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ path '/assets/manifest/icons/icon-180x180.png' }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ path '/assets/manifest/icons/icon-32x32.png' }}">
   <meta name="theme-color" content="{{themeColor}}">
 
   {{! Inform CSS that JS is enabled }}
@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="{{ path '/css/style.css' }}" media="all">
 
   {{! List dependencies in the head for faster discovery/preloading. They are deferred by default. }}
-  <script type="module" src="../../js/bundle.es6.js?{{ cacheBuster }}"></script>
+  <script type="module" src="{{ path '/js/bundle.es6.js' }}"></script>
 </head>
 <body class="{{ bodyClass }}">
 
@@ -30,7 +30,7 @@
 </div>
 
 <!-- Legacy bundle javascript -->
-<script nomodule src="../../js/bundle.es5.js" async></script>
+<script nomodule src="{{ path '/js/bundle.es5.js' }}" async></script>
 
 </body>
 </html>

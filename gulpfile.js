@@ -1,6 +1,4 @@
-const {
-  series, parallel, src, dest, watch,
-} = require('gulp');
+const { series, parallel, src, dest, watch } = require('gulp');
 const path = require('path');
 const browserSync = require('browser-sync');
 const webpack = require('webpack');
@@ -30,63 +28,67 @@ const webpackConfigES6 = require('./config/webpack.es6');
 /**
  * Task copy:assets
  */
-const copyAssetsTask = () => (
-  src(`${config.paths.source.assets}**/*`)
-    .pipe(dest(config.paths.public.assets))
-);
+const copyAssetsTask = () =>
+  src(`${config.paths.source.assets}**/*`).pipe(dest(config.paths.public.assets));
 
 /**
  * Task copy:buildFiles
  */
-const copyBuildTask = () => (
-  src([
-    `${config.paths.public.assets}**/*`,
-    `${config.paths.public.svg}**/*`,
-    `${config.paths.public.js}**/*`,
-    `${config.paths.public.css}**/*`,
-  ], { base: config.paths.public.root }) // this keeps the directory structure
-    .pipe(dest(config.paths.build.root))
-);
+const copyBuildTask = () =>
+  src(
+    [
+      `${config.paths.public.assets}**/*`,
+      `${config.paths.public.svg}**/*`,
+      `${config.paths.public.js}**/*`,
+      `${config.paths.public.css}**/*`,
+    ],
+    { base: config.paths.public.root }
+  ) // this keeps the directory structure
+    .pipe(dest(config.paths.build.root));
 
 /*  Task: styles
     Tests for markup errors, compiles and autoprefixes the `scss` files
 \*----------------------------------------------------------------------------*/
 
-const stylesDevTask = () => (
-  src([
-    `${config.paths.source.sass}**/*.scss`,
-    `${config.paths.source.patterns}**/*.scss`,
-  ])
-    .pipe(stylelint({
-      failAfterError: false,
-      reporters: [
-        {
-          formatter: 'string',
-          console: true,
-        },
-      ],
-      syntax: 'scss',
-    }))
+const stylesDevTask = () =>
+  src([`${config.paths.source.sass}**/*.scss`, `${config.paths.source.patterns}**/*.scss`])
+    .pipe(
+      stylelint({
+        failAfterError: false,
+        reporters: [
+          {
+            formatter: 'string',
+            console: true,
+          },
+        ],
+        syntax: 'scss',
+      })
+    )
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      precision: 8,
-    }))
+    .pipe(
+      sass({
+        precision: 8,
+      })
+    )
     .pipe(postcss())
     .pipe(sourcemaps.write('.'))
-    .pipe(dest(config.paths.public.css))
-);
+    .pipe(dest(config.paths.public.css));
 
-const stylesProdTask = () => (
+const stylesProdTask = () =>
   src(`${config.paths.source.sass}**/*.scss`)
-    .pipe(sass({
-      precision: 8,
-    }))
+    .pipe(
+      sass({
+        precision: 8,
+      })
+    )
     .pipe(postcss()) // default postcss.config.js
-    .pipe(postcss([ // extra: minification
-      cssnano(),
-    ]))
-    .pipe(dest(config.paths.public.css))
-);
+    .pipe(
+      postcss([
+        // extra: minification
+        cssnano(),
+      ])
+    )
+    .pipe(dest(config.paths.public.css));
 
 /*  Task: javascript
     Checks our own javascript files for potential errors.
@@ -94,26 +96,26 @@ const stylesProdTask = () => (
 
 // Lint scripts
 const javascriptLintTask = (cb) => {
-  src(`${config.paths.source.js}**/*.js`)
-    .pipe(eslint())
-    .pipe(eslint.format());
+  src(`${config.paths.source.js}**/*.js`).pipe(eslint()).pipe(eslint.format());
   cb();
 };
 
 const javascriptDevTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
-    .pipe(webpackStream(webpackConfigDev, webpack, (err, stats) => {
-      // log errors and warnings
-      if (stats.hasErrors() || stats.hasWarnings()) {
-        console.log(stats.toString({ colors: true }));
-        const info = stats.toJson();
-        browserSync.notify(`Script error: ${info.errors}`, 10000);
-      }
-      // if there are no errors, reload
-      if (!stats.hasErrors()) {
-        // bsReloadTask(cb);
-      }
-    }))
+    .pipe(
+      webpackStream(webpackConfigDev, webpack, (err, stats) => {
+        // log errors and warnings
+        if (stats.hasErrors() || stats.hasWarnings()) {
+          console.log(stats.toString({ colors: true }));
+          const info = stats.toJson();
+          browserSync.notify(`Script error: ${info.errors}`, 10000);
+        }
+        // if there are no errors, reload
+        if (!stats.hasErrors()) {
+          // bsReloadTask(cb);
+        }
+      })
+    )
     .pipe(dest(config.paths.public.js));
   cb();
 };
@@ -130,25 +132,23 @@ const javascriptES5Task = (cb) => {
     .pipe(dest(config.paths.public.js));
 };
 
-const javascriptProdTask = parallel(
-  javascriptES5Task,
-  javascriptES6Task,
-);
+const javascriptProdTask = parallel(javascriptES5Task, javascriptES6Task);
 
 /*  Task: svg
 \*----------------------------------------------------------------------------*/
 
-const svgSpriteTask = () => (
+const svgSpriteTask = () =>
   src('**/*.svg', { cwd: config.paths.source.svg })
-    .pipe(svgSprite({
-      mode: {
-        symbol: {
-          dest: '.',
+    .pipe(
+      svgSprite({
+        mode: {
+          symbol: {
+            dest: '.',
+          },
         },
-      },
-    }))
-    .pipe(dest(config.paths.public.svg))
-);
+      })
+    )
+    .pipe(dest(config.paths.public.svg));
 
 /*  Task: connect
     Fires up a development server using browserSync
@@ -220,10 +220,10 @@ const watchTask = (cb) => {
   /**
    * Styles
    */
-  watch([
-    `${config.paths.source.sass}**/*.scss`,
-    `${config.paths.source.patterns}**/*.scss`,
-  ], stylesDevTask);
+  watch(
+    [`${config.paths.source.sass}**/*.scss`, `${config.paths.source.patterns}**/*.scss`],
+    stylesDevTask
+  );
 
   /**
    * Javascripts
@@ -254,15 +254,9 @@ const watchTask = (cb) => {
  * Prepares the code, fires up a development server and sets up watch tasks
  */
 exports.serve = series(
-  parallel(
-    copyAssetsTask,
-    svgSpriteTask,
-    javascriptLintTask,
-    javascriptDevTask,
-    stylesDevTask,
-  ),
+  parallel(copyAssetsTask, svgSpriteTask, javascriptLintTask, javascriptDevTask, stylesDevTask),
   watchTask,
-  connectTask,
+  connectTask
 );
 
 /**
@@ -270,12 +264,6 @@ exports.serve = series(
  * Build production SVG, JS & CSS bundles, copy assets
  */
 exports.build = series(
-  parallel(
-    buildStyleguide,
-    copyAssetsTask,
-    svgSpriteTask,
-    javascriptProdTask,
-    stylesProdTask,
-  ),
-  copyBuildTask,
+  parallel(buildStyleguide, copyAssetsTask, svgSpriteTask, javascriptProdTask, stylesProdTask),
+  copyBuildTask
 );

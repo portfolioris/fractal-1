@@ -5,7 +5,9 @@ Atoms.Button
 /*  Variables
     ====================================================== */
 
+@use 'node_modules/@supple-kit/supple-css/settings/defaults';
 @use 'src/sass/vars';
+
 $color: vars.$color-black;
 $border-width: 2px;
 $border-radius: 4px;
@@ -32,6 +34,7 @@ $hover-background: vars.$color-gray;
   text-decoration: none;
   text-align: start;
   font: inherit;
+  font-size: defaults.$font-size;
   line-height: 0;
   background: $background;
   color: $color;

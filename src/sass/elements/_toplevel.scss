@@ -27,14 +27,21 @@ strong {
   font-weight: vars.$font-weight-bold;
 }
 
-table {
-  width: 100%;
-}
-
 td,
 th,
 caption {
   text-align: start;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  td,
+  th {
+    border: 1px solid vars.$color-gray-light;
+    padding: vars.$space-tiny;
+  }
 }
 
 [hidden] {

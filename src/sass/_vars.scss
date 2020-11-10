@@ -2,11 +2,7 @@
     settings.vars
     ====================================================== */
 
-@forward 'node_modules/@supple-kit/supple-css/settings/defaults' with (
-  $font-size: 16px,
-  $line-height: 24px,
-);
-@use 'node_modules/@supple-kit/supple-css/settings/defaults';
+@forward 'node_modules/@supple-kit/supple-css/settings/defaults';
 @use 'node_modules/@supple-kit/supple-css/tools/space';
 
 
