@@ -25,6 +25,7 @@ class Flyout {
     this.$foldout = $(this.$el, '[data-module-bind=flyout-panel]');
     this.hideFoldoutOnBlur = this.hideFoldoutOnBlur.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
+    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
   }
 
   init() {
@@ -40,10 +41,10 @@ class Flyout {
     document.documentElement.addEventListener('click', this.hideFoldoutOnBlur);
     document.addEventListener('keyup', this.handleEscape);
     this.correctOverflow();
-    // todo: add flyout initial focus handler
-    // if (this.$toggleFoldout.dataset.foldout__focus) {
-    //   this.$el.querySelector(`#${this.$toggleFoldout.dataset.foldout__focus}`).focus();
-    // }
+    // after overflow is corrected
+    requestAnimationFrame(() => {
+      this.$foldout.classList.add('is-open');
+    });
   }
 
   correctOverflow() {
@@ -71,13 +72,22 @@ class Flyout {
 
   closeFoldout() {
     this.$toggleFoldout.setAttribute('aria-expanded', 'false');
-    this.$foldout.hidden = true;
+
+    this.$foldout.addEventListener('transitionend', this.handleTransitionEnd);
+    this.$foldout.classList.remove('is-open');
+
     this.state.isOpen = false;
-    this.$foldout.classList.remove('is-offset-inline-start');
-    this.$foldout.classList.remove('is-offset-inline-end');
     document.documentElement.removeEventListener('click', this.hideFoldoutOnBlur);
     document.removeEventListener('keyup', this.handleEscape);
     this.observer.unobserve(this.$foldout);
+  }
+
+  handleTransitionEnd() {
+    this.$foldout.hidden = true;
+    this.$foldout.removeEventListener('transitionend', this.handleTransitionEnd);
+    // this.$foldout.removeAttribute('style');
+    this.$foldout.style.setProperty('--offset', 0);
+    this.$foldout.classList.remove('is-offset-inline-start', 'is-offset-inline-end');
   }
 
   handleClickToggleFoldout() {

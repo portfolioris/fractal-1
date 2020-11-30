@@ -6,6 +6,8 @@
 @use 'node_modules/@supple-kit/supple-css/tools/responsive';
 @use 'src/sass/functions';
 
+
+
 /*  Module
     ====================================================== */
 
@@ -29,6 +31,12 @@
   margin-block-start: vars.$space-small;
   border: 1px solid vars.$color-gray;
   padding: vars.$space-small;
+  opacity: 0;
+  transition: opacity vars.$base-transition-duration-short;
+
+  &.is-open {
+    opacity: 1;
+  }
 }
 
 .c-flyout__arrow {
@@ -39,7 +47,9 @@
   transform: translateX(-50%);
   color: vars.$color-white;
   filter: drop-shadow(0 -1px 0 vars.$color-gray);
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity vars.$base-transition-duration-short;
 
   .c-icon {
     inline-size: 16px;
@@ -48,7 +58,7 @@
 }
 
 .c-flyout__button[aria-expanded='true'] + .c-flyout__arrow {
-  display: block;
+  opacity: 1;
 }
 
 .c-flyout__close-icon {
@@ -79,7 +89,7 @@
     }
 
     &.is-offset-inline-end {
-      transform: translateX(calc(-50% - var(--offset) * 1px - #{vars.$space-base}));
+      margin-inline-start: calc(var(--offset) * -1px - #{vars.$space-base});
     }
   }
 }
