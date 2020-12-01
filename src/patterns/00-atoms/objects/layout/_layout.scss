@@ -22,3 +22,10 @@
 .o-layout {
   padding-inline-start: 0;
 }
+
+/**
+No wrap
+ */
+.o-layout--no-wrap {
+  flex-wrap: nowrap;
+}

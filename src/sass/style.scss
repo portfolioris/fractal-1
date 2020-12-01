@@ -39,6 +39,7 @@
 @use 'objects/clickable';
 @use '../patterns/00-atoms/objects/retain/retain';
 @use '../patterns/00-atoms/objects/layout/layout';
+@use '../patterns/00-atoms/objects/cell/cell';
 @use '../patterns/02-organisms/card-mesh/card-mesh';
 
 
@@ -67,6 +68,7 @@
 @use '../patterns/01-molecules/modal/modal';
 @use '../patterns/01-molecules/card/card';
 @use '../patterns/01-molecules/accordeon/accordeon';
+@use '../patterns/02-organisms/slider/slider';
 
 
 

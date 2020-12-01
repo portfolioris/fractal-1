@@ -1,0 +1,30 @@
+{{#> @atoms-retain size='desk' }}
+  <div data-module="ui/slider" data-context="@visible">
+    <span id="slider-label" aria-hidden="true" class="u-visually-hidden">Content slider</span>
+    <span id="slider-controls" aria-hidden="true" class="u-visually-hidden">Slider controls</span>
+    <div class="c-slider" role="region" aria-labelledby="slider-label" tabindex="0" data-module-bind="slider-slider">
+      <ul class="o-layout  o-layout--gap-base  o-layout--no-wrap" data-module-bind="slider-list">
+        {{#each items }}
+          <li class="u-colspan-4  c-slider__cell">
+            <div class="c-slider__slide" data-module-bind="slider-slide">
+              {{render '@molecules-card' }}
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="c-slider__instructions">
+      <p class="c-slider__instruction  c-slider__instruction--hover" id="hover">Scroll for more</p>
+      <p class="c-slider__instruction  c-slider__instruction--focus" id="focus">Use your arrow keys to explore</p>
+    </div>
+    <ul aria-labelledby="slider-controls">
+      <li>
+        <button class="c-slider__btn" data-module-bind="slider-previous">Previous slide</button>
+      </li>
+      <li>
+        <button class="c-slider__btn" data-module-bind="slider-next">Next slide</button>
+      </li>
+    </ul>
+  </div>
+
+{{/ @atoms-retain }}

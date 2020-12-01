@@ -1,0 +1,69 @@
+/*  =========================================================================
+    Components.Slider
+    ========================================================================= */
+
+@use 'src/sass/vars';
+
+
+
+/*  Block
+    ========================================================================= */
+
+.c-slider {
+  width: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    height: 0.75em;
+  }
+}
+
+
+
+/*  Elements
+    ========================================================================= */
+
+.c-slider__cell {
+  min-width: calc((100% / var(--columns) * var(--colspan)) - var(--layout-gap));
+}
+
+.c-slider__slide {
+  scroll-snap-align: start;
+
+  &.is-visible {
+    background-color: #ffa100;
+  }
+}
+
+.c-slider__instruction {
+  display: none;
+}
+
+.c-slider__btn {
+  &:disabled {
+    color: vars.$color-gray;
+  }
+}
+
+
+
+/*  States
+    ========================================================================= */
+
+.c-slider:hover {
+  + .c-slider__instructions {
+    .c-slider__instruction--hover {
+      display: block;
+    }
+  }
+}
+
+.c-slider:focus {
+  + .c-slider__instructions {
+    .c-slider__instruction--focus {
+      display: block;
+    }
+  }
+}
