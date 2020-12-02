@@ -2,4 +2,6 @@
     Objects.Cell
     ========================================================================= */
 
-@use 'node_modules/@supple-kit/supple-css/utilities/colspan';
+@use 'node_modules/@supple-kit/supple-css/utilities/colspan' with (
+  $in-breakpoint: (desk)
+);

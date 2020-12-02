@@ -14,10 +14,7 @@
   overflow: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-
-  &::-webkit-scrollbar {
-    height: 0.75em;
-  }
+  mask-image: linear-gradient(to right, transparent 0, vars.$color-black vars.$space-base, vars.$color-black calc(100% - #{vars.$space-base}), transparent 100%);
 }
 
 
@@ -26,10 +23,13 @@
     ========================================================================= */
 
 .c-slider__cell {
+  //min-width: auto;
   min-width: calc((100% / var(--columns) * var(--colspan)) - var(--layout-gap));
 }
 
 .c-slider__slide {
+  //max-width: 75vw;
+  //width: 280px;
   scroll-snap-align: start;
 
   &.is-visible {

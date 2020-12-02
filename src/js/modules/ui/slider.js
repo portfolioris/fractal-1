@@ -16,6 +16,7 @@ class Slider {
   }
 
   init() {
+    this.$buttonPrevious.disabled = true;
     this.addEventListeners();
     this.observeSlides();
   }
@@ -26,13 +27,14 @@ class Slider {
         entries.forEach((entry) => {
           entry.target.classList.remove('is-visible');
           const a = entry.target.querySelector('a');
-          a.setAttribute('tabindex', '-1'); // (1)
-          if (!entry.intersectionRatio > 0) {
+          a.setAttribute('tabindex', '-1');
+
+          if (!entry.isIntersecting) {
             return;
           }
 
           entry.target.classList.add('is-visible');
-          a.removeAttribute('tabindex'); // (2)
+          a.removeAttribute('tabindex');
         });
       },
       {
@@ -49,8 +51,6 @@ class Slider {
     this.$buttonPrevious.disabled = this.$slider.scrollLeft < 1;
     this.$buttonNext.disabled =
       this.$slider.scrollLeft === this.$slidesList.scrollWidth - this.$slidesList.offsetWidth;
-    // prev.disabled = gallery.scrollLeft < 1;
-    // next.disabled = gallery.scrollLeft === list.scrollWidth - list.offsetWidth;
   }
 
   addEventListeners() {
@@ -60,6 +60,30 @@ class Slider {
       window.clearTimeout(debounced);
       debounced = setTimeout(this.disable, 200);
     });
+
+    this.$buttonNext.addEventListener('click', () => {
+      this.scrollNext();
+    });
+
+    this.$buttonPrevious.addEventListener('click', () => {
+      this.scrollPrevious();
+    });
+  }
+
+  scrollNext() {
+    const visibilityOfSlides = [...this.$slides].map(($slide) =>
+      $slide.classList.contains('is-visible')
+    );
+    const lastVisibleIndex = visibilityOfSlides.lastIndexOf(true);
+    this.$slides[lastVisibleIndex + 1].scrollIntoView();
+  }
+
+  scrollPrevious() {
+    const visibilityOfSlides = [...this.$slides].map(($slide) =>
+      $slide.classList.contains('is-visible')
+    );
+    const firstVisibleIndex = visibilityOfSlides.indexOf(true);
+    this.$slides[firstVisibleIndex - 1].scrollIntoView();
   }
 }
 
