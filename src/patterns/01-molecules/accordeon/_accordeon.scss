@@ -38,8 +38,7 @@
 }
 
 .c-accordeon__content-container {
-  overflow: hidden;
-  transition: height vars.$base-transition-duration vars.$base-timing-function;
+  transition-duration: vars.$base-transition-duration;
 }
 
 .c-accordeon__content {
@@ -57,13 +56,7 @@
 /*  States
     ========================================================================= */
 
-.c-accordeon__item.is-initialized {
-  .c-accordeon__content-container {
-    height: 0;
-  }
-}
-
-.c-accordeon__item.is-open {
+.c-accordeon__item[open] {
   .c-accordeon__icon {
     transform: rotate(90deg);
   }
