@@ -10,11 +10,12 @@
     ========================================================================= */
 
 .c-slider {
-  width: 100%;
   overflow: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   mask-image: linear-gradient(to right, transparent 0, vars.$color-black vars.$space-base, vars.$color-black calc(100% - #{vars.$space-base}), transparent 100%);
+  margin-inline: vars.$space-base * -1;
+  padding-inline: vars.$space-base;
 }
 
 
@@ -23,18 +24,16 @@
     ========================================================================= */
 
 .c-slider__cell {
-  //min-width: auto;
-  min-width: calc((100% / var(--columns) * var(--colspan)) - var(--layout-gap));
+  min-inline-size: auto;
+  scroll-snap-align: start;
+
+  &:last-child {
+    padding-inline-end: var(--layout-gap);
+  }
 }
 
 .c-slider__slide {
-  //max-width: 75vw;
-  //width: 280px;
-  scroll-snap-align: start;
-
-  &.is-visible {
-    background-color: #ffa100;
-  }
+  min-width: 320px;
 }
 
 .c-slider__instruction {

@@ -5,7 +5,7 @@
     <div class="c-slider" role="region" aria-labelledby="slider-label" tabindex="0" data-module-bind="slider-slider">
       <ul class="o-layout  o-layout--gap-base  o-layout--no-wrap" data-module-bind="slider-list">
         {{#each items }}
-          <li class="u-colspan-4@from-desk  c-slider__cell">
+          <li class="u-colspan-4@from-desk  o-layout__cell  c-slider__cell">
             <div class="c-slider__slide" data-module-bind="slider-slide">
               {{render '@molecules-card' }}
             </div>
@@ -17,11 +17,11 @@
       <p class="c-slider__instruction  c-slider__instruction--hover" id="hover">Scroll for more</p>
       <p class="c-slider__instruction  c-slider__instruction--focus" id="focus">Use your arrow keys to explore</p>
     </div>
-    <ul aria-labelledby="slider-controls">
-      <li>
+    <ul aria-labelledby="slider-controls" class="o-layout">
+      <li class="o-layout__fill">
         <button class="c-slider__btn" data-module-bind="slider-previous">Previous slide</button>
       </li>
-      <li>
+      <li class="o-layout__fit">
         <button class="c-slider__btn" data-module-bind="slider-next">Next slide</button>
       </li>
     </ul>
