@@ -85,7 +85,6 @@ class Flyout {
   handleTransitionEnd() {
     this.$foldout.hidden = true;
     this.$foldout.removeEventListener('transitionend', this.handleTransitionEnd);
-    // this.$foldout.removeAttribute('style');
     this.$foldout.style.setProperty('--offset', 0);
     this.$foldout.classList.remove('is-offset-inline-start', 'is-offset-inline-end');
   }

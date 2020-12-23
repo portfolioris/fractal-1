@@ -11,7 +11,6 @@ const cssnano = require('cssnano');
 const sourcemaps = require('gulp-sourcemaps');
 const svgSprite = require('gulp-svg-sprite');
 const pkgJson = require('./package.json');
-// const hbs = require('@frctl/handlebars');
 
 const { config } = pkgJson;
 const webpackConfigDev = require('./config/webpack.dev');
