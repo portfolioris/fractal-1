@@ -64,22 +64,14 @@ const stylesDevTask = () =>
       })
     )
     .pipe(sourcemaps.init())
-    .pipe(
-      sass({
-        precision: 8,
-      })
-    )
+    .pipe(sass())
     .pipe(postcss())
     .pipe(sourcemaps.write('.'))
     .pipe(dest(config.paths.public.css));
 
 const stylesProdTask = () =>
   src(`${config.paths.source.sass}**/*.scss`)
-    .pipe(
-      sass({
-        precision: 8,
-      })
-    )
+    .pipe(sass())
     .pipe(postcss()) // default postcss.config.js
     .pipe(
       postcss([
@@ -101,6 +93,8 @@ const javascriptLintTask = (cb) => {
 
 const javascriptDevTask = (cb) => {
   src(`${config.paths.source.js}**/*.js`)
+    .pipe(eslint())
+    .pipe(eslint.format())
     .pipe(
       webpackStream(webpackConfigDev, webpack, (err, stats) => {
         // log errors and warnings

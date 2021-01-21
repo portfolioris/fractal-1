@@ -116,6 +116,5 @@ class Flyout {
 }
 
 export default ($el) => {
-  const inst = new Flyout($el);
-  inst.init();
+  new Flyout($el).init();
 };
