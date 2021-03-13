@@ -18,10 +18,10 @@
     document.documentElement.classList.add('has-js');
   </script>
 
-  <link rel="stylesheet" href="{{ path '/css/style.css' }}" media="all">
+  <link rel="stylesheet" href="{{ path '/assets/style.css' }}" media="all">
 
   {{! List dependencies in the head for faster discovery/preloading. They are deferred by default. }}
-  <script type="module" src="{{ path '/js/bundle.es6.js' }}"></script>
+  <script type="module" src="{{ path '/assets/main.js' }}"></script>
 </head>
 <body class="{{ bodyClass }}">
 

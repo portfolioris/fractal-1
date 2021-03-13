@@ -1,5 +1,5 @@
 module.exports = {
-  'extends': '@supple-kit/stylelint-config-supple',
+  'extends': './node_modules/webpack-config-starterkit/node_modules/@supple-kit/stylelint-config-supple',
   'plugins': [
     'stylelint-use-logical',
   ],
