@@ -34,7 +34,7 @@
       2600
     ]
   },
-  "logLevel": "debug",
+  "logLevel": "info",
   "outputFileSuffixes": {
     "rendered": ".rendered",
     "rawTemplate": "",
