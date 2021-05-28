@@ -1,4 +1,4 @@
-import { $, getKeyCode } from '../../utilities';
+import { $, getKeyCode } from '../utilities';
 
 /**
  * Flyout

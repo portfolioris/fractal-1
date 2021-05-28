@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   {{! Generic app tags }}
-  <link rel="manifest" href="{{ path '/assets/manifest/manifest.json' }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ path '/assets/manifest/icons/icon-180x180.png' }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ path '/assets/manifest/icons/icon-32x32.png' }}">
+  <link rel="manifest" href="{{ path '/static/manifest/manifest.json' }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ path '/static/manifest/icons/icon-180x180.png' }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ path '/static/manifest/icons/icon-32x32.png' }}">
   <meta name="theme-color" content="{{themeColor}}">
 
   {{! Inform CSS that JS is enabled }}
@@ -18,10 +18,15 @@
     document.documentElement.classList.add('has-js');
   </script>
 
-  <link rel="stylesheet" href="{{ path '/assets/style.css' }}" media="all">
+  {{#if _config.project.isDevelop }}
+    <script type="module" src="http://localhost:30128/@vite/client"></script>
+    <script type="module" src="http://localhost:30128/src/js/entry.js"></script>
+    <script type="module" src="http://localhost:30128/src/sass/style.scss"></script>
+  {{ else }}
+    <link rel="stylesheet" href="{{ path '/style.css' }}" media="all">
+    <script type="module" src="{{ path '/entry.js' }}"></script>
+  {{/if}}
 
-  {{! List dependencies in the head for faster discovery/preloading. They are deferred by default. }}
-  <script type="module" src="{{ path '/assets/main.js' }}"></script>
 </head>
 <body class="{{ bodyClass }}">
 

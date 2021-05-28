@@ -6,72 +6,57 @@
     "defaults"
   ],
   "scripts": {
-    "_dev": "gulp serve",
-    "_build": "gulp build",
-    "dev": "run-p  wp:serve  pl:watch",
-    "wp:serve": "webpack serve  --open  --mode development",
-    "pl:watch": "run-p  pl:watch-patterns  pl:watch-metadata",
-    "pl:watch-patterns": "node scripts/pl.watch-patterns.js",
-    "pl:watch-metadata": "node scripts/pl.watch-metadata.js",
-    "pl:build": "patternlab build --config patternlab.config.json",
-    "pl:help": "patternlab --help",
-    "pl:install": "patternlab install --config patternlab.config.json",
-    "pl:serve": "patternlab serve --config patternlab.config.json",
-    "pl:version": "patternlab --version"
+    "dev": "run-p  vite:serve  static:copy  svg:watch  fractal:start",
+    "build": "run-s  vite:build  static:copy  svg:build  fractal:build",
+    "vite:serve": "vite --port 30128",
+    "vite:build": "vite build  --config scripts/vite.config.js",
+    "preview": "vite preview  --config scripts/vite.preview.js",
+    "fractal:start": "ENV=development fractal start  --sync",
+    "fractal:build": "fractal build",
+    "svg:watch": "node scripts/svg.watch.js",
+    "svg:build": "node scripts/svg.build.js",
+    "static:copy": "node scripts/assets.copy.js"
   },
   "dependencies": {
-    "@frctl/fractal": "^1.5.4",
-    "@frctl/handlebars": "^1.2.5",
-    "@pattern-lab/cli": "^5.14.1",
-    "@pattern-lab/core": "^5.14.1",
-    "@pattern-lab/engine-handlebars": "^5.14.0",
-    "@pattern-lab/uikit-workshop": "^5.14.1",
+    "@frctl/fractal": "^1.5.8",
+    "@frctl/handlebars": "^1.2.10",
+    "@rollup/plugin-dynamic-import-vars": "^1.1.1",
     "@supple-kit/stylelint-config-supple": "^3.0.4",
-    "@supple-kit/supple-css": "^5.0.0-beta.2",
+    "@supple-kit/supple-css": "^5.0.1",
     "conditioner-core": "^2.3.3",
-    "element-closest": "^3.0.2",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.0",
-    "faker": "^5.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "faker": "^5.5.3",
     "focus-visible": "^5.2.0",
-    "intersection-observer": "^0.12.0",
     "lorem-ipsum": "^2.0.3",
     "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
     "postcss-dir-pseudo-class": "^5.0.0",
     "postcss-logical": "^4.0.2",
     "postcss-pxtorem": "^6.0.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.0",
+    "sass": "^1.34.0",
     "scroll-into-view": "^1.15.0",
+    "stylelint": "^13.13.1",
     "stylelint-use-logical": "^1.1.0",
-    "svgxuse": "^1.2.6",
+    "svgo": "^2.3.0",
+    "svgstore-cli": "^2.0.0",
+    "vite": "^2.3.4",
     "wicg-inert": "^3.1.1"
-  },
-  "devDependencies": {
-    "webpack-config-starterkit": "git+http://github.com/portfolioris/webpack-config-starterkit.git"
   },
   "config": {
     "paths": {
       "source": {
-        "root": "src/",
         "docs": "src/docs/",
         "patterns": "src/patterns/",
-        "js": "src/js/",
         "svg": "src/svg/",
-        "sass": "src/sass/",
-        "assets": "src/assets/"
+        "static": "src/static/"
       },
-      "public": {
-        "root": "public/",
-        "js": "public/js/",
+      "dist": {
         "jsPublicPath": "/js/",
-        "svg": "public/svg/",
-        "assets": "public/assets/",
-        "css": "public/css/"
-      },
-      "build": {
-        "root": "dist/"
+        "svg": "dist/svg/",
+        "static": "dist/static/"
       }
     }
   }
