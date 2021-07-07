@@ -1,5 +1,5 @@
 import scrollIntoView from 'scroll-into-view';
-import validateField from '../../utilities/validateField';
+import validateField from '../utilities/validateField';
 
 class Validate {
   constructor($el) {

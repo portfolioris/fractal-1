@@ -1,4 +1,4 @@
-import { getKeyCode, fuzzyMatchStringInArray } from '../../utilities';
+import { getKeyCode, fuzzyMatchStringInArray } from '../utilities';
 
 class Autocomplete {
   constructor($el) {

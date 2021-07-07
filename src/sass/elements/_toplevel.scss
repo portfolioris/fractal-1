@@ -12,7 +12,7 @@
     ====================================================== */
 
 html {
-  font-size: responsive.lock(vars.$font-size, 20px, desk, wall);
+  font-size: responsive.lock(vars.$font-size, vars.$font-size + 4px, desk, wall);
   font-family: vars.$font-family-primary;
   color: vars.$color-black;
   font-weight: vars.$font-weight-regular;

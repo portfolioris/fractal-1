@@ -1,12 +1,10 @@
-import { $ } from '../../utilities';
-
 class InputNumber {
   constructor($el) {
     this.$el = $el;
-    this.$increaseBtn = $(this.$el, '[data-module-bind=input-number-increase]');
-    this.$decreaseBtn = $(this.$el, '[data-module-bind=input-number-decrease]');
-    this.$input = $(this.$el, '[data-module-bind=input-number-input]');
-    this.$status = $(this.$el, '[data-module-bind=input-number-status]');
+    this.$increaseBtn = this.$el.querySelector('[data-module-bind=input-number-increase]');
+    this.$decreaseBtn = this.$el.querySelector('[data-module-bind=input-number-decrease]');
+    this.$input = this.$el.querySelector('[data-module-bind*=input-number-input]');
+    this.$status = this.$el.querySelector('[data-module-bind=input-number-status]');
     this.step = parseFloat(this.$input.step) || 1;
     this.min = parseFloat(this.$input.min);
     this.max = parseFloat(this.$input.max);

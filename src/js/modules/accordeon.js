@@ -1,4 +1,4 @@
-import { $ } from '../../utilities';
+import { $ } from '../utilities';
 
 class Accordeon {
   constructor($el) {

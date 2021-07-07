@@ -3,7 +3,10 @@
     "airbnb-base",
     "plugin:prettier/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
+  "plugins": [
+    "import"
+  ],
   "env": {
     "browser": true,
     "node": true
