@@ -8,23 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   {{! Generic app tags }}
-  <link rel="manifest" href="{{ path '/static/manifest/manifest.json' }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ path '/static/manifest/icons/icon-180x180.png' }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ path '/static/manifest/icons/icon-32x32.png' }}">
+  <link rel="manifest" href="{{ static '/manifest/manifest.json' }}">
+  <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ static '/manifest/icons/icon-180x180.png' }}">
+  <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ static '/manifest/icons/icon-32x32.png' }}">
   <meta name="theme-color" content="{{themeColor}}">
 
   {{! Inform CSS that JS is enabled }}
   <script>
-    document.documentElement.classList.add('has-js');
+    document.documentElement.classList.add("has-js");
   </script>
 
   {{#if _config.project.isDevelop }}
-    <script type="module" src="http://localhost:30128/@vite/client"></script>
-    <script type="module" src="http://localhost:30128/src/js/entry.js"></script>
-    <script type="module" src="http://localhost:30128/src/sass/style.scss"></script>
+    <script type="module" src="{{ static '@vite/client' }}"></script>
+    <script type="module" src="{{ static 'src/js/entry.js' }}"></script>
+    <link rel="stylesheet" href="{{ static 'src/sass/style.scss' }}">
   {{ else }}
-    <link rel="stylesheet" href="{{ path '/style.css' }}" media="all">
-    <script type="module" src="{{ path '/entry.js' }}"></script>
+    <script type="module" src="{{ manifest 'src/js/entry.js' 'file' }}"></script>
+    <link rel="stylesheet" href="{{ manifest 'src/sass/style.js' 'css' }}">
   {{/if}}
 
 </head>
@@ -33,9 +35,6 @@
 <div data-module-bind="modal-page">
   {{{ yield }}}
 </div>
-
-<!-- Legacy bundle javascript -->
-<script nomodule src="{{ path '/js/bundle.es5.js' }}" async></script>
 
 </body>
 </html>

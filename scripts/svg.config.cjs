@@ -1,9 +1,8 @@
-const { extendDefaultPlugins } = require('svgo');
 module.exports = {
-  plugins: extendDefaultPlugins([
+  plugins: [
     {
-      name: 'cleanupIDs',
+      name: "cleanupIDs",
       active: false
     }
-  ])
-}
+  ]
+};

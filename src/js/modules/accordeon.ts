@@ -1,10 +1,19 @@
 import { $ } from '../utilities';
 
 class Accordeon {
+  private $el: HTMLDetailsElement;
+  private $summary: HTMLDetailsElement;
+  private $content: HTMLDivElement;
+  private animation: Animation;
+  private isClosing: boolean;
+  private isOpening: boolean;
+  private transitionDuration: number;
+  private isExpanding: boolean;
+
   constructor($el) {
     this.$el = $el;
     this.$summary = $(this.$el, '[data-module-bind=accordeon-summary]');
-    this.$content = $(this.$el, '[data-module-bind=accordeon-container]');
+    this.$content = $(this.$el, '[data-module-bind=accordeon-content]');
     this.animation = null;
     this.isClosing = false;
     this.isOpening = false;

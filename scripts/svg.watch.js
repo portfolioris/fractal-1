@@ -1,9 +1,4 @@
 const nodemon = require('nodemon');
-// import * as config from '../package.json';
-// console.log(config);
-const fs = require('fs');
-// import fs from 'fs';
-// const { config } = JSON.parse(fs.readFileSync('./package.json'));
 const pkgJson = require('../package.json');
 const config = pkgJson.config;
 
