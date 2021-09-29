@@ -21,6 +21,7 @@
 
 .c-accordeon__item {
   border-block-end: 1px solid vars.$color-gray;
+  transition: vars.$base-transition-duration vars.$base-timing-function;
 }
 
 .c-accordeon__summary {

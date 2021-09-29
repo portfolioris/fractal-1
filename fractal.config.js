@@ -14,6 +14,7 @@ if (process.env.ENV === 'development') {
 } else {
   const manifest = require(`./${config.paths.dist.root}manifest.json`);
   instance.handlebars.registerHelper('manifest', (key, subkey) => `/${manifest[key][subkey]}`);
+  instance.handlebars.registerHelper('static', (file) => `${config.paths.dist.root}/${file}`);
 }
 
 module.exports = fractal;

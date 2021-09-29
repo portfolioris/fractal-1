@@ -11,3 +11,6 @@
 // import './ce'
 
 // import './ce.svelte';
+import Accordeon from './modules/accordeon';
+
+customElements.define('details-summary', Accordeon);
