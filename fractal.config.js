@@ -1,4 +1,5 @@
 const { config } = require('./package.json');
+const path = require("path");
 
 const fractal = require('@frctl/fractal').create();
 const instance = fractal.components.engine();
@@ -11,6 +12,17 @@ fractal.web.set('server.sync', true);
 if (process.env.ENV === 'development') {
   instance.handlebars.registerHelper('static', (file) => `//localhost:${config.paths.source.vitePort}/${file}`);
   fractal.set('project.isDevelop', 'true');
+  fractal.web.set('server.syncOptions', {
+    // cors: true,
+    open: true,
+    notify: true,
+    watchOptions: {
+      ignored: [
+        path.resolve('**/*.css'),
+        path.resolve('**/*.scss'),
+      ]
+    }
+  });
 } else {
   const manifest = require(`./${config.paths.dist.root}manifest.json`);
   instance.handlebars.registerHelper('manifest', (key, subkey) => `/${manifest[key][subkey]}`);

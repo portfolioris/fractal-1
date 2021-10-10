@@ -17,7 +17,7 @@ export default class Accordeon extends HTMLElement {
   }
 
   connectedCallback() {
-    this.$details = this.parentNode as HTMLDetailsElement;
+    this.$details = this.closest('details') as HTMLDetailsElement;
     this.$summary = this.$details.querySelector('summary');
     this.animation = null;
     this.transitionDuration = parseFloat(window.getComputedStyle(this.$details).transitionDuration) * 1000;
