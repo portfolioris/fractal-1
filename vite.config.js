@@ -10,7 +10,7 @@ export default defineConfig({
     rollupOptions: {
       // overwrite default .html entry
       input: [
-        '/src/js/entry.js',
+        '/src/js/entry.ts',
         '/src/sass/style.js'
       ],
     },

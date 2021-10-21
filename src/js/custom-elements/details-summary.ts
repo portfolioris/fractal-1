@@ -1,4 +1,4 @@
-export default class Accordeon extends HTMLElement {
+export default class DetailsSummary extends HTMLElement {
   private isClosing: boolean;
   private isOpening: boolean;
   private transitionDuration: number;
@@ -45,7 +45,6 @@ export default class Accordeon extends HTMLElement {
 
   attributeChangedCallback(name, oldVal, newVal) {
     if (name === 'open') {
-      console.log(newVal);
       if (newVal !== null) {
         this.openIt();
       } else {
@@ -57,6 +56,7 @@ export default class Accordeon extends HTMLElement {
   openIt() {
     this.$details.style.overflow = 'hidden';
     // Apply a fixed height on the element
+    // todo: use logical properties?
     this.$details.style.height = `${this.$summary.offsetHeight}px`;
     this.$details.open = true;
     window.requestAnimationFrame(() => this.expand());

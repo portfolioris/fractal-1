@@ -22,10 +22,10 @@
 
   {{#if _config.project.isDevelop }}
     <script type="module" src="{{ static '@vite/client' }}"></script>
-    <script type="module" src="{{ static 'src/js/entry.js' }}"></script>
+    <script type="module" src="{{ static 'src/js/entry.ts' }}"></script>
     <link rel="stylesheet" href="{{ static 'src/sass/style.scss' }}">
   {{ else }}
-    <script type="module" src="{{ manifest 'src/js/entry.js' 'file' }}"></script>
+    <script type="module" src="{{ manifest 'src/js/entry.ts' 'file' }}"></script>
     <link rel="stylesheet" href="{{ manifest 'src/sass/style.js' 'css' }}">
   {{/if}}
 
