@@ -22,7 +22,6 @@ export default class DetailsSummary extends HTMLElement {
     this.animation = null;
     this.transitionDuration = parseFloat(window.getComputedStyle(this.$details).transitionDuration) * 1000;
     this.timing = window.getComputedStyle(this.$details).transitionTimingFunction;
-    console.log(this.timing)
     this.isClosing = false;
     this.isOpening = false;
     this.$details.addEventListener('click', (e) => {
