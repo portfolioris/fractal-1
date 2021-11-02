@@ -2,7 +2,7 @@
     Components.Flyout
     ====================================================== */
 
-@use 'src/sass/vars';
+//@use 'src/sass/vars';
 @use 'node_modules/@supple-kit/supple-css/tools/responsive';
 @use 'src/sass/functions';
 
@@ -22,17 +22,18 @@
 
 .c-flyout__wrap-button {
   position: relative;
+  display: inline-block;
 }
 
 .c-flyout__panel {
   position: absolute;
   z-index: functions.get-z-index(flyout-panel);
-  inset-inline: vars.$space-tiny;
-  margin-block-start: vars.$space-small;
-  border: 1px solid vars.$color-gray;
-  padding: vars.$space-small;
+  inset-inline: var(--space-tiny);
+  margin-block-start: var(--space-small);
+  border: 1px solid var(--color-gray);
+  padding: var(--space-small);
   opacity: 0;
-  transition: opacity vars.$base-transition-duration-short;
+  transition: opacity var(--base-transition-duration-short);
 
   &.is-open {
     opacity: 1;
@@ -42,14 +43,14 @@
 .c-flyout__arrow {
   position: absolute;
   z-index: functions.get-z-index(flyout-panel) + 1;
-  inset-block-start: calc(100% + #{vars.$space-tiny} + 1px);
+  inset-block-start: calc(100% + var(--space-tiny) + 1px);
   inset-inline-start: 50%;
   transform: translateX(-50%);
-  color: vars.$color-white;
-  filter: drop-shadow(0 -1px 0 vars.$color-gray);
+  color: var(--color-white);
+  filter: drop-shadow(0 -1px 0 var(--color-gray));
   pointer-events: none;
   opacity: 0;
-  transition: opacity vars.$base-transition-duration-short;
+  transition: opacity var(--base-transition-duration-short);
 
   .c-icon {
     inline-size: 16px;
@@ -78,7 +79,6 @@
   }
 
   .c-flyout__panel {
-    --offset: 0;
     inset-inline-start: 50%;
     transform: translateX(-50%);
     min-inline-size: 360px;
@@ -89,7 +89,9 @@
     }
 
     &.is-offset-inline-end {
-      margin-inline-start: calc(var(--offset) * -1px - #{vars.$space-base});
+      inset-inline-start: auto;
+      transform: translateX(0);
+      inset-inline-end: 0;
     }
   }
 }

@@ -6,7 +6,7 @@ module.exports = {
       element: 'button',
       type: 'button',
       href: null,
-      data: 'data-module-bind="flyout-toggle"',
+      data: 'aria-controls="flyout-panel-id"',
     },
   },
 };

@@ -6,7 +6,7 @@
     "defaults"
   ],
   "scripts": {
-    "dev": "fractal start & vite & node scripts/svg.watch.js",
+    "dev": "ENV=development fractal start & vite & node scripts/svg.watch.js",
     "build": "vite build && node scripts/svg.watch.js && fractal build",
     "preview": "npx http-server pattern_export"
   },
@@ -15,15 +15,19 @@
     "@frctl/handlebars": "^1.2.13",
     "@supple-kit/stylelint-config-supple": "^3.0.4",
     "@supple-kit/supple-css": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.1",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
     "focus-visible": "^5.2.0",
     "lorem-ipsum": "^2.0.4",
     "nodemon": "^2.0.14",
     "prettier": "^2.4.1",
     "sass": "^1.43.4",
     "scroll-into-view": "^1.16.0",
-    "stylelint": "^14.0.1",
     "stylelint-use-logical": "^1.1.0",
     "svgo": "^2.7.0",
     "svgstore-cli": "^2.0.0",
@@ -52,6 +56,7 @@
     }
   },
   "devDependencies": {
-    "postcss-preset-env": "^6.7.0"
+    "postcss-preset-env": "^6.7.0",
+    "stylelint": "^13.13.1"
   }
 }
