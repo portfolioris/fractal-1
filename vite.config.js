@@ -1,4 +1,5 @@
-import {defineConfig} from 'vite'
+import { defineConfig } from 'vite';
+
 export default defineConfig({
   publicDir: 'src/static',
   server: {
@@ -9,10 +10,7 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       // overwrite default .html entry
-      input: [
-        '/src/js/entry.ts',
-        '/src/sass/style.js'
-      ],
+      input: ['/src/js/entry.ts', '/src/sass/style.js'],
     },
   },
 });

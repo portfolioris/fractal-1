@@ -6,9 +6,12 @@
     "defaults"
   ],
   "scripts": {
-    "dev": "ENV=development fractal start & vite & node scripts/svg.watch.js",
+    "dev": "concurrently npm:fractal:start vite",
+    "fractal:start": "fractal start",
+    "_dev": "ENV=development fractal start & vite & node scripts/svg.watch.js",
     "build": "vite build && node scripts/svg.watch.js && fractal build",
-    "preview": "npx http-server pattern_export"
+    "preview": "npx http-server pattern_export",
+    "svg:build": "svgstore src/svg/*.svg | svgo  -i -  --config svg.config.cjs  -o src/static/dist/sprite.svg"
   },
   "dependencies": {
     "@frctl/fractal": "^1.5.11",
@@ -17,14 +20,13 @@
     "@supple-kit/supple-css": "^5.2.0",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
-    "eslint-config-airbnb-typescript": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.2",
     "focus-visible": "^5.2.0",
     "lit": "^2.0.2",
     "lorem-ipsum": "^2.0.4",
     "nodemon": "^2.0.14",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-preset-env": "^7.2.0",
     "prettier": "^2.4.1",
     "sass": "^1.43.4",
     "scroll-into-view": "^1.16.0",
@@ -41,7 +43,7 @@
         "docs": "src/docs/",
         "patterns": "src/patterns/",
         "svg": "src/svg/",
-        "static": "src/static/",
+        "static": "/src/static/",
         "vitePort": "30128"
       },
       "dist": {
@@ -56,6 +58,8 @@
     }
   },
   "devDependencies": {
-    "eslint-config-airbnb-base": "^15.0.0"
+    "concurrently": "^7.1.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0"
   }
 }

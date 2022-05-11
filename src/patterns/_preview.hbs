@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   {{! Generic app tags }}
-  <link rel="manifest" href="{{ static '/manifest/manifest.json' }}">
+  <link rel="manifest" href="{{ path '/manifest/manifest.json' }}">
   <link rel="apple-touch-icon" sizes="180x180"
-        href="{{ static '/manifest/icons/icon-180x180.png' }}">
+        href="{{ path '/manifest/icons/icon-180x180.png' }}">
   <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ static '/manifest/icons/icon-32x32.png' }}">
+        href="{{ path '/manifest/icons/icon-32x32.png' }}">
   <meta name="theme-color" content="{{themeColor}}">
 
   {{! Inform CSS that JS is enabled }}
@@ -21,9 +21,9 @@
   </script>
 
   {{#if _config.project.isDevelop }}
-    <script type="module" src="{{ static '@vite/client' }}"></script>
-    <script type="module" src="{{ static 'src/js/entry.ts' }}"></script>
-    <link rel="stylesheet" href="{{ static 'src/sass/style.scss' }}">
+    <script type="module" src="{{ vite }}@vite/client"></script>
+    <script type="module" src="{{ vite }}src/js/entry.ts"></script>
+    <link rel="stylesheet" href="{{ vite }}src/sass/style.scss">
   {{ else }}
     <script type="module" src="{{ manifest 'src/js/entry.ts' 'file' }}"></script>
     <link rel="stylesheet" href="{{ manifest 'src/sass/style.js' 'css' }}">
