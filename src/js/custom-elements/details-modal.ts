@@ -1,3 +1,9 @@
+import { LitElement } from 'lit';
+
+export default class DetailsModal extends LitElement {
+
+}
+/*
 export default class DetailsModal extends HTMLElement {
   private $details: HTMLDetailsElement;
   private $page: HTMLElement;
@@ -41,3 +47,4 @@ export default class DetailsModal extends HTMLElement {
     }
   }
 }
+*/

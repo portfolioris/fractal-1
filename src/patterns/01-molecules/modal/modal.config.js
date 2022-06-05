@@ -4,7 +4,8 @@ module.exports = {
     heading: 'Are you sure?',
     rte: '<p>A good description that describes the consequences of this action.</p>',
     triggerBtn: {
-      element: 'summary',
+      element: 'a',
+      href: '#confirm',
       label: 'Open modal',
     },
     submitBtn: {
