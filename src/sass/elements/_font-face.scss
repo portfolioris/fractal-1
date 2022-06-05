@@ -1,5 +1,4 @@
 /*  ======================================================
-    foundation.elements.typography
     Describes typography
     ====================================================== */
 
@@ -9,9 +8,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src:
-    url('../assets/fonts/PublicSans/public-sans-latin.woff2') format('woff2 supports variations'),
-    url('../assets/fonts/PublicSans/public-sans-latin.woff2') format('woff2-variations');
+  src: url('../fonts/PublicSans/public-sans-latin.woff2') format('woff2-variations');
 }
 
 
@@ -21,8 +18,5 @@
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src:
-    url('../assets/fonts/PublicSans/public-sans-latin-italic.woff2') format('woff2 supports variations'),
-    url('../assets/fonts/PublicSans/public-sans-latin-italic.woff2') format('woff2-variations');
+  src: url('../fonts/PublicSans/public-sans-latin-italic.woff2') format('woff2-variations');
 }
-

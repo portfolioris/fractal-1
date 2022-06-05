@@ -1,47 +1,81 @@
-<div data-module="ui/modal">
+{{ render '@atoms-button' triggerBtn }}
 
-  {{ render '@atoms-button' triggerBtn }}
+<details-modal id="confirm" class="c-modal__details" role="document">
+  <div class="c-modal__overlay" data-modal-close></div>
+  <div class="c-modal__modal">
 
-  <div
-    class="c-modal"
-    data-module-bind="modal-modal"
-    aria-labelledby="modal-heading-{{ id }}"
-    aria-describedby="modal-rte-{{ id }}"
-    hidden
-  >
-    <div class="c-modal__overlay" data-module-bind="modal-close"></div>
+    <header class="c-modal__header">
+      {{#> '@atoms-layout' gap='base' }}
+        {{#> '@atoms-cell' fill=true }}
+          <h3 data-modal-heading>{{ heading }}</h3>
+        {{/'@atoms-cell'}}
+        {{#> '@atoms-cell' fit=true }}
+          <button data-modal-close type="button"
+                  class="o-button-clean">
+            {{ render '@atoms-icon--cross' }}
+            <span class="u-visually-hidden">Close</span>
+          </button>
+        {{/'@atoms-cell'}}
+      {{/'@atoms-layout'}}
+    </header>
 
-    <div class="c-modal__modal" role="document">
-      <header class="c-modal__header">
-        {{#> '@atoms-layout' gap='base' }}
-          {{#> '@atoms-cell' fill=true }}
-            <h3 id="modal-heading-{{ id }}">{{ heading }}</h3>
-          {{/'@atoms-cell'}}
-          {{#> '@atoms-cell' fit=true }}
-            <button data-module-bind="modal-close" type="button"
-                    class="o-button-clean  c-modal__close-button">
-              {{ render '@atoms-icon--cross' }}
-              <span class="u-visually-hidden">Close</span>
-            </button>
-          {{/'@atoms-cell'}}
-        {{/'@atoms-layout'}}
-      </header>
+    <main class="c-modal__overflow">
+      <div class="c-modal__content  o-flow">
 
-      <div class="c-modal__overflow">
-        <div class="c-modal__content  o-flow">
+        <div data-details-modal-content>{{{ rte }}}</div>
 
-          <div id="modal-rte-{{ id }}">{{{ rte }}}</div>
+        <form method="post" action="">
+          <p>{{ render '@atoms-button' submitBtn }}</p>
+        </form>
 
-          <form method="post" action="">
-            <p>{{ render '@atoms-button' submitBtn }}</p>
-          </form>
+        <p>{{ render '@atoms-button' cancelBtn }}</p>
 
-          <p>{{ render '@atoms-button' cancelBtn }}</p>
-
-        </div>
       </div>
+    </main>
+  </div>
+</details-modal>
 
+{{!--
+<div
+  class="c-modal"
+  data-module-bind="modal-modal"
+  aria-labelledby="modal-heading-{{ id }}"
+  aria-describedby="modal-rte-{{ id }}"
+  hidden
+>
+  <div class="c-modal__overlay" data-module-bind="modal-close"></div>
+
+  <div class="c-modal__modal" role="document">
+    <header class="c-modal__header">
+      {{#> '@atoms-layout' gap='base' }}
+        {{#> '@atoms-cell' fill=true }}
+          <h3 id="modal-heading-{{ id }}">{{ heading }}</h3>
+        {{/'@atoms-cell'}}
+        {{#> '@atoms-cell' fit=true }}
+          <button data-module-bind="modal-close" type="button"
+                  class="o-button-clean  c-modal__close-button">
+            {{ render '@atoms-icon--cross' }}
+            <span class="u-visually-hidden">Close</span>
+          </button>
+        {{/'@atoms-cell'}}
+      {{/'@atoms-layout'}}
+    </header>
+
+    <div class="c-modal__overflow">
+      <div class="c-modal__content  o-flow">
+
+        <div id="modal-rte-{{ id }}">{{{ rte }}}</div>
+
+        <form method="post" action="">
+          <p>{{ render '@atoms-button' submitBtn }}</p>
+        </form>
+
+        <p>{{ render '@atoms-button' cancelBtn }}</p>
+
+      </div>
     </div>
+
   </div>
 </div>
 
+--}}

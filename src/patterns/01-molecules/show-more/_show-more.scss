@@ -2,10 +2,6 @@
     Components.Show-More
     ====================================================== */
 
-@use 'src/sass/vars';
-
-
-
 /*  Block
     ====================================================== */
 
@@ -19,11 +15,20 @@
     ====================================================== */
 
 .c-show-more__container {
-  overflow: hidden;
+  transition: height var(--base-transition-duration) var(--base-timing-function);
+}
+
+.c-show-more__content {
+  padding-block-end: var(--space-base);
+
 }
 
 .c-show-more__divider {
   display: flex;
+
+  .c-show-more__btn {
+    transform: translateY(-50%);
+  }
 
   &::before,
   &::after {
@@ -31,10 +36,17 @@
     display: block;
     block-size: 1px;
     flex-grow: 1;
-    background-color: vars.$color-black;
+    background-color: var(--color-black);
   }
 }
 
-.c-show-more__btn {
-  transform: translateY(-50%);
+
+
+/*  States
+    ========================================================================= */
+
+.c-show-more:not([open]) {
+  .c-show-more__container {
+    mask-image: linear-gradient(to top, transparent, #000000 var(--space-huge));
+  }
 }

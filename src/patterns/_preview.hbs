@@ -8,29 +8,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   {{! Generic app tags }}
-  <link rel="manifest" href="{{ path '/assets/manifest/manifest.json' }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ path '/assets/manifest/icons/icon-180x180.png' }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ path '/assets/manifest/icons/icon-32x32.png' }}">
+  <link rel="manifest" href="{{ path '/manifest/manifest.json' }}">
+  <link rel="apple-touch-icon" sizes="180x180"
+        href="{{ path '/manifest/icons/icon-180x180.png' }}">
+  <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ path '/manifest/icons/icon-32x32.png' }}">
   <meta name="theme-color" content="{{themeColor}}">
 
   {{! Inform CSS that JS is enabled }}
   <script>
-    document.documentElement.classList.add('has-js');
+    document.documentElement.classList.add("has-js");
   </script>
 
-  <link rel="stylesheet" href="{{ path '/css/style.css' }}" media="all">
+  {{#if _config.project.isDevelop }}
+    <script type="module" src="{{ vite }}@vite/client"></script>
+    <script type="module" src="{{ vite }}src/js/entry.ts"></script>
+    <link rel="stylesheet" href="{{ vite }}src/sass/style.scss">
+  {{ else }}
+    <script type="module" src="{{ manifest 'src/js/entry.ts' 'file' }}"></script>
+    <link rel="stylesheet" href="{{ manifest 'src/sass/style.js' 'css' }}">
+  {{/if}}
 
-  {{! List dependencies in the head for faster discovery/preloading. They are deferred by default. }}
-  <script type="module" src="{{ path '/js/bundle.es6.js' }}"></script>
 </head>
 <body class="{{ bodyClass }}">
 
-<div data-module-bind="modal-page">
+<div data-modal-page>
   {{{ yield }}}
 </div>
-
-<!-- Legacy bundle javascript -->
-<script nomodule src="{{ path '/js/bundle.es5.js' }}" async></script>
 
 </body>
 </html>

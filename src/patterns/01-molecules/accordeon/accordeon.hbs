@@ -1,8 +1,8 @@
 <ul class="c-accordeon">
   {{#each items }}
     <li>
-      <details class="c-accordeon__item" data-module="ui/accordeon">
-        <summary class="c-accordeon__summary" data-module-bind="accordeon-summary">
+      <details class="c-accordeon__item">
+        <summary class="c-accordeon__summary">
           {{#> '@atoms-layout' fit=true gap='small' }}
             <div class="c-accordeon__icon">
               {{ render '@atoms-icon' icon='plus' }}
@@ -13,11 +13,11 @@
           {{/'@atoms-layout'}}
         </summary>
 
-        <div class="c-accordeon__content-container" data-module-bind="accordeon-content">
+        <details-summary>
           <div class="c-accordeon__content  o-flow">
             {{{ content }}}
           </div>
-        </div>
+        </details-summary>
       </details>
     </li>
   {{/each}}

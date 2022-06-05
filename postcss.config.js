@@ -1,13 +1,7 @@
+const presetEnv = require('postcss-preset-env');
+
 module.exports = {
-  plugins: {
-    'postcss-dir-pseudo-class': {},
-    'postcss-logical': {
-      preserve: true,
-    },
-    autoprefixer: {},
-    'postcss-pxtorem': {
-      propList: ['*'],
-      minPixelValue: 4,
-    },
-  },
+  plugins: [
+    presetEnv,
+  ],
 };

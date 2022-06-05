@@ -52,11 +52,25 @@
     ====================================================== */
 
 .c-modal {
-  position: fixed;
-  z-index: functions.get-z-index(modal);
-  inset: 0;
-  justify-content: center;
-  align-items: center;
+  &[open] {
+    //background-color: #ffa100;
+
+    summary {
+      //&::before {
+      //  content: '';
+      //  position: fixed;
+      //  inset: 0;
+      //  background-color: transparentize(vars.$color-black, 0.5);
+      //}
+    }
+  }
+  //position: fixed;
+  //z-index: functions.get-z-index(modal);
+  //inset: 0;
+  //justify-content: center;
+  //align-items: center;
+
+
 }
 
 
@@ -64,11 +78,18 @@
 /*  Elements
     ====================================================== */
 
+.c-modal__details {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .c-modal__overlay {
   position: fixed;
   inset: 0;
   background-color: transparentize(vars.$color-black, 0.5);
-  opacity: 0;
 }
 
 /**
@@ -92,11 +113,9 @@
   max-block-size: calc(100% - #{vars.$space-base});
   display: flex;
   flex-direction: column;
-  position: relative;
-}
-
-.c-modal__close-button {
-  display: block;
+  position: fixed;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
 }
 
 .c-modal__header {

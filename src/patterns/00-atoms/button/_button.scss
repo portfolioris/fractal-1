@@ -24,6 +24,7 @@ $hover-background: vars.$color-gray;
 
 .c-button {
   appearance: none;
+  cursor: pointer;
   // box model
   display: inline-block;
   vertical-align: middle;

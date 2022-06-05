@@ -1,12 +1,19 @@
 {
   "extends": [
     "airbnb-base",
-    "plugin:prettier/recommended"
+    "airbnb-typescript/base"
+//    "prettier"
   ],
-  "parser": "babel-eslint",
+//  "parser": "@babel/eslint-parser",
+//  "plugins": [
+//    "import"
+//  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "env": {
-    "browser": true,
-    "node": true
+    "browser": true
+//    "node": true
   },
   "rules": {
     "no-param-reassign": [

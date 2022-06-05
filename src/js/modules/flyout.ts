@@ -1,25 +1,25 @@
-import { $, getKeyCode } from '../../utilities';
+import { $, getKeyCode } from '../utilities';
 
 /**
  * Flyout
  * Generic system for a toggle button and overlapping foldout (flyout)
  *
  * <div data-module="ui/flyout" data-context="@visible">
- *
  *    <button data-module-bind="flyout-toggle" aria-controls="flyout" aria-expanded="false" />
- *
- *     <div data-module-bind="flyout-panel" id="flyout" />
- *
+ *    <div data-module-bind="flyout-panel" id="flyout" />
  *  </div>
  * @param $el
  */
 
 class Flyout {
-  constructor($el) {
-    this.state = {
-      isOpen: false,
-    };
+  private isOpen: boolean;
+  private $el: HTMLElement;
+  private $toggleFoldout: HTMLButtonElement;
+  private $foldout: HTMLElement;
+  private observer: IntersectionObserver;
 
+  constructor($el: HTMLElement) {
+    this.isOpen = false;
     this.$el = $el;
     this.$toggleFoldout = $(this.$el, '[data-module-bind=flyout-toggle]');
     this.$foldout = $(this.$el, '[data-module-bind=flyout-panel]');
@@ -28,7 +28,7 @@ class Flyout {
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
   }
 
-  init() {
+  init(): void {
     this.handleClickToggleFoldout();
     this.$toggleFoldout.setAttribute('aria-expanded', 'false');
   }
@@ -37,7 +37,7 @@ class Flyout {
   openFoldout() {
     this.$toggleFoldout.setAttribute('aria-expanded', 'true');
     this.$foldout.hidden = false;
-    this.state.isOpen = true;
+    this.isOpen = true;
     document.documentElement.addEventListener('click', this.hideFoldoutOnBlur);
     document.addEventListener('keyup', this.handleEscape);
     this.correctOverflow();
@@ -58,7 +58,7 @@ class Flyout {
           this.$foldout.classList.add('is-offset-inline-end');
           this.$foldout.style.setProperty(
             '--offset',
-            entries[0].boundingClientRect.right - document.documentElement.clientWidth
+            String(entries[0].boundingClientRect.right - document.documentElement.clientWidth)
           );
         }
       },
@@ -76,7 +76,7 @@ class Flyout {
     this.$foldout.addEventListener('transitionend', this.handleTransitionEnd);
     this.$foldout.classList.remove('is-open');
 
-    this.state.isOpen = false;
+    this.isOpen = false;
     document.documentElement.removeEventListener('click', this.hideFoldoutOnBlur);
     document.removeEventListener('keyup', this.handleEscape);
     this.observer.unobserve(this.$foldout);
@@ -85,13 +85,13 @@ class Flyout {
   handleTransitionEnd() {
     this.$foldout.hidden = true;
     this.$foldout.removeEventListener('transitionend', this.handleTransitionEnd);
-    this.$foldout.style.setProperty('--offset', 0);
+    this.$foldout.style.setProperty('--offset', String(0));
     this.$foldout.classList.remove('is-offset-inline-start', 'is-offset-inline-end');
   }
 
   handleClickToggleFoldout() {
     this.$toggleFoldout.addEventListener('click', () => {
-      if (!this.state.isOpen) {
+      if (!this.isOpen) {
         this.openFoldout();
       } else {
         this.closeFoldout();

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "ES2017",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "isolatedModules": true
+  }
+}

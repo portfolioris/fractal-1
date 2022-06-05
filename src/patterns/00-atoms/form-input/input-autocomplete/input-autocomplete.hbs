@@ -1,0 +1,42 @@
+<input-autocomplete
+  {{#if isAsync}}
+  api-url="https://api.github.com/search/repositories"
+  query-min-length="{{ queryMinLength }}"
+  {{/if}}
+  name="{{name}}"
+  inputClass="c-input-text"
+>
+
+  {{#unless isAsync}}
+    <div slot="select">
+      {{ render '@atoms-input-select' inputSelect merge=true }}
+    </div>
+  {{/unless}}
+
+  <div class="c-autocomplete__field" hidden slot="input">
+    <input class="c-input-text  c-autocomplete__input" />
+
+    <div class="c-autocomplete__icon" data-autocomplete-icon>
+      {{#unless isAsync}}
+      {{! dropdown icon }}
+        {{ render '@atoms-icon--chevron-down' }}
+      {{/unless}}
+      {{#if isAsync}}
+      {{! search icon }}
+        {{ render '@atoms-icon--magnifier' }}
+      {{/if}}
+    </div>
+
+    {{! empty input button }}
+    <button type="button" class="o-button-clean  c-autocomplete__icon  c-autocomplete__icon--clear"
+            data-autocomplete-clear hidden>
+      <span class="u-visually-hidden">Clear field</span>
+      {{ render '@atoms-icon--cross' }}
+    </button>
+
+
+    <ul class="o-list-clean  c-autocomplete__list">
+      <li class="c-autocomplete__option"></li>
+    </ul>
+  </div>
+</input-autocomplete>

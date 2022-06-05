@@ -3,8 +3,9 @@
     Describes toplevel styles such as HTML, body, etc.
     ====================================================== */
 
-@use 'node_modules/@supple-kit/supple-css/tools/responsive';
 @use 'src/sass/vars';
+@use 'node_modules/@supple-kit/supple-css/tools/responsive';
+@use 'node_modules/@supple-kit/supple-css/tools/space';
 
 
 
@@ -12,9 +13,24 @@
     ====================================================== */
 
 html {
-  font-size: responsive.lock(vars.$font-size, 20px, desk, wall);
+  // spacing
+  --space-tiny: #{space.get('tiny')};
+  --space-small: #{space.get('small')};
+  --space-base: #{space.get('base')};
+  --space-large: #{space.get('large')};
+  --space-huge: #{space.get('huge')};
+  // colors
+  --color-black: #{vars.$color-black};
+  --color-white: #{vars.$color-white};
+  --color-gray: #{vars.$color-gray};
+  --color-gray-light: #{vars.$color-gray-light};
+  // animations & transitions
+  --base-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  --base-transition-duration: 600ms;
+  --base-transition-duration-short: 300ms;
+  font-size: responsive.lock(vars.$font-size, vars.$font-size + 4px, desk, wall);
   font-family: vars.$font-family-primary;
-  color: vars.$color-black;
+  color: var(--color-black);
   font-weight: vars.$font-weight-regular;
   scroll-behavior: smooth;
   overflow-x: hidden;

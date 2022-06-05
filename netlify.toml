@@ -1,0 +1,3 @@
+[build]
+    publish = "fractal_export/"
+    command = "npm run build"

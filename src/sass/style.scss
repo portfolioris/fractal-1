@@ -22,8 +22,8 @@
 /*  Elements
     ====================================================== */
 
-@use 'elements/toplevel';
 @use 'elements/font-face';
+@use 'elements/toplevel';
 //@use 'node_modules/@supple-kit/supple-css/generic/elements/headings';
 
 
@@ -82,3 +82,7 @@
 @use 'node_modules/@supple-kit/supple-css/utilities/visually-hidden';
 @use 'node_modules/@supple-kit/supple-css/utilities/hidden';
 @use 'node_modules/@supple-kit/supple-css/utilities/spacing';
+
+//@use 'supple-ui-svelte/layouts' with (
+//  $gaps: ('small', 'base')
+//);
