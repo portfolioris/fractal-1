@@ -5,7 +5,7 @@
 @use 'src/sass/vars';
 @use 'src/sass/functions';
 @use 'node_modules/@supple-kit/supple-css/tools/responsive';
-
+@use 'node_modules/@supple-kit/supple-css/generic/reset';
 
 
 /*  Animation
@@ -51,131 +51,40 @@
 /*  Block
     ====================================================== */
 
+.c-modal::backdrop {
+  background-color: var(--color-white);
+  backdrop-filter: blur(1rem);
+}
+
 .c-modal {
+  padding: 0;
+  box-shadow: 0 var(--space-base) var(--space-base) var(--color-black);
+  border-radius: var(--space-tiny);
+  transition: opacity var(--base-transition-duration) var(--base-timing-function);
+  opacity: 0;
+  inline-size: 50%;
+  max-inline-size: 40rem;
+
   &[open] {
-    //background-color: #ffa100;
-
-    summary {
-      //&::before {
-      //  content: '';
-      //  position: fixed;
-      //  inset: 0;
-      //  background-color: transparentize(vars.$color-black, 0.5);
-      //}
-    }
+    opacity: 1;
+    animation: modalIn var(--base-transition-duration) var(--base-timing-function) forwards;
   }
-  //position: fixed;
-  //z-index: functions.get-z-index(modal);
-  //inset: 0;
-  //justify-content: center;
-  //align-items: center;
-
-
-}
-
-
-
-/*  Elements
-    ====================================================== */
-
-.c-modal__details {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.c-modal__overlay {
-  position: fixed;
-  inset: 0;
-  background-color: transparentize(vars.$color-black, 0.5);
-}
-
-/**
-  Scroll hints
- */
-.c-modal__modal,
-.c-modal__header {
-  &::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0;
-    block-size: vars.$space-small;
-    background-image: linear-gradient(transparentize(vars.$color-white, 1), vars.$color-white);
-  }
-}
-
-.c-modal__modal {
-  background-color: vars.$color-white;
-  inline-size: calc(100% - #{vars.$space-base});
-  max-inline-size: 640px;
-  max-block-size: calc(100% - #{vars.$space-base});
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
 }
 
 .c-modal__header {
-  border-block-end: 1px solid vars.$color-black;
-  padding: vars.$space-small;
-  position: relative;
-
-  &::after {
-    // reposition, reverse gradient
-    inset: calc(100% + 1px) 0 auto;
-    background-image: linear-gradient(vars.$color-white, transparentize(vars.$color-white, 1));
-  }
+  background-color: var(--color-gray-light);
+  position: sticky;
+  top: 0;
 }
 
-.c-modal__overflow {
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
+.c-modal__header,
 .c-modal__content {
-  padding: vars.$space-small;
+  padding: var(--space-base);
 }
 
-
-
-/*  State
-    ====================================================== */
-
-.c-modal[aria-hidden='false'] {
-  display: flex;
-
-  .c-modal__modal {
-    animation: modalIn vars.$base-transition-duration ease-out;
-  }
-
-  .c-modal__overlay {
-    animation: overlayIn vars.$base-transition-duration-short linear forwards;
-  }
-}
-
-
-
-/*  Responsive
-    ====================================================== */
-
-@include responsive.mq(lap) {
-  .c-modal__header,
-  .c-modal__content {
-    padding: vars.$space-base;
-  }
-
-  .c-modal__modal,
-  .c-modal__header {
-    &::after {
-      block-size: vars.$space-base;
-    }
-  }
-
-  .c-modal__modal {
-    max-block-size: calc(100% - #{vars.$space-base*2});
-  }
+.c-modal__close {
+  background-color: var(--color-white);
+  border-radius: 50%;
+  padding: var(--space-tiny);
+  outline: 1px solid var(--color-gray);
 }

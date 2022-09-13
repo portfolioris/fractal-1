@@ -7,6 +7,7 @@ module.exports = {
       element: 'a',
       href: '#confirm',
       label: 'Open modal',
+      data: 'aria-controls="modal-unique-id"',
     },
     submitBtn: {
       element: 'button',
@@ -17,7 +18,7 @@ module.exports = {
     cancelBtn: {
       element: 'button',
       type: 'button',
-      label: 'Close modal',
+      label: 'Cancel',
       data: 'data-modal-close',
     },
   },

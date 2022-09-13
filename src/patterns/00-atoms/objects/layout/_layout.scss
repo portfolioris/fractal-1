@@ -2,12 +2,12 @@
     Objects.Layout
     ====================================================== */
 
-@use 'src/sass/vars';
+//@use 'src/sass/vars';
 @use 'node_modules/@supple-kit/supple-css/objects/layout' with (
   $gaps: (
     'base',
     'small',
-    'tiny'
+    'tiny',
   ),
 );
 
@@ -17,20 +17,15 @@
     ====================================================== */
 
 /**
-  Override specificity from postcss-dir-pseudo-class
- */
-.o-layout {
-  padding-inline-start: 0;
-
-  > .o-layout__cell {
-    margin-inline-start: 0;
-    padding-inline-start: var(--layout-gap);
-  }
-}
-
-/**
 No wrap
  */
 .o-layout--no-wrap {
   flex-wrap: nowrap;
+}
+
+/**
+Justify
+ */
+.o-layout--justify {
+  justify-content: space-between;
 }
